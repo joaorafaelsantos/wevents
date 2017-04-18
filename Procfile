@@ -1,1 +1,1 @@
-node mysql.js
+node ex1.js
