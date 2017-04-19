@@ -1,1 +1,1 @@
-node mysql.js
+node index.js
