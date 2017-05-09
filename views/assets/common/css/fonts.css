@@ -1,0 +1,15 @@
+/*------------- worldevents -----------*/
+/*-------------------------------------*/
+/*-------------- fonts.css ------------*/
+
+/* PortoSans fonts */
+
+@font-face {
+    font-family: PortoSans-Regular;
+    src: url('../fonts/PortoSans-Regular.otf');
+}
+
+@font-face {
+    font-family: PortoSans-Light;
+    src: url('../fonts/PortoSans-Light.otf');
+}

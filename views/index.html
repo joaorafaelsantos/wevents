@@ -2,187 +2,459 @@
 <html lang="pt">
 
 <head>
-    <meta charset="UTF-8">
-    <title>worldevents</title>
-    <link rel="icon" href="../resources/images/logo/icon.ico">
-    <!--Bootstrap-->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    <!-- title -->
+    <title>worldevents / home</title>
+    <!-- manifest -->
+    <link rel="manifest" href="assets/common/js/manifest.json">
+    <!-- icon -->
+    <link rel="icon" type="image/png" href="assets/common/img/logo/logo192.png" sizes="192x192">
+    <!-- configs -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- bootstrap css -->
+    <link rel="stylesheet" href="assets/lib/bootstrap/3.3.7/css/bootstrap.min.css">
+    <!-- fontawesome -->
+    <link rel="stylesheet" href="assets/lib/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- app css -->
+    <link rel="stylesheet" href="assets/common/css/config.css">
+    <link rel="stylesheet" href="assets/common/css/fonts.css">
+    <link rel="stylesheet" href="assets/common/css/navbar.css">
+    <link rel="stylesheet" href="assets/common/css/index/config.css">
+    <link rel="stylesheet" href="assets/common/css/index/content.css">
+    <link rel="stylesheet" href="assets/common/css/index/translate.css">
 </head>
 
 <body>
-    <!--Navbar-->
+
+    <!-- navbar -->
     <nav class="navbar navbar-we navbar-fixed-top">
         <div class="container-fluid">
             <div class="navbar-header">
-                <button id="btnToggle" class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-collapse">
+                <button id="btnToggle" class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#navbar-collapse">
                     <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
+                    <span class="icon-bar top-bar"></span>
+                    <span class="icon-bar middle-bar"></span>
+                    <span class="icon-bar bottom-bar"></span>
                 </button>
-                <a class="navbar-brand " href="#">
-                    <img alt="Brand" src="../resources/images/logo/navbar-brand.PNG">
+                <a class="navbar-brand" href="#">
+                    <img alt="Brand" src="assets/common/img/logo/navbar-brand.png">
                 </a>
             </div>
             <div class="navbar-collapse collapse" id="navbar-collapse">
                 <ul class="nav navbar-nav pull-right">
-                    <li class="active"><a href="#sobre">SOBRE</a></li>
+                    <li class="active"><a href="#about">SOBRE</a></li>
                     <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">EVENTOS<span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="#conferencias">CONFERÊNCIAS</a></li>
-                            <li><a href="#projetos">PROJETOS</a></li>
-                            <li><a href="#reunioes">REUNIÕES</a></li>
+                            <li><a href="#conferences">CONFERÊNCIAS</a></li>
+                            <li><a href="#projects">PROJETOS</a></li>
+                            <li><a href="#reunions">REUNIÕES</a></li>
                             <li><a href="#workshops">WORKSHOPS</a></li>
                         </ul>
                     </li>
                     <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">FUNCIONALIDADES<span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="#">CRIAR REGISTO</a></li>
                             <li><a href="#">CRIAR EVENTO</a></li>
+                            <li><a href="#">GERIR EVENTO</a></li>
                             <li><a href="#">INSCREVER EM EVENTO</a></li>
                         </ul>
                     </li>
-                    <li><a href="#equipa">A NOSSA EQUIPA</a></li>
-                    <li><a href="#contactos">CONTACTOS</a></li>
-                    <li><a href="#areaReservada">ÁREA RESERVADA</a></li>
-                    <!-- *******++++++++++++++++++++++++++******* -->
-                    <!-- ******* |BANDEIRAS - LINGUAGENS| ******* -->
-                    <!-- *******++++++++++++++++++++++++++******* -->
-                    <!--<li class="dropdown">
-                        <a aria-expanded="false" aria-haspopup="true" role="button" data-toggle="dropdown" class="dropdown-toggle"><img id="lang" src="" alt="flag" width="30px" height="20px"><span class="caret"></span>
-                            <ul class="dropdown-menu">
-                                <div class="row">
-                                        <li class="col-xs-1 col-xs-offset-1 col-lg-12">
-                                        <a href="#"><img id="langPT" src="../resources/images/flags/pt.PNG" alt="flag" width="30px" height="20px"></a>
-                                    </li>
-                                    <li class="col-xs-1 col-xs-offset-1 col-lg-12">
-                                        <a href="#"><img id="langUK" src="../resources/images/flags/uk.PNG" alt="flag" width="30px" height="20px"></a>
-                                    </li>
-                                    <li class="col-xs-1 col-xs-offset-1 col-lg-12">
-                                        <a href="#"><img id="langCH" src="../resources/images/flags/ch.PNG" alt="flag" width="30px" height="20px"></a>
-                                    </li>
-                                    <li class="col-xs-1 col-xs-offset-1 col-lg-12">
-                                        <a href="#"><img id="langFR" src="../resources/images/flags/fr.PNG" alt="flag" width="30px" height="20px"></a>
-                                    </li>
-                                    <li class="col-xs-1 col-xs-offset-1 col-lg-12">
-                                        <a href="#"><img id="langDE" src="../resources/images/flags/de.PNG" alt="flag" width="30px" height="20px"></a>
-                                    </li>
-                                    <li class="col-xs-1 col-xs-offset-1 col-lg-12">
-                                        <a href="#"><img id="langIT" src="../resources/images/flags/it.PNG" alt="flag" width="30px" height="20px"></a>
-                                    </li>
-                                    <li class="col-xs-1 col-xs-offset-1 col-lg-12">
-                                        <a href="#"><img id="langRU" src="../resources/images/flags/ru.PNG" alt="flag" width="30px" height="20px"></a>
-                                    </li>
-                                    <li class="col-xs-1 col-xs-offset-1 col-lg-12">
-                                        <a href="#"><img id="langES" src="../resources/images/flags/es.PNG" alt="flag" width="30px" height="20px"></a>
-                                    </li>
-                                    </div>
-                            </ul>
-                    </li>-->
+                    <li><a href="#team">A NOSSA EQUIPA</a></li>
+                    <li><a href="#contact">CONTACTOS</a></li>
+                    <li><a href="main.html">ÁREA RESERVADA</a></li>
                 </ul>
             </div>
-        </div>
     </nav>
-    <!--Main-->
+    <!-- content -->
     <div id="main" class="container-fluid">
-        <!--Secção Sobre-->
-        <div id="sobre" class="row full-div">
-            <!--<h1 class="text-center" >SOBRE</h1>-->
+        <!-- about section -->
+        <div id="about" class="row full-div">
         </div>
-        <!--Secção Eventos-->
-        <div id="eventos" class="row full-div">
+        <!-- events section -->
+        <div id="events" class="row full-div">
             <h1 class="text-center">Eventos</h1>
+            </br>
+            </br>
+            <div class="row">
+                <div class="col-md-3">
+                    <a id="btnEvent" href="#conferences" class="btn center-block">
+                        <img class="center-block" src="assets/common/img/main/conferences.jpg" alt="">
+                        <h3 class="text-center">Conferências</h3>
+                    </a>
+                    </br>
+                </div>
+                <div class="col-md-3">
+                    <a id="btnEvent" href="#projects" class="btn center-block">
+                        <img class="center-block" src="assets/common/img/main/projects.jpg" alt="">
+                        <h3 class="text-center">Projetos</h3>
+                    </a>
+                    </br>
+                </div>
+                <div class="col-md-3">
+                    <a id="btnEvent" href="#reunions" class="btn center-block">
+                        <img class="center-block" src="assets/common/img/main/reunions.jpg" alt="">
+                        <h3 class="text-center">Reuniões</h3>
+                    </a>
+                    </br>
+                </div>
+                <div class="col-md-3">
+                    <a id="btnEvent" href="#workshops" class="btn center-block">
+                        <img class="center-block" src="assets/common/img/main/workshops.jpg" alt="">
+                        <h3 class="text-center">Workshops</h3>
+                    </a>
+                    </br>
+                </div>
+            </div>
         </div>
-        <!--Secção Conferências-->
-        <div id="conferencias" class="row full-div">
+        <!-- conferences section -->
+        <div id="conferences" class="row full-div">
             <h1 class="text-center">Conferências</h1>
             </br>
-            
+            </br>
             <div class="row">
-                <div class="col-md-4"><img class="center-block" src="../resources/images/conferences/conference1.PNG" alt=""></br>
+                <div class="col-md-4"><img class="center-block" src="assets/common/img/conferences/conference1.png" alt=""></br>
                     <p class="text-center">1ª Conferência de Sistemas Interativos e Inteligentes</br>5 de abril de 2017</br>Vila do Conde, Portugal</p>
                     </br>
                 </div>
-                <div class="col-md-4"><img class="center-block" src="../resources/images/conferences/conference2.PNG" alt=""></br>
+                <div class="col-md-4"><img class="center-block" src="assets/common/img/conferences/conference2.png" alt=""></br>
                     <p class="text-center">6ª Conferência - Cibersegurança</br>28 de novembro de 2016</br>Porto, Portugal</p>
                     </br>
                 </div>
-                <div class="col-md-4"><img class="center-block" src="../resources/images/conferences/conference1.PNG" alt=""></br>
+                <div class="col-md-4"><img class="center-block" src="assets/common/img/conferences/conference1.png" alt=""></br>
                     <p class="text-center">1ª Conferência de Sistemas Interativos e Inteligentes</br>5 de abril de 2017</br>Vila do Conde, Portugal</p>
                     </br>
                 </div>
             </div>
-            <div id="row2" class="row collapse">
-                <div class="col-md-4"><img class="center-block" src="../resources/images/conferences/conference1.PNG" alt=""></br>
+            <div id="confRow2" class="row collapse">
+                <div class="col-md-4"><img class="center-block" src="assets/common/img/conferences/conference1.png" alt=""></br>
                     <p class="text-center">1ª Conferência de Sistemas Interativos e Inteligentes</br>5 de abril de 2017</br>Vila do Conde, Portugal</p>
                     </br>
                 </div>
-                <div class="col-md-4"><img class="center-block" src="../resources/images/conferences/conference2.PNG" alt=""></br>
+                <div class="col-md-4"><img class="center-block" src="assets/common/img/conferences/conference2.png" alt=""></br>
                     <p class="text-center">6ª Conferência - Cibersegurança</br>28 de novembro de 2016</br>Porto, Portugal</p>
                     </br>
                 </div>
-                <div class="col-md-4"><img class="center-block" src="../resources/images/conferences/conference1.PNG" alt=""></br>
+                <div class="col-md-4"><img class="center-block" src="assets/common/img/conferences/conference1.png" alt=""></br>
                     <p class="text-center">1ª Conferência de Sistemas Interativos e Inteligentes</br>5 de abril de 2017</br>Vila do Conde, Portugal</p>
                     </br>
                 </div>
             </div>
-            <div id="row3" class="row collapse">
-                <div class="col-md-4"><img class="center-block" src="../resources/images/conferences/conference1.PNG" alt=""></br>
+            <div id="confRow3" class="row collapse">
+                <div class="col-md-4"><img class="center-block" src="assets/common/img/conferences/conference1.png" alt=""></br>
                     <p class="text-center">1ª Conferência de Sistemas Interativos e Inteligentes</br>5 de abril de 2017</br>Vila do Conde, Portugal</p>
                     </br>
                 </div>
-                <div class="col-md-4"><img class="center-block" src="../resources/images/conferences/conference2.PNG" alt=""></br>
+                <div class="col-md-4"><img class="center-block" src="assets/common/img/conferences/conference2.png" alt=""></br>
                     <p class="text-center">6ª Conferência - Cibersegurança</br>28 de novembro de 2016</br>Porto, Portugal</p>
                     </br>
                 </div>
-                <div class="col-md-4"><img class="center-block" src="../resources/images/conferences/conference1.PNG" alt=""></br>
+                <div class="col-md-4"><img class="center-block" src="assets/common/img/conferences/conference1.png" alt=""></br>
                     <p class="text-center">1ª Conferência de Sistemas Interativos e Inteligentes</br>5 de abril de 2017</br>Vila do Conde, Portugal</p>
                     </br>
                 </div>
             </div>
-             <button type="button" class="btn btn-info center-block" data-toggle="collapse" data-target="#row2, #row3">Ver mais</button>
-
-
+            <button id="btnConfViewMore" class="btn btn-link center-block" type="button" data-toggle="collapse" data-target="#confRow2, #confRow3"><i class="fa fa-plus-square-o fa-2x" aria-hidden="true" style="color: rgb(13, 182, 184);"></i></button></br>
+            </br>
         </div>
-        <!--Secção Projetos-->
-        <div id="projetos" class="row full-div">
+        <!-- projects section -->
+        <div id="projects" class="row full-div">
             <h1 class="text-center">Projetos</h1>
+            </br>
+            </br>
+            <div class="projRow">
+                <div class="col-md-4"><img class="center-block" src="assets/common/img/conferences/conference1.png" alt=""></br>
+                    <p class="text-center">1ª Conferência de Sistemas Interativos e Inteligentes</br>5 de abril de 2017</br>Vila do Conde, Portugal</p>
+                    </br>
+                </div>
+                <div class="col-md-4"><img class="center-block" src="assets/common/img/conferences/conference2.png" alt=""></br>
+                    <p class="text-center">6ª Conferência - Cibersegurança</br>28 de novembro de 2016</br>Porto, Portugal</p>
+                    </br>
+                </div>
+                <div class="col-md-4"><img class="center-block" src="assets/common/img/conferences/conference1.png" alt=""></br>
+                    <p class="text-center">1ª Conferência de Sistemas Interativos e Inteligentes</br>5 de abril de 2017</br>Vila do Conde, Portugal</p>
+                    </br>
+                </div>
+            </div>
+            <div id="projRow2" class="row collapse">
+                <div class="col-md-4"><img class="center-block" src="assets/common/img/conferences/conference1.png" alt=""></br>
+                    <p class="text-center">1ª Conferência de Sistemas Interativos e Inteligentes</br>5 de abril de 2017</br>Vila do Conde, Portugal</p>
+                    </br>
+                </div>
+                <div class="col-md-4"><img class="center-block" src="assets/common/img/conferences/conference2.png" alt=""></br>
+                    <p class="text-center">6ª Conferência - Cibersegurança</br>28 de novembro de 2016</br>Porto, Portugal</p>
+                    </br>
+                </div>
+                <div class="col-md-4"><img class="center-block" src="assets/common/img/conferences/conference1.png" alt=""></br>
+                    <p class="text-center">1ª Conferência de Sistemas Interativos e Inteligentes</br>5 de abril de 2017</br>Vila do Conde, Portugal</p>
+                    </br>
+                </div>
+            </div>
+            <div id="projRow3" class="row collapse">
+                <div class="col-md-4"><img class="center-block" src="assets/common/img/conferences/conference1.png" alt=""></br>
+                    <p class="text-center">1ª Conferência de Sistemas Interativos e Inteligentes</br>5 de abril de 2017</br>Vila do Conde, Portugal</p>
+                    </br>
+                </div>
+                <div class="col-md-4"><img class="center-block" src="assets/common/img/conferences/conference2.png" alt=""></br>
+                    <p class="text-center">6ª Conferência - Cibersegurança</br>28 de novembro de 2016</br>Porto, Portugal</p>
+                    </br>
+                </div>
+                <div class="col-md-4"><img class="center-block" src="assets/common/img/conferences/conference1.png" alt=""></br>
+                    <p class="text-center">1ª Conferência de Sistemas Interativos e Inteligentes</br>5 de abril de 2017</br>Vila do Conde, Portugal</p>
+                    </br>
+                </div>
+            </div>
+            <button id="btnProjViewMore" type="button" class="btn btn-link center-block" data-toggle="collapse" data-target="#projRow2, #projRow3"><i class="fa fa-plus-square-o fa-2x" aria-hidden="true" style="color: rgb(13, 182, 184);"></i></button></br>
+            </br>
         </div>
-        <!--Secção Reuniões-->
-        <div id="reunioes" class="row full-div">
+        <!-- reunions section -->
+        <div id="reunions" class="row full-div">
             <h1 class="text-center">Reuniões</h1>
-
+            </br>
+            </br>
+            <div class="reunRow">
+                <div class="col-md-4"><img class="center-block" src="assets/common/img/conferences/conference1.png" alt=""></br>
+                    <p class="text-center">1ª Conferência de Sistemas Interativos e Inteligentes</br>5 de abril de 2017</br>Vila do Conde, Portugal</p>
+                    </br>
+                </div>
+                <div class="col-md-4"><img class="center-block" src="assets/common/img/conferences/conference2.png" alt=""></br>
+                    <p class="text-center">6ª Conferência - Cibersegurança</br>28 de novembro de 2016</br>Porto, Portugal</p>
+                    </br>
+                </div>
+                <div class="col-md-4"><img class="center-block" src="assets/common/img/conferences/conference1.png" alt=""></br>
+                    <p class="text-center">1ª Conferência de Sistemas Interativos e Inteligentes</br>5 de abril de 2017</br>Vila do Conde, Portugal</p>
+                    </br>
+                </div>
+            </div>
+            <div id="reunRow2" class="row collapse">
+                <div class="col-md-4"><img class="center-block" src="assets/common/img/conferences/conference1.png" alt=""></br>
+                    <p class="text-center">1ª Conferência de Sistemas Interativos e Inteligentes</br>5 de abril de 2017</br>Vila do Conde, Portugal</p>
+                    </br>
+                </div>
+                <div class="col-md-4"><img class="center-block" src="assets/common/img/conferences/conference2.png" alt=""></br>
+                    <p class="text-center">6ª Conferência - Cibersegurança</br>28 de novembro de 2016</br>Porto, Portugal</p>
+                    </br>
+                </div>
+                <div class="col-md-4"><img class="center-block" src="assets/common/img/conferences/conference1.png" alt=""></br>
+                    <p class="text-center">1ª Conferência de Sistemas Interativos e Inteligentes</br>5 de abril de 2017</br>Vila do Conde, Portugal</p>
+                    </br>
+                </div>
+            </div>
+            <div id="reunRow3" class="row collapse">
+                <div class="col-md-4"><img class="center-block" src="assets/common/img/conferences/conference1.png" alt=""></br>
+                    <p class="text-center">1ª Conferência de Sistemas Interativos e Inteligentes</br>5 de abril de 2017</br>Vila do Conde, Portugal</p>
+                    </br>
+                </div>
+                <div class="col-md-4"><img class="center-block" src="assets/common/img/conferences/conference2.png" alt=""></br>
+                    <p class="text-center">6ª Conferência - Cibersegurança</br>28 de novembro de 2016</br>Porto, Portugal</p>
+                    </br>
+                </div>
+                <div class="col-md-4"><img class="center-block" src="assets/common/img/conferences/conference1.png" alt=""></br>
+                    <p class="text-center">1ª Conferência de Sistemas Interativos e Inteligentes</br>5 de abril de 2017</br>Vila do Conde, Portugal</p>
+                    </br>
+                </div>
+            </div>
+            <button id="btnReunViewMore" class="btn btn-link center-block" data-toggle="collapse" type="button" title="Ver mais" data-target="#reunRow2, #reunRow3"><i class="fa fa-plus-square-o fa-2x" aria-hidden="true" style="color: rgb(13, 182, 184);"></i></button></br>
+            </br>
         </div>
-        <!--Secção Workshops-->
+        <!-- workshops section -->
         <div id="workshops" class="row full-div">
             <h1 class="text-center">Workshops</h1>
+            </br>
+            </br>
+            <div class="workRow">
+                <div class="col-md-4"><img class="center-block" src="assets/common/img/conferences/conference1.png" alt=""></br>
+                    <p class="text-center">1ª Conferência de Sistemas Interativos e Inteligentes</br>5 de abril de 2017</br>Vila do Conde, Portugal</p>
+                    </br>
+                </div>
+                <div class="col-md-4"><img class="center-block" src="assets/common/img/conferences/conference2.png" alt=""></br>
+                    <p class="text-center">6ª Conferência - Cibersegurança</br>28 de novembro de 2016</br>Porto, Portugal</p>
+                    </br>
+                </div>
+                <div class="col-md-4"><img class="center-block" src="assets/common/img/conferences/conference1.png" alt=""></br>
+                    <p class="text-center">1ª Conferência de Sistemas Interativos e Inteligentes</br>5 de abril de 2017</br>Vila do Conde, Portugal</p>
+                    </br>
+                </div>
+            </div>
+            <div id="workRow2" class="row collapse">
+                <div class="col-md-4"><img class="center-block" src="assets/common/img/conferences/conference1.png" alt=""></br>
+                    <p class="text-center">1ª Conferência de Sistemas Interativos e Inteligentes</br>5 de abril de 2017</br>Vila do Conde, Portugal</p>
+                    </br>
+                </div>
+                <div class="col-md-4"><img class="center-block" src="assets/common/img/conferences/conference2.png" alt=""></br>
+                    <p class="text-center">6ª Conferência - Cibersegurança</br>28 de novembro de 2016</br>Porto, Portugal</p>
+                    </br>
+                </div>
+                <div class="col-md-4"><img class="center-block" src="assets/common/img/conferences/conference1.png" alt=""></br>
+                    <p class="text-center">1ª Conferência de Sistemas Interativos e Inteligentes</br>5 de abril de 2017</br>Vila do Conde, Portugal</p>
+                    </br>
+                </div>
+            </div>
+            <div id="workRow3" class="row collapse">
+                <div class="col-md-4"><img class="center-block" src="assets/common/img/conferences/conference1.png" alt=""></br>
+                    <p class="text-center">1ª Conferência de Sistemas Interativos e Inteligentes</br>5 de abril de 2017</br>Vila do Conde, Portugal</p>
+                    </br>
+                </div>
+                <div class="col-md-4"><img class="center-block" src="assets/common/img/conferences/conference2.png" alt=""></br>
+                    <p class="text-center">6ª Conferência - Cibersegurança</br>28 de novembro de 2016</br>Porto, Portugal</p>
+                    </br>
+                </div>
+                <div class="col-md-4"><img class="center-block" src="assets/common/img/conferences/conference1.png" alt=""></br>
+                    <p class="text-center">1ª Conferência de Sistemas Interativos e Inteligentes</br>5 de abril de 2017</br>Vila do Conde, Portugal</p>
+                    </br>
+                </div>
+            </div>
+            <button id="btnWorkViewMore" class="btn btn-link center-block" type="button" data-toggle="collapse" title="Ver mais" data-target="#workRow2, #workRow3"><i class="fa fa-plus-square-o fa-2x" aria-hidden="true" style="color: rgb(13, 182, 184);"></i></button></br>
+            </br>
         </div>
-        <!--Secção Funcionalidades-->
-        <div id="funcionalidades" class="row full-div">
+        <!-- features section -->
+        <div id="features" class="row full-div">
             <h1 class="text-center">Funcionalidades</h1>
+            </br>
+            </br>
+            <div class="row">
+                <div class="col-md-4">
+                    <a id="btnCreateEvent" href="#" class="btn center-block">
+                        <img class="center-block" src="assets/common/img/main/createEvent.jpg" alt="">
+                        <h3 class="text-center">Criar evento</h3>
+                    </a>
+                    </br>
+                </div>
+                <div class="col-md-4">
+                    <a id="btnManageEvent" href="#" class="btn center-block">
+                        <img class="center-block" src="assets/common/img/main/manageEvent.jpg" alt="">
+                        <h3 class="text-center">Gerir evento</h3>
+                    </a>
+                    </br>
+                </div>
+                <div class="col-md-4">
+                    <a id="btnSubscribeEvent" href="#" class="btn center-block">
+                        <img class="center-block" src="assets/common/img/main/subscribeEvent.jpg" alt="">
+                        <h3 class="text-center">Inscrever em evento</h3>
+                    </a>
+                    </br>
+                </div>
+            </div>
         </div>
-        <!--Secção Equipa-->
-        <div id="equipa" class="row full-div">
-            <h1 class="text-center">Equipa</h1>
+        <!-- team section -->
+        <div id="team" class="row full-div">
+            <h1 class="text-center">A Nossa Equipa</h1>
+            </br>
+            </br>
+            <div class="row">
+                <div class="col-md-4">
+                    <div id="andreGouveia" class="center-block">
+                        <img class="center-block" src="assets/common/img/team/picAndre.png" alt="">
+                        <h3 class="text-center">André Gouveia</h3>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 center-block text-center">
+                            <a id="btnFacebook" href="https://www.facebook.com/andre.gouveia.526" target="_blank" class="btn btn-link" <span><i class="fa fa-facebook-square fa-2x" aria-hidden="true" style="color: rgb(13, 182, 184);"></i></span>
+                            </a>
+                            <a id="btnLinkedin" href="https://www.linkedin.com/in/afcgouveia" target="_blank" class="btn btn-link" <span><i class="fa fa-linkedin-square fa-2x" aria-hidden="true" style="color: rgb(13, 182, 184);"></i></span>
+                            </a>
+                            <a id="btnEmail" href="mailto:9150508@esmad.ipp.pt" class="btn btn-link"><span><i class="fa fa-envelope-o fa-2x" aria-hidden="true" style="color: rgb(13, 182, 184);"></i></span></a>
+                        </div>
+                    </div>
+                    </br>
+                </div>
+                <div class="col-md-4">
+                    <div id="joaoRafaelSantos" class="center-block">
+                        <img class="center-block" src="assets/common/img/team/picJoao.png" alt="">
+                        <h3 class="text-center">João Rafael Santos</h3>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 center-block text-center">
+                            <a id="btnFacebook" href="https://www.facebook.com/joaosantosjrs" target="_blank" class="btn btn-link" <span><i class="fa fa-facebook-square fa-2x" aria-hidden="true" style="color: rgb(13, 182, 184);"></i></span>
+                            </a>
+                            <a id="btnLinkedin" href="https://www.linkedin.com/in/joaorafaelsantos" target="_blank" class="btn btn-link" <span><i class="fa fa-linkedin-square fa-2x" aria-hidden="true" style="color: rgb(13, 182, 184);"></i></span>
+                            </a>
+                            <a id="btnEmail" href="mailto:9150539@esmad.ipp.pt" class="btn btn-link"><span><i class="fa fa-envelope-o fa-2x" aria-hidden="true" style="color: rgb(13, 182, 184);"></i></span></a>
+                        </div>
+                    </div>
+                    </br>
+                </div>
+                <div class="col-md-4">
+                    <div id="franciscoMoreira" class="center-block">
+                        <img class="center-block" src="assets/common/img/team/picFrancisco.png" alt="">
+                        <h3 class="text-center">Francisco Moreira</h3>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 center-block text-center">
+                            <a id="btnFacebook" href="https://www.facebook.com/francisco.moreira.965" target="_blank" class="btn btn-link" <span><i class="fa fa-facebook-square fa-2x" aria-hidden="true" style="color: rgb(13, 182, 184);"></i></span>
+                            </a>
+                            <a id="btnLinkedin" href="https://www.linkedin.com/in/francisco-moreira-1584a5b3/" target="_blank" class="btn btn-link" <span><i class="fa fa-linkedin-square fa-2x" aria-hidden="true" style="color: rgb(13, 182, 184);"></i></span>
+                            </a>
+                            <a id="btnEmail" href="mailto:9150529@esmad.ipp.pt" class="btn btn-link"><span><i class="fa fa-envelope-o fa-2x" aria-hidden="true" style="color: rgb(13, 182, 184);"></i></span></a>
+                        </div>
+                    </div>
+                    </br>
+                </div>
+            </div>
         </div>
-        <!--Secção Contactos-->
-        <div id="contactos" class="row full-div">
+        <!-- contact section -->
+        <div id="contact" class="row full-div">
             <h1 class="text-center">Contactos</h1>
+            <div class="row">
+                <div class="col-md-12">
+                    <form id="form" class="form-horizontal">
+                        <div class="form-group">
+                            <div class="col-sm-4 col-sm-offset-4">
+                                <label for="">Nome*</label>
+                                <input id="name" type="text" class="form-control">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-4 col-sm-offset-4">
+                                <label for="">Email*</label>
+                                <input id="email" type="email" class="form-control">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-4 col-sm-offset-4">
+                                <label for="">Mensagem*</label>
+                                <textarea id="comment" class="form-control vresize" rows="5"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-4 col-sm-offset-4">
+                                <button id="btnSendMessage" type="submit" class="btn btn-we">Enviar mensagem</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            </br>
         </div>
-        <!--Secção Área Reservada-->
-        <div id="areaReservada" class="row full-div">
-            <h1 class="text-center">Área Reservada</h1>
+        <!-- footer section -->
+        <div id="footer" class="row full-div">
+            </br>
+            <!-- translate section -->
+            <script type="text/javascript" src="assets/common/js/translate/translate.js"></script>
+            <div id="google_translate_element2" style="display: none"></div>
+            <div id="flags" class="text-center">
+                <a href="#" onclick="doGTranslate('pt|en');return false;" title="English" class="flag nturl notranslate"><img src="assets/common/img/flags/uk.png" height="18" width="25" alt="en" /></a>
+                <a href="#" onclick="doGTranslate('pt|zh-TW');return false;" title="Chinese (Traditional)" class="flag nturl notranslate"><img src="assets/common/img/flags/ch.png" height="18" width="25" alt="zh-TW" /></a>
+                <a href="#" onclick="doGTranslate('pt|fr');return false;" title="French" class="flag nturl notranslate"><img src="assets/common/img/flags/fr.png" height="18" width="25" alt="fr" /></a>
+                <a href="#" onclick="doGTranslate('pt|de');return false;" title="German" class="flag nturl notranslate"><img src="assets/common/img/flags/de.png" height="18" width="25" alt="de" /></a>
+                <a href="#" onclick="doGTranslate('pt|it');return false;" title="Italian" class="flag nturl notranslate"><img src="assets/common/img/flags/it.png" height="18" width="25" alt="it" /></a>
+                <a href="#" onclick="doGTranslate('en|pt');return false;" title="Portuguese" class="flag nturl notranslate"><img src="assets/common/img/flags/pt.png" height="18" width="25" alt="pt" /></a>
+                <a href="#" onclick="doGTranslate('pt|ru');return false;" title="Russian" class="flag nturl notranslate"><img src="assets/common/img/flags/ru.png" height="18" width="25" alt="ru" /></a>
+                <a href="#" onclick="doGTranslate('pt|es');return false;" title="Spanish" class="flag nturl notranslate"><img src="assets/common/img/flags/es.png" height="18" width="25" alt="es" /></a>
+            </div>
+            <!-- copyright message -->
+            <h4 class="text-center">worldevents by JAF ©</h4>
         </div>
     </div>
-
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <!--App-->
-    <link rel="stylesheet" href="css/style.css">
-    <script src="script/navbar.js"></script>
+    <!-- jquery -->
+    <script src="assets/lib/jquery/3.2.1/js/jquery-3.2.1.js"></script>
+    <!-- bootstrap js -->
+    <script src="assets/lib/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!-- google translate -->
+    <script type="text/javascript" src="assets/common/js/translate/element.js"></script>
+    <!-- app js -->
+    <script src="assets/common/js/config.js"></script>
+    <script src="assets/common/js/index/index.js"></script>
+    <script src="assets/common/js/index/content.js"></script>
 </body>
 
 </html>

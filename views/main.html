@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+
+    <!-- title -->
+    <title>worldevents / portal</title>
+    <!-- manifest -->
+    <link rel="manifest" href="assets/common/js/manifest.json">
+    <!-- icon -->
+    <link rel="icon" type="image/png" href="assets/common/img/logo/logo192.png" sizes="192x192">
+    <!-- configs -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- bootstrap css -->
+    <link rel="stylesheet" href="assets/lib/bootstrap/3.3.7/css/bootstrap.min.css">
+    <!-- fontawesome -->
+    <link rel="stylesheet" href="assets/lib/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!--app css-->
+    <link rel="stylesheet" href="assets/common/css/config.css">
+    <link rel="stylesheet" href="assets/common/css/fonts.css">
+    <link rel="stylesheet" href="assets/common/css/navbar.css">
+    <link rel="stylesheet" href="assets/common/css/main/config.css">
+    <link rel="stylesheet" href="assets/common/css/main/sidebar.css">
+    <link rel="stylesheet" href="assets/common/css/main/panel.css">
+    <link rel="stylesheet" href="assets/common/css/main/content.css">
+
+</head>
+
+<body>
+
+    <!-- navbar -->
+    <nav class="navbar navbar-we navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button id="btnToggle" class="navbar-toggle collapsed pull-left" type="button" data-toggle="collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar top-bar"></span>
+                    <span class="icon-bar middle-bar"></span>
+                    <span class="icon-bar bottom-bar"></span>
+                </button>
+                <div class="navbar-brand navbar-right">
+                    <a class="" href="#">
+                    <img alt="Brand" src="assets/common/img/logo/navbar-brand.png">
+                </a>
+                </div>
+            </div>
+    </nav>
+    <div id="wrapper" class="toggled">
+        <!-- sidebar -->
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <!-- profile -->
+                <li class="dropdown active text-center"><a id="btnProfile" class="dropdown-toggle" data-toggle="dropdown" href="#"><span><img id="profilePic" class="img-circle" src="assets/common/img/team/picJoaoProfile.png" alt=""> </span>João Santos<span class="caret"></span></a>
+                    <ul class="dropdown-menu dropdown-profile">
+                        <li><a href="#btnMyProfile">Meu perfil</a></li>
+                        <li class="divider"></li>
+                        <li><a href="#btnConfig">Definições</a></li>
+                        <li><a href="#btnLogout">Sair</a></li>
+                    </ul>
+                </li>
+                <!-- my events -->
+                <li><a id="btnMyEvents" href="#">Os meus eventos</a></li>
+                <!-- create event -->
+                <li><a id="btnCreateEvent" href="#">Criar evento</a></li>
+                <!-- subscribed events -->
+                <li><a id="btnSubscribedEvents" href="#">Eventos inscritos</a></li>
+                <!-- subscribe event -->
+                <li><a id="btnSubscribeEvent" href="#">Inscrever em evento</a></li>
+            </ul>
+        </div>
+        <!-- content -->
+        <div id="page-content-wrapper" class="container-fluid">
+            <div class="row" style="text-align: center; background-color: rgb(245, 245, 245);">
+                </br>
+                <h1 class="text-center">Os meus eventos</h1>
+                </br>
+                </br>
+                <div class="col-md-4">
+                    <div class="rect center-block">
+                        <div>
+                            Adicionar evento
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="rect center-block">
+                        <div>
+                            Evento A
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="rect center-block">
+                        <div>
+                            Evento B
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="rect center-block">
+                        <div>
+                            Evento C
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="rect center-block">
+                        <div>
+                            Evento D
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="rect center-block">
+                        <div>
+                            Evento E
+                        </div>
+                    </div>
+                    </br>
+                </div>
+            </div>
+            <div class="row" style="text-align: center; background-color: rgb(255, 255, 255);">
+                </br>
+                <h1 class="text-center">Eventos inscritos</h1>
+                </br>
+                </br>
+                <div class="col-md-4">
+                    <div class="rect center-block">
+                        <div>
+                            Inscrever em evento
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="rect center-block">
+                        <div>
+                            Evento F
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="rect center-block">
+                        <div>
+                            Evento G
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- jquery -->
+    <script src="assets/lib/jquery/3.2.1/js/jquery-3.2.1.js"></script>
+    <!-- bootstrap js -->
+    <script src="assets/lib/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!-- app js -->
+    <script src="assets/common/js/main/main.js"></script>
+    
+</body>
+
+</html>

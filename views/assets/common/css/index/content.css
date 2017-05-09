@@ -1,0 +1,97 @@
+/*------------- worldevents -----------*/
+/*-------------------------------------*/
+/*--------- index/content.css ---------*/
+
+/* sections */
+
+#about {
+    background: url("../../img/main/theme.jpg") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    height: 0;
+    padding-top: 66.74%;
+}
+
+#btnEvent:hover {
+    opacity: 0.8;
+}
+
+#events {
+    background-color: rgb(245, 245, 245);
+}
+
+#conferences {
+    background-color: rgb(255, 255, 255);
+}
+
+#projects {
+    background-color: rgb(245, 245, 245);
+}
+
+#reunions {
+    background-color: rgb(255, 255, 255);
+}
+
+#workshops {
+    background-color: rgb(245, 245, 245);
+}
+
+#features {
+    background-color: rgb(255, 255, 255);
+}
+
+#btnCreateEvent:hover,
+#btnManageEvent:hover,
+#btnSubscribeEvent:hover {
+    opacity: 0.8;
+}
+
+#team {
+    background-color: rgb(245, 245, 245);
+}
+
+#andreGouveia:hover,
+#joaoRafaelSantos:hover,
+#franciscoMoreira:hover,
+#btnFacebook:hover,
+#btnLinkedin:hover,
+#btnEmail:hover {
+    opacity: 0.8;
+}
+
+#contact {
+    background-color: rgb(255, 255, 255);
+}
+
+
+/* the textarea only expands vertically */
+
+.vresize {
+    resize: vertical;
+}
+
+
+/* change form elements blue color */
+
+.form-control:focus {
+    border-color: rgb(13, 182, 184);
+    box-shadow: none;
+    -webkit-box-shadow: none;
+}
+
+#form input:focus::-webkit-input-placeholder {
+    color: rgb(13, 182, 184);
+}
+
+#form textarea:focus::-webkit-input-placeholder {
+    color: rgb(13, 182, 184);
+}
+
+
+/* footer */
+
+#footer {
+    background-color: rgb(245, 245, 245);
+}

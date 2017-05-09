@@ -1,0 +1,21 @@
+/*------------- worldevents -----------*/
+/*-------------------------------------*/
+/*---------- main/config.css ----------*/
+
+/* basic configuration */
+
+body {
+    padding-top: 50px;
+}
+
+.navbar-left {
+    padding-left: 40px;
+    /*float:left!important*/
+}
+.navbar-centered {
+    align-items: center;
+}
+
+.navbar-brand {
+    padding-left: 55px;
+}

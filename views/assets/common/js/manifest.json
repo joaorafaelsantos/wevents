@@ -1,0 +1,31 @@
+{
+    "name": "worldevents",
+    "short_name": "worldevents",
+    "start_url": "../index.html",
+    "display": "standalone",
+    "background_color": "#FFFFFF",
+    "theme_color": "#FFFFFF",
+    "description": "worldevents - The soul of yours events.",
+    "icons": [{
+            "src": "../resources/images/logo/logo144.png",
+            "sizes": "144x144",
+            "type": "image/png"
+        },
+        {
+            "src": "../resources/images/logo/logo168.png",
+            "sizes": "168x168",
+            "type": "image/png"
+        },
+        {
+            "src": "../resources/images/logo/logo192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        }
+    ],
+    "prefer_related_applications": false,
+    "related_applications": [{
+        "platform": "web",
+        "url": "https://wevents.webitcloud.net"
+    }]
+
+}

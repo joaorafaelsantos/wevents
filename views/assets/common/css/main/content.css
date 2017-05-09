@@ -1,0 +1,27 @@
+/*------------- worldevents -----------*/
+/*-------------------------------------*/
+/*------------ content.css ------------*/
+
+/* rect button */
+
+.rect {
+    width: 60%;
+    padding-bottom: 30%;
+    background-color: rgb(13, 182, 184);
+    margin-bottom: 30px;
+    font-size: 150%;
+    color: white;
+}
+
+.rect:hover {
+    background-color: rgba(13, 182, 184, 0.6);
+}
+
+/* content */
+
+#page-content-wrapper {
+    padding-top: 0px;
+    padding-right: 0px;
+    padding-bottom: 0px;
+    padding-left: 0px;
+}

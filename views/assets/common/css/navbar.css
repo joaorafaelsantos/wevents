@@ -1,0 +1,192 @@
+/*------------- worldevents -----------*/
+/*-------------------------------------*/
+/*------------- navbar.css ------------*/
+
+/* personalized navbar */
+
+.navbar-we {
+    background-color: white;
+    border-color: transparent;
+    font-family: PortoSans-Regular;
+    font-size: 150%;
+    border-style: solid;
+    border-bottom-width: 2px;
+    border-bottom-color: rgba(189, 190, 192, 0.5) !important;
+}
+
+
+/* link */
+
+.navbar-we .navbar-nav>li>a {
+    color: rgb(189, 190, 192);
+}
+
+.navbar-we .navbar-nav>li>a:hover,
+.navbar-we .navbar-nav>li>a:focus {
+    color: rgb(160, 160, 160);
+    background-color: transparent;
+}
+
+.navbar-we .navbar-nav>.active>a,
+.navbar-we .navbar-nav>.active>a:hover,
+.navbar-we .navbar-nav>.active>a:focus {
+    color: white;
+    background-color: rgb(13, 182, 184);
+    height: 100%;
+}
+
+.dropdown-toggle:active,
+.open .dropdown-toggle {
+    background: rgb(13, 182, 184) !important;
+    color: white !important;
+}
+
+.navbar-we .navbar-nav>.open>a,
+.navbar-we .navbar-nav>.open>a:hover,
+.navbar-we .navbar-nav>.open>a:focus {
+    color: rgb(130, 130, 130);
+    background-color: transparent;
+}
+
+
+/* caret */
+
+.navbar-we .navbar-nav>.dropdown>a .caret {
+    border-top-color: rgb(160, 160, 160);
+    border-bottom-color: rgb(160, 160, 160);
+}
+
+.navbar-we .navbar-nav>.dropdown>a:hover .caret,
+.navbar-we .navbar-nav>.dropdown>a:focus .caret {
+    border-top-color: rgb(130, 130, 130);
+    border-bottom-color: rgb(130, 130, 130);
+}
+
+.navbar-we .navbar-nav>.open>a .caret,
+.navbar-we .navbar-nav>.open>a:hover .caret,
+.navbar-we .navbar-nav>.open>a:focus .caret {
+    border-top-color: rgb(130, 130, 130);
+    border-bottom-color: rgb(130, 130, 130);
+}
+
+.navbar-we .navbar-nav>.dropdown>.dropdown-menu li>a {
+    color: rgb(189, 190, 192);
+    background-color: transparent;
+}
+
+.navbar-we .navbar-nav>.dropdown>.dropdown-menu li>a:hover,
+.dropdown-menu li>a:focus,
+.dropdown-submenu:hover>a {
+    color: rgb(160, 160, 160);
+    background-color: transparent;
+}
+
+
+/* mobile version */
+
+.navbar-toggle {
+    border: none;
+    background: transparent !important;
+}
+
+.navbar-toggle:hover {
+    background: transparent !important;
+}
+
+.navbar-toggle .icon-bar {
+    width: 22px;
+    transition: all 0.2s;
+}
+
+.navbar-toggle .top-bar {
+    transform: rotate(45deg);
+    transform-origin: 10% 10%;
+}
+
+.navbar-toggle .middle-bar {
+    opacity: 0;
+}
+
+.navbar-toggle .bottom-bar {
+    transform: rotate(-45deg);
+    transform-origin: 10% 90%;
+}
+
+.navbar-toggle.collapsed .top-bar {
+    transform: rotate(0);
+}
+
+.navbar-toggle.collapsed .middle-bar {
+    opacity: 1;
+}
+
+.navbar-toggle.collapsed .bottom-bar {
+    transform: rotate(0);
+}
+
+.navbar-we .navbar-toggle:hover,
+.navbar-we .navbar-toggle:focus {
+    background-color: white;
+}
+
+.navbar-we .navbar-toggle .icon-bar {
+    background-color: rgb(13, 182, 184);
+}
+
+@media (max-width: 768px) {
+    .navbar-we .navbar-nav .open .dropdown-menu>li>a {
+        color: rgb(189, 190, 192);
+    }
+    .navbar-we .navbar-nav .open .dropdown-menu>li>a:hover,
+    .navbar-we .navbar-nav .open .dropdown-menu>li>a:focus {
+        color: rgb(160, 160, 160);
+    }
+    .navbar-header {
+        float: none;
+    }
+    .navbar-left,
+    .navbar-right {
+        float: none !important;
+    }
+    .navbar-toggle {
+        display: block;
+    }
+    .navbar-collapse {
+        border-top: 1px solid transparent;
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    }
+    .navbar-fixed-top {
+        top: 0;
+        border-width: 0 0 1px;
+    }
+    .navbar-collapse.collapse {
+        display: none!important;
+    }
+    .navbar-nav {
+        float: none!important;
+        margin-top: 7.5px;
+    }
+    .navbar-nav>li {
+        float: none;
+    }
+    .navbar-nav>li>a {
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+    .collapse.in {
+        display: block !important;
+    }
+    .navbar-collapse.in {
+        overflow-y: auto !important;
+    }
+}
+
+/*@media (min-width: 768px) {
+    .navbar-brand img {
+        padding-left: 50%;
+    }
+}*/
+
+.navbar .navbar-brand {
+    padding-top: 0px;
+}

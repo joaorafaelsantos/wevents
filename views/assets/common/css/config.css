@@ -1,0 +1,30 @@
+/*------------- worldevents -----------*/
+/*-------------------------------------*/
+/*------------- config.css ------------*/
+
+html,
+body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+body {
+    font-family: PortoSans-Regular;
+    min-height: 2000px;
+}
+
+
+/* create full div in viewport */
+
+.full-div {
+    width: 100vw;
+}
+
+/* personalized h1 */
+
+h1 {
+    font-family: PortoSans-Regular;
+    color: rgb(13, 182, 184);
+    font-size: 300%;
+    padding-top: 30px;
+}
