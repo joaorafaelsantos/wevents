@@ -107,16 +107,19 @@
             </div>
         </div>
         <!-- conferences section -->
-        <div id="conferences" class="row full-div">
-            <script id="item-template" type="text/template">
-                <li class="clearfix">
-                    <div class="foto">
-                        <a href="{{ item.permalink }}">
-                            <img src="{{ item.thumb }}" width="180" height="124" alt="{{ item.titulo }}">
-                        </a>
-                    </div>
-                    <span>{{ item.titulo }}</span>
-                </li>
+        <div id="conferences" class="row full-div" data-template-chosen="a">
+            <script id="mustacheConferences" type="text/template">
+                <div class="item">
+                    <h1>Conferências</h1>
+                    {{#conferences}}
+                    <ul>
+                        <li><strong>Nome:</strong> {{nome_evento}}</li>
+                        <li><strong>Data:</strong> {{{data_desc}}}</li>
+                        <li><strong>Morada:</strong> {{morada}}</li>
+                        <li><strong>Cidade, País:</strong> {{cidade}}, {{pais}}</li>
+                    </ul>
+                    {{/conferences}}
+                </div>
             </script>
         </div>
         <!-- projects section -->
@@ -416,7 +419,7 @@
     <!--<script type="text/javascript" src="assets/common/js/translate/element.js"></script>-->
     <script type="text/javascript" src="http://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit2"></script>
     <!-- mustache -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.3.0/mustache.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.3.0/mustache.min.js"></script>
     <!-- app js -->
     <script src="assets/common/js/config.js"></script>
     <script src="assets/common/js/index/index.js"></script>
