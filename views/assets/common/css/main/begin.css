@@ -1,0 +1,26 @@
+/*------------- worldevents -----------*/
+/*-------------------------------------*/
+/*---------- main/begin.css -----------*/
+
+
+/* begin */
+
+#eventsPanel {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+#recentEvents {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    background-color: rgb(245, 245, 245);
+    border-bottom: thin solid rgba(189, 190, 192, 0.5);
+    border-top: thin solid rgba(189, 190, 192, 0.5);
+}
+
+#lastSituations {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    background-color: white;
+    border-bottom: thin solid rgba(189, 190, 192, 0.5);
+}

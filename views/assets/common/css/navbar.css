@@ -10,7 +10,7 @@
     font-family: PortoSans-Regular;
     font-size: 150%;
     border-style: solid;
-    border-bottom-width: 2px;
+    border-bottom-width: thin;
     border-bottom-color: rgba(189, 190, 192, 0.5) !important;
 }
 
@@ -133,7 +133,7 @@
     background-color: rgb(13, 182, 184);
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1366px) {
     .navbar-we .navbar-nav .open .dropdown-menu>li>a {
         color: rgb(189, 190, 192);
     }
@@ -181,12 +181,18 @@
     }
 }
 
-/*@media (min-width: 768px) {
-    .navbar-brand img {
-        padding-left: 50%;
-    }
-}*/
-
-.navbar .navbar-brand {
-    padding-top: 0px;
+.navbar-brand a img {  
+    width: 190px;
+    height: 40px;
+    padding-left: 5px;
 }
+
+.navbar-brand {
+    padding-top: 5px;
+}
+
+#btnToggle {
+    padding-left: 20px;
+}
+
+

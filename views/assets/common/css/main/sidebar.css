@@ -1,133 +1,115 @@
-/*!
- * Start Bootstrap - Simple Sidebar (http://startbootstrap.com/)
- * Copyright 2013-2016 Start Bootstrap
- * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap/blob/gh-pages/LICENSE)
- */
-
-
 /*------------- worldevents -----------*/
+
+
 /*-------------------------------------*/
-/*------------- sidebar.css -----------*/
 
 
-/* bootstrap sidebar (edited) */
+/*---------- main/sidebar.css ---------*/
 
 
 /* toggle styles */
 
-#wrapper {
-    padding-left: 0;
-    -webkit-transition: all 0.5s ease;
-    -moz-transition: all 0.5s ease;
-    -o-transition: all 0.5s ease;
-    transition: all 0.5s ease;
-}
 
-#wrapper.toggled {
-    padding-left: 300px;
-}
+/* The side navigation menu */
 
-#sidebar-wrapper {
-    z-index: 1000;
-    position: fixed;
-    left: 300px;
-    width: 0;
+.sidenav {
     height: 100%;
-    margin-left: -300px;
-    overflow-y: auto;
-    background: rgb(245, 245, 245);
-    -webkit-transition: all 0.5s ease;
-    -moz-transition: all 0.5s ease;
-    -o-transition: all 0.5s ease;
-    transition: all 0.5s ease;
-    border-style: solid;
-    border-width: 0px 2px 0px 0px;
-    border-color: rgba(189, 190, 192, 0.5);
-}
-
-#wrapper.toggled #sidebar-wrapper {
-    width: 300px;
-}
-
-#page-content-wrapper {
-    width: 100%;
-    position: absolute;
-    padding: 15px;
-}
-
-#wrapper.toggled #page-content-wrapper {
-    position: absolute;
-    margin-right: -300px;
-}
-
-
-/* sidebar styles */
-
-.sidebar-nav {
-    position: absolute;
+    /* 100% Full-height */
+    width: 0;
+    /* 0 width - change this with JavaScript */
+    position: fixed;
+    /* Stay in place */
+    z-index: 1;
+    /* Stay on top */
     top: 0;
-    width: 300px;
-    margin: 0;
-    padding: 0;
-    list-style: none;
+    left: 0;
+    background-color: #fff;
+    /* Black*/
+    overflow-x: hidden;
+    /* Disable horizontal scroll */
+    padding-top: 50px;
+    /* Place content 60px from the top */
+    transition: 0.2s;
+    /* 0.2 second transition effect to slide in the sidenav */
+    border-right: thin solid rgba(189, 190, 192, 0.5);
 }
 
-.sidebar-nav li {
-    text-indent: 20px;
-    line-height: 40px;
-}
 
-.sidebar-nav li a {
-    display: block;
+/* The navigation menu links */
+
+.sidenav a {
+    padding: 8px 8px 8px 32px;
     text-decoration: none;
+    font-size: 25px;
     color: rgb(13, 182, 184);
+    display: block;
+    transition: 0.3s;
+    border-bottom: thin solid rgba(189, 190, 192, 0.5);
 }
 
-.sidebar-nav li a:hover {
-    text-decoration: none;
+
+/* When you mouse over the navigation links, change their color */
+
+.sidenav a:hover,
+.offcanvas a:focus {
     color: white;
     background: rgb(13, 182, 184);
 }
 
-.sidebar-nav li a:active,
-.sidebar-nav li a:focus {
-    text-decoration: none;
+
+/* Position and style the close button (top right corner) */
+
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
 }
 
-.sidebar-nav>.sidebar-brand {
-    height: 65px;
-    font-size: 18px;
-    line-height: 60px;
+
+/* Style page content - use this if you want to push the page content to the right when you open the side navigation */
+
+#main {
+    transition: margin-left .5s;
+    padding: 0px;
+    /*padding-left: 300px;*/
 }
 
-.sidebar-nav>.sidebar-brand a {
-    color: #999999;
-}
 
-.sidebar-nav>.sidebar-brand a:hover {
-    color: #fff;
-    background: none;
-}
+/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
 
-@media(min-width:768px) {
-    #wrapper {
-        padding-left: 0;
+@media screen and (max-height: 450px) {
+    .sidenav {
+        padding-top: 50px;
     }
-    #wrapper.toggled {
-        padding-left: 250px;
+    .sidenav a {
+        font-size: 18px;
     }
-    #sidebar-wrapper {
-        width: 0;
+    #main {
+        padding-left: 0px;
     }
-    #wrapper.toggled #sidebar-wrapper {
+}
+
+
+/* Adjust responsive */
+
+@media (max-width: 1366px) {
+    #mySidenav {
+        width: 0px;
+    }
+    #main {
+        padding-left: 0px;
+        opacity: 1;
+    }
+}
+
+@media (min-width: 1367px) {
+    #mySidenav {
         width: 300px;
     }
-    #page-content-wrapper {
-        padding: 20px;
-        position: relative;
-    }
-    #wrapper.toggled #page-content-wrapper {
-        position: relative;
-        margin-right: 0;
+    #main {
+        padding-left: 300px;
+        opacity: 1;
     }
 }

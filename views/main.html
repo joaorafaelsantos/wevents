@@ -23,7 +23,10 @@
     <link rel="stylesheet" href="assets/common/css/main/config.css">
     <link rel="stylesheet" href="assets/common/css/main/sidebar.css">
     <link rel="stylesheet" href="assets/common/css/main/panel.css">
-    <link rel="stylesheet" href="assets/common/css/main/content.css">
+    <link rel="stylesheet" href="assets/common/css/main/homePanel.css">
+    <link rel="stylesheet" href="assets/common/css/main/contentConfig.css">
+    <link rel="stylesheet" href="assets/common/css/main/begin.css">
+    <link rel="stylesheet" href="assets/common/css/main/myEvents.css">
 
 </head>
 
@@ -41,121 +44,59 @@
                 </button>
                 <div class="navbar-brand navbar-right">
                     <a class="" href="#">
-                    <img alt="Brand" src="assets/common/img/logo/navbar-brand.png">
-                </a>
+                        <img class="" alt="Brand" src="assets/common/img/logo/logo.svg">
+                    </a>
                 </div>
             </div>
     </nav>
-    <div id="wrapper" class="toggled">
-        <!-- sidebar -->
-        <div id="sidebar-wrapper">
-            <ul class="sidebar-nav">
-                <!-- profile -->
-                <li class="dropdown active text-center"><a id="btnProfile" class="dropdown-toggle" data-toggle="dropdown" href="#"><span><img id="profilePic" class="img-circle" src="assets/common/img/team/picJoaoProfile.png" alt=""> </span>João Santos<span class="caret"></span></a>
-                    <ul class="dropdown-menu dropdown-profile">
-                        <li><a href="#btnMyProfile">Meu perfil</a></li>
-                        <li class="divider"></li>
-                        <li><a href="#btnConfig">Definições</a></li>
-                        <li><a href="#btnLogout">Sair</a></li>
-                    </ul>
-                </li>
-                <!-- my events -->
-                <li><a id="btnMyEvents" href="#">Os meus eventos</a></li>
-                <!-- create event -->
-                <li><a id="btnCreateEvent" href="#">Criar evento</a></li>
-                <!-- subscribed events -->
-                <li><a id="btnSubscribedEvents" href="#">Eventos inscritos</a></li>
-                <!-- subscribe event -->
-                <li><a id="btnSubscribeEvent" href="#">Inscrever em evento</a></li>
-            </ul>
-        </div>
-        <!-- content -->
-        <div id="page-content-wrapper" class="container-fluid">
-            <div class="row" style="text-align: center; background-color: rgb(245, 245, 245);">
-                </br>
-                <h1 class="text-center">Os meus eventos</h1>
-                </br>
-                </br>
-                <div class="col-md-4">
-                    <div class="rect center-block">
-                        <div>
-                            Adicionar evento
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="rect center-block">
-                        <div>
-                            Evento A
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="rect center-block">
-                        <div>
-                            Evento B
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="rect center-block">
-                        <div>
-                            Evento C
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="rect center-block">
-                        <div>
-                            Evento D
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="rect center-block">
-                        <div>
-                            Evento E
-                        </div>
-                    </div>
-                    </br>
-                </div>
-            </div>
-            <div class="row" style="text-align: center; background-color: rgb(255, 255, 255);">
-                </br>
-                <h1 class="text-center">Eventos inscritos</h1>
-                </br>
-                </br>
-                <div class="col-md-4">
-                    <div class="rect center-block">
-                        <div>
-                            Inscrever em evento
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="rect center-block">
-                        <div>
-                            Evento F
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="rect center-block">
-                        <div>
-                            Evento G
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <!-- sidebar -->
+    <div id="mySidenav" class="sidenav">
+        <!-- profile -->
+        <a id="btnProfile" class="text-center" href="#"><span><img id="profilePic" class="img-circle" src="assets/common/img/team/picJoaoProfile.png" alt=""> </span>João Santos</a>
+        <!-- begin -->
+        <a id="btnBegin" class="active" href="#">Início</a>
+        <!-- my events -->
+        <a id="btnMyEvents" href="#">Os meus eventos</a>
+        <!-- create event -->
+        <a id="btnCreateEvent" href="#">Criar evento</a>
+        <!-- subscribed events -->
+        <a id="btnSubscribedEvents" href="#">Eventos inscritos</a>
+        <!-- subscribe event -->
+        <a id="btnSubscribeEvent" href="#">Inscrever em evento</a>
+        
+
     </div>
+    <div id="flags" class="text-center" style="padding-left: 300px;">
+            <a href="#" onclick="doGTranslate('pt|en');return false;" title="English" class="flag nturl notranslate">EN</a>
+            <a href="#" onclick="doGTranslate('pt|fr');return false;" title="French" class="flag nturl notranslate">FR</a>
+            <a href="#" onclick="doGTranslate('pt|de');return false;" title="German" class="flag nturl notranslate">DE</a>
+            <a href="#" onclick="doGTranslate('pt|it');return false;" title="Italian" class="flag nturl notranslate">IT</a>
+            <a href="#" onclick="doGTranslate('en|pt');return false;" title="Portuguese" class="flag nturl notranslate">PT</a>
+            <a href="#" onclick="doGTranslate('pt|es');return false;" title="Spanish" class="flag nturl notranslate">ES</a>
+        </div>
+    <!-- content -->
+    <div id="main" class="row container-fluid">
+        <div id="clock" class="row">
+            <p id="welcome"></p>
+            <p id="date"></p>
+        </div>
+        <div id="content">
+        </div>
+
+
+
+
+    </div>
+
     <!-- jquery -->
     <script src="assets/lib/jquery/3.2.1/js/jquery-3.2.1.js"></script>
     <!-- bootstrap js -->
     <script src="assets/lib/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <!-- app js -->
     <script src="assets/common/js/main/main.js"></script>
-    
+    <script src="assets/common/js/main/homePanel.js"></script>
+    <script src="assets/common/js/main/content.js"></script>
+
 </body>
 
 </html>
