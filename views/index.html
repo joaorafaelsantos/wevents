@@ -108,53 +108,16 @@
         </div>
         <!-- conferences section -->
         <div id="conferences" class="row full-div">
-            <h1 class="text-center">Conferências</h1>
-            </br>
-            </br>
-            <div class="row">
-                <div class="col-md-4"><img class="center-block" src="assets/common/img/conferences/conference1.png" alt=""></br>
-                    <p class="text-center">1ª Conferência de Sistemas Interativos e Inteligentes</br>5 de abril de 2017</br>Vila do Conde, Portugal</p>
-                    </br>
-                </div>
-                <div class="col-md-4"><img class="center-block" src="assets/common/img/conferences/conference2.png" alt=""></br>
-                    <p class="text-center">6ª Conferência - Cibersegurança</br>28 de novembro de 2016</br>Porto, Portugal</p>
-                    </br>
-                </div>
-                <div class="col-md-4"><img class="center-block" src="assets/common/img/conferences/conference1.png" alt=""></br>
-                    <p class="text-center">1ª Conferência de Sistemas Interativos e Inteligentes</br>5 de abril de 2017</br>Vila do Conde, Portugal</p>
-                    </br>
-                </div>
-            </div>
-            <div id="confRow2" class="row collapse">
-                <div class="col-md-4"><img class="center-block" src="assets/common/img/conferences/conference1.png" alt=""></br>
-                    <p class="text-center">1ª Conferência de Sistemas Interativos e Inteligentes</br>5 de abril de 2017</br>Vila do Conde, Portugal</p>
-                    </br>
-                </div>
-                <div class="col-md-4"><img class="center-block" src="assets/common/img/conferences/conference2.png" alt=""></br>
-                    <p class="text-center">6ª Conferência - Cibersegurança</br>28 de novembro de 2016</br>Porto, Portugal</p>
-                    </br>
-                </div>
-                <div class="col-md-4"><img class="center-block" src="assets/common/img/conferences/conference1.png" alt=""></br>
-                    <p class="text-center">1ª Conferência de Sistemas Interativos e Inteligentes</br>5 de abril de 2017</br>Vila do Conde, Portugal</p>
-                    </br>
-                </div>
-            </div>
-            <div id="confRow3" class="row collapse">
-                <div class="col-md-4"><img class="center-block" src="assets/common/img/conferences/conference1.png" alt=""></br>
-                    <p class="text-center">1ª Conferência de Sistemas Interativos e Inteligentes</br>5 de abril de 2017</br>Vila do Conde, Portugal</p>
-                    </br>
-                </div>
-                <div class="col-md-4"><img class="center-block" src="assets/common/img/conferences/conference2.png" alt=""></br>
-                    <p class="text-center">6ª Conferência - Cibersegurança</br>28 de novembro de 2016</br>Porto, Portugal</p>
-                    </br>
-                </div>
-                <div class="col-md-4"><img class="center-block" src="assets/common/img/conferences/conference1.png" alt=""></br>
-                    <p class="text-center">1ª Conferência de Sistemas Interativos e Inteligentes</br>5 de abril de 2017</br>Vila do Conde, Portugal</p>
-                    </br>
-                </div>
-            </div>
-            <button id="btnConfViewMore" class="btn btn-link center-block" type="button" data-toggle="collapse" data-target="#confRow2, #confRow3"><i class="fa fa-plus-square-o fa-2x" aria-hidden="true" style="color: rgb(13, 182, 184);"></i></button></br>
-            </br>
+            <script id="item-template" type="text/template">
+                <li class="clearfix">
+                    <div class="foto">
+                        <a href="{{ item.permalink }}">
+                            <img src="{{ item.thumb }}" width="180" height="124" alt="{{ item.titulo }}">
+                        </a>
+                    </div>
+                    <span>{{ item.titulo }}</span>
+                </li>
+            </script>
         </div>
         <!-- projects section -->
         <div id="projects" class="row full-div">
@@ -450,7 +413,10 @@
     <!-- bootstrap js -->
     <script src="assets/lib/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <!-- google translate -->
-    <script type="text/javascript" src="assets/common/js/translate/element.js"></script>
+    <!--<script type="text/javascript" src="assets/common/js/translate/element.js"></script>-->
+    <script type="text/javascript" src="http://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit2"></script>
+    <!-- mustache -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.3.0/mustache.js"></script>
     <!-- app js -->
     <script src="assets/common/js/config.js"></script>
     <script src="assets/common/js/index/index.js"></script>

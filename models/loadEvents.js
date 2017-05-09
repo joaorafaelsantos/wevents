@@ -1,6 +1,7 @@
 var mysql = require('mysql');
 var express = require('express');
 var app = express();
+var port = process.env.PORT || 3000;
 
 var connection = mysql.createConnection({
     host: 'webitcloud.net',
@@ -9,7 +10,7 @@ var connection = mysql.createConnection({
     database: 'webitclo_G501'
 });
 
-app.post('/', function (req, res) {
+app.post('/loadEvents', function (req, res) {
     connection.connect();
     var events;
     var conferences;
@@ -45,3 +46,7 @@ app.post('/', function (req, res) {
     });
     connection.end();
 });
+
+app.listen(port, function () {
+//   console.log('Example app listening on port 3000!')
+})
