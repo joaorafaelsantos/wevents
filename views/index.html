@@ -13,9 +13,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- bootstrap css -->
-    <link rel="stylesheet" href="assets/lib/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+        crossorigin="anonymous">
     <!-- fontawesome -->
-    <link rel="stylesheet" href="assets/lib/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
+        crossorigin="anonymous">
     <!-- app css -->
     <link rel="stylesheet" href="assets/common/css/config.css">
     <link rel="stylesheet" href="assets/common/css/fonts.css">
@@ -107,69 +109,43 @@
             </div>
         </div>
         <!-- conferences section -->
-        <div id="conferences" class="row full-div" data-template-chosen="a">
-            <script id="mustacheConferences" type="text/template">
-                <div class="item">
-                    <h1>Conferências</h1>
-                    {{#conferences}}
-                    <ul>
-                        <li><strong>Nome:</strong> {{nome_evento}}</li>
-                        <li><strong>Data:</strong> {{{data_desc}}}</li>
-                        <li><strong>Morada:</strong> {{morada}}</li>
-                        <li><strong>Cidade, País:</strong> {{cidade}}, {{pais}}</li>
-                    </ul>
-                    {{/conferences}}
-                </div>
-            </script>
+        <div id="conferences" class="row full-div">
+            <h1 class="text-center">Conferências</h1>
+            </br>
+            </br>
+            <div id="confRow" class="row collapse" data-template-chosen="">
+                <script id="mustacheConferences" type="text/template">
+                    <div class="item">
+                        {{#conferences}}
+                        <div class="col-md-4"><img class="center-block" src="assets/common/img/conferences/conference1.png" alt=""></br>
+                            <p class="text-center">{{nome_evento}}</br>{{data_desc}}</br>{{morada}}</br>{{cidade}}, {{pais}}</p>
+                            </br>
+                        </div>
+                        {{/conferences}}
+                    </div>
+                </script>
+            </div>
+            <button id="btnConfViewMore" type="button" class="btn btn-link center-block" data-toggle="collapse" data-target="#confRow"><i class="fa fa-plus-square-o fa-2x" aria-hidden="true" style="color: rgb(13, 182, 184);"></i></button></br>
+            </br>
         </div>
         <!-- projects section -->
         <div id="projects" class="row full-div">
             <h1 class="text-center">Projetos</h1>
             </br>
             </br>
-            <div class="projRow">
-                <div class="col-md-4"><img class="center-block" src="assets/common/img/conferences/conference1.png" alt=""></br>
-                    <p class="text-center">1ª Conferência de Sistemas Interativos e Inteligentes</br>5 de abril de 2017</br>Vila do Conde, Portugal</p>
-                    </br>
-                </div>
-                <div class="col-md-4"><img class="center-block" src="assets/common/img/conferences/conference2.png" alt=""></br>
-                    <p class="text-center">6ª Conferência - Cibersegurança</br>28 de novembro de 2016</br>Porto, Portugal</p>
-                    </br>
-                </div>
-                <div class="col-md-4"><img class="center-block" src="assets/common/img/conferences/conference1.png" alt=""></br>
-                    <p class="text-center">1ª Conferência de Sistemas Interativos e Inteligentes</br>5 de abril de 2017</br>Vila do Conde, Portugal</p>
-                    </br>
-                </div>
+            <div id="projRow" class="row collapse" data-template-chosen="">
+                <script id="mustacheProjects" type="text/template">
+                    <div class="item">
+                        {{#projects}}
+                        <div class="col-md-4"><img class="center-block" src="assets/common/img/conferences/conference1.png" alt=""></br>
+                            <p class="text-center">{{nome_evento}}</br>{{data_desc}}</br>{{morada}}</br>{{cidade}}, {{pais}}</p>
+                            </br>
+                        </div>
+                        {{/projects}}
+                    </div>
+                </script>
             </div>
-            <div id="projRow2" class="row collapse">
-                <div class="col-md-4"><img class="center-block" src="assets/common/img/conferences/conference1.png" alt=""></br>
-                    <p class="text-center">1ª Conferência de Sistemas Interativos e Inteligentes</br>5 de abril de 2017</br>Vila do Conde, Portugal</p>
-                    </br>
-                </div>
-                <div class="col-md-4"><img class="center-block" src="assets/common/img/conferences/conference2.png" alt=""></br>
-                    <p class="text-center">6ª Conferência - Cibersegurança</br>28 de novembro de 2016</br>Porto, Portugal</p>
-                    </br>
-                </div>
-                <div class="col-md-4"><img class="center-block" src="assets/common/img/conferences/conference1.png" alt=""></br>
-                    <p class="text-center">1ª Conferência de Sistemas Interativos e Inteligentes</br>5 de abril de 2017</br>Vila do Conde, Portugal</p>
-                    </br>
-                </div>
-            </div>
-            <div id="projRow3" class="row collapse">
-                <div class="col-md-4"><img class="center-block" src="assets/common/img/conferences/conference1.png" alt=""></br>
-                    <p class="text-center">1ª Conferência de Sistemas Interativos e Inteligentes</br>5 de abril de 2017</br>Vila do Conde, Portugal</p>
-                    </br>
-                </div>
-                <div class="col-md-4"><img class="center-block" src="assets/common/img/conferences/conference2.png" alt=""></br>
-                    <p class="text-center">6ª Conferência - Cibersegurança</br>28 de novembro de 2016</br>Porto, Portugal</p>
-                    </br>
-                </div>
-                <div class="col-md-4"><img class="center-block" src="assets/common/img/conferences/conference1.png" alt=""></br>
-                    <p class="text-center">1ª Conferência de Sistemas Interativos e Inteligentes</br>5 de abril de 2017</br>Vila do Conde, Portugal</p>
-                    </br>
-                </div>
-            </div>
-            <button id="btnProjViewMore" type="button" class="btn btn-link center-block" data-toggle="collapse" data-target="#projRow2, #projRow3"><i class="fa fa-plus-square-o fa-2x" aria-hidden="true" style="color: rgb(13, 182, 184);"></i></button></br>
+            <button id="btnProjViewMore" type="button" class="btn btn-link center-block" data-toggle="collapse" data-target="#projRow"><i class="fa fa-plus-square-o fa-2x" aria-hidden="true" style="color: rgb(13, 182, 184);"></i></button></br>
             </br>
         </div>
         <!-- reunions section -->
@@ -177,49 +153,19 @@
             <h1 class="text-center">Reuniões</h1>
             </br>
             </br>
-            <div class="reunRow">
-                <div class="col-md-4"><img class="center-block" src="assets/common/img/conferences/conference1.png" alt=""></br>
-                    <p class="text-center">1ª Conferência de Sistemas Interativos e Inteligentes</br>5 de abril de 2017</br>Vila do Conde, Portugal</p>
-                    </br>
-                </div>
-                <div class="col-md-4"><img class="center-block" src="assets/common/img/conferences/conference2.png" alt=""></br>
-                    <p class="text-center">6ª Conferência - Cibersegurança</br>28 de novembro de 2016</br>Porto, Portugal</p>
-                    </br>
-                </div>
-                <div class="col-md-4"><img class="center-block" src="assets/common/img/conferences/conference1.png" alt=""></br>
-                    <p class="text-center">1ª Conferência de Sistemas Interativos e Inteligentes</br>5 de abril de 2017</br>Vila do Conde, Portugal</p>
-                    </br>
-                </div>
+            <div id="reunRow" class="row collapse" data-template-chosen="">
+                <script id="mustacheReunions" type="text/template">
+                    <div class="item">
+                        {{#reunions}}
+                        <div class="col-md-4"><img class="center-block" src="assets/common/img/conferences/conference1.png" alt=""></br>
+                            <p class="text-center">{{nome_evento}}</br>{{data_desc}}</br>{{morada}}</br>{{cidade}}, {{pais}}</p>
+                            </br>
+                        </div>
+                        {{/reunions}}
+                    </div>
+                </script>
             </div>
-            <div id="reunRow2" class="row collapse">
-                <div class="col-md-4"><img class="center-block" src="assets/common/img/conferences/conference1.png" alt=""></br>
-                    <p class="text-center">1ª Conferência de Sistemas Interativos e Inteligentes</br>5 de abril de 2017</br>Vila do Conde, Portugal</p>
-                    </br>
-                </div>
-                <div class="col-md-4"><img class="center-block" src="assets/common/img/conferences/conference2.png" alt=""></br>
-                    <p class="text-center">6ª Conferência - Cibersegurança</br>28 de novembro de 2016</br>Porto, Portugal</p>
-                    </br>
-                </div>
-                <div class="col-md-4"><img class="center-block" src="assets/common/img/conferences/conference1.png" alt=""></br>
-                    <p class="text-center">1ª Conferência de Sistemas Interativos e Inteligentes</br>5 de abril de 2017</br>Vila do Conde, Portugal</p>
-                    </br>
-                </div>
-            </div>
-            <div id="reunRow3" class="row collapse">
-                <div class="col-md-4"><img class="center-block" src="assets/common/img/conferences/conference1.png" alt=""></br>
-                    <p class="text-center">1ª Conferência de Sistemas Interativos e Inteligentes</br>5 de abril de 2017</br>Vila do Conde, Portugal</p>
-                    </br>
-                </div>
-                <div class="col-md-4"><img class="center-block" src="assets/common/img/conferences/conference2.png" alt=""></br>
-                    <p class="text-center">6ª Conferência - Cibersegurança</br>28 de novembro de 2016</br>Porto, Portugal</p>
-                    </br>
-                </div>
-                <div class="col-md-4"><img class="center-block" src="assets/common/img/conferences/conference1.png" alt=""></br>
-                    <p class="text-center">1ª Conferência de Sistemas Interativos e Inteligentes</br>5 de abril de 2017</br>Vila do Conde, Portugal</p>
-                    </br>
-                </div>
-            </div>
-            <button id="btnReunViewMore" class="btn btn-link center-block" data-toggle="collapse" type="button" title="Ver mais" data-target="#reunRow2, #reunRow3"><i class="fa fa-plus-square-o fa-2x" aria-hidden="true" style="color: rgb(13, 182, 184);"></i></button></br>
+            <button id="btnReunViewMore" type="button" class="btn btn-link center-block" data-toggle="collapse" data-target="#reunRow"><i class="fa fa-plus-square-o fa-2x" aria-hidden="true" style="color: rgb(13, 182, 184);"></i></button></br>
             </br>
         </div>
         <!-- workshops section -->
@@ -227,49 +173,19 @@
             <h1 class="text-center">Workshops</h1>
             </br>
             </br>
-            <div class="workRow">
-                <div class="col-md-4"><img class="center-block" src="assets/common/img/conferences/conference1.png" alt=""></br>
-                    <p class="text-center">1ª Conferência de Sistemas Interativos e Inteligentes</br>5 de abril de 2017</br>Vila do Conde, Portugal</p>
-                    </br>
-                </div>
-                <div class="col-md-4"><img class="center-block" src="assets/common/img/conferences/conference2.png" alt=""></br>
-                    <p class="text-center">6ª Conferência - Cibersegurança</br>28 de novembro de 2016</br>Porto, Portugal</p>
-                    </br>
-                </div>
-                <div class="col-md-4"><img class="center-block" src="assets/common/img/conferences/conference1.png" alt=""></br>
-                    <p class="text-center">1ª Conferência de Sistemas Interativos e Inteligentes</br>5 de abril de 2017</br>Vila do Conde, Portugal</p>
-                    </br>
-                </div>
+            <div id="workRow" class="row collapse" data-template-chosen="">
+                <script id="mustacheWorkshops" type="text/template">
+                    <div class="item">
+                        {{#workshops}}
+                        <div class="col-md-4"><img class="center-block" src="assets/common/img/conferences/conference1.png" alt=""></br>
+                            <p class="text-center">{{nome_evento}}</br>{{data_desc}}</br>{{morada}}</br>{{cidade}}, {{pais}}</p>
+                            </br>
+                        </div>
+                        {{/workshops}}
+                    </div>
+                </script>
             </div>
-            <div id="workRow2" class="row collapse">
-                <div class="col-md-4"><img class="center-block" src="assets/common/img/conferences/conference1.png" alt=""></br>
-                    <p class="text-center">1ª Conferência de Sistemas Interativos e Inteligentes</br>5 de abril de 2017</br>Vila do Conde, Portugal</p>
-                    </br>
-                </div>
-                <div class="col-md-4"><img class="center-block" src="assets/common/img/conferences/conference2.png" alt=""></br>
-                    <p class="text-center">6ª Conferência - Cibersegurança</br>28 de novembro de 2016</br>Porto, Portugal</p>
-                    </br>
-                </div>
-                <div class="col-md-4"><img class="center-block" src="assets/common/img/conferences/conference1.png" alt=""></br>
-                    <p class="text-center">1ª Conferência de Sistemas Interativos e Inteligentes</br>5 de abril de 2017</br>Vila do Conde, Portugal</p>
-                    </br>
-                </div>
-            </div>
-            <div id="workRow3" class="row collapse">
-                <div class="col-md-4"><img class="center-block" src="assets/common/img/conferences/conference1.png" alt=""></br>
-                    <p class="text-center">1ª Conferência de Sistemas Interativos e Inteligentes</br>5 de abril de 2017</br>Vila do Conde, Portugal</p>
-                    </br>
-                </div>
-                <div class="col-md-4"><img class="center-block" src="assets/common/img/conferences/conference2.png" alt=""></br>
-                    <p class="text-center">6ª Conferência - Cibersegurança</br>28 de novembro de 2016</br>Porto, Portugal</p>
-                    </br>
-                </div>
-                <div class="col-md-4"><img class="center-block" src="assets/common/img/conferences/conference1.png" alt=""></br>
-                    <p class="text-center">1ª Conferência de Sistemas Interativos e Inteligentes</br>5 de abril de 2017</br>Vila do Conde, Portugal</p>
-                    </br>
-                </div>
-            </div>
-            <button id="btnWorkViewMore" class="btn btn-link center-block" type="button" data-toggle="collapse" title="Ver mais" data-target="#workRow2, #workRow3"><i class="fa fa-plus-square-o fa-2x" aria-hidden="true" style="color: rgb(13, 182, 184);"></i></button></br>
+            <button id="btnWorkViewMore" type="button" class="btn btn-link center-block" data-toggle="collapse" data-target="#workRow"><i class="fa fa-plus-square-o fa-2x" aria-hidden="true" style="color: rgb(13, 182, 184);"></i></button></br>
             </br>
         </div>
         <!-- features section -->
@@ -412,11 +328,11 @@
         </div>
     </div>
     <!-- jquery -->
-    <script src="assets/lib/jquery/3.2.1/js/jquery-3.2.1.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
     <!-- bootstrap js -->
-    <script src="assets/lib/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
     <!-- google translate -->
-    <!--<script type="text/javascript" src="assets/common/js/translate/element.js"></script>-->
     <script type="text/javascript" src="http://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit2"></script>
     <!-- mustache -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.3.0/mustache.min.js"></script>

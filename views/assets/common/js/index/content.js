@@ -12,7 +12,7 @@ $(function () {
     var workshops = [];
 
     var data = {};
-    
+
     $.ajax({
         type: 'POST',
         data: JSON.stringify(data),
@@ -20,14 +20,29 @@ $(function () {
         url: 'http://localhost:3000/loadEvents',
         success: function (data) {
             organizeData(data)
-            // Structure to json pattern
-            conferences = {
-                "conferences": conferences
-            };
-            console.log(conferences)
-            renderTemplate(conferences);
+            structureJson();
+            renderTemplate("#confRow", conferences, "Conferences");
+            renderTemplate("#projRow", projects, "Projects");
+            renderTemplate("#reunRow", reunions, "Reunions");
+            renderTemplate("#workRow", workshops, "Workshops");
         }
     });
+
+    // Structure to json pattern
+    function structureJson() {
+        conferences = {
+            "conferences": conferences
+        };
+        projects = {
+            "projects": projects
+        };
+        reunions = {
+            "reunions": reunions
+        };
+        workshops = {
+            "workshops": workshops
+        };
+    }
 
     // Organize the database fields into our project variables
     function organizeData(array) {
@@ -37,10 +52,13 @@ $(function () {
                 array[i].data_desc = structureDate(array[i].data_desc);
             } else if (array[i].descricao == 'Projeto') {
                 projects.push(array[i]);
-            } else if (array[i].descricao == 'Reuniões') {
+                array[i].data_desc = structureDate(array[i].data_desc);
+            } else if (array[i].descricao == 'Reunião') {
                 reunions.push(array[i]);
-            } else if (array[i].descricao == 'Workshops') {
+                array[i].data_desc = structureDate(array[i].data_desc);
+            } else if (array[i].descricao == 'Workshop') {
                 workshops.push(array[i]);
+                array[i].data_desc = structureDate(array[i].data_desc);
             }
         }
         // Organize the MySql default pattern of date to our traditional system (day/month/year)
@@ -52,9 +70,10 @@ $(function () {
     }
 
     // Mustache function to render the template to the given data
-    function renderTemplate(data) {
-        var targetContainer = $("#conferences"),
-            template = $("#mustacheConferences").html();
+    function renderTemplate(container, data, template) {
+        var template = "#mustache" + template;
+        var targetContainer = $(container),
+            template = $(template).html();
         var html = Mustache.to_html(template, data);
         $(targetContainer).html(html);
     }
