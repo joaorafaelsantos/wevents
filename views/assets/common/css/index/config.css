@@ -43,3 +43,7 @@ h4 {
     color: #FFFFFF;
     background-color: rgba(13, 182, 184, 0.8);
 }
+
+.row {
+    padding-bottom: 10px;
+}

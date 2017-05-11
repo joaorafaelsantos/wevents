@@ -35,6 +35,15 @@
     display: hide !important;
 }
 
-#flags a img:hover {
-    opacity: 0.8;
+#flags a {
+    color: rgb(13, 182, 184);
+    text-decoration: none;
+}
+
+#flags a:hover {
+    color: black;
+}
+
+#flags a.active {
+    color: black;
 }

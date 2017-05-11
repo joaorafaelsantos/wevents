@@ -12,6 +12,11 @@
     <!-- configs -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="The soul of your events">
+    <meta name="keywords" content="wevents,worldevents,webitcloud,jaf,events,tsiw,esmad">
+    <meta property="og:image" content="https://webitcloud.net/PW/1617/JAF/image.png" />
+    <meta property="og:description" content="The soul of your events" />
+    <meta property="og:title" content="worldevents" />
     <!-- bootstrap css -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
         crossorigin="anonymous">
@@ -25,9 +30,27 @@
     <link rel="stylesheet" href="assets/common/css/index/config.css">
     <link rel="stylesheet" href="assets/common/css/index/content.css">
     <link rel="stylesheet" href="assets/common/css/index/translate.css">
+
+    <!-- google analytics -->
+    <script>
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r;
+            i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date();
+            a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0];
+            a.async = 1;
+            a.src = g;
+            m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+        ga('create', 'UA-98914814-1', 'auto');
+        ga('send', 'pageview');
+    </script>
 </head>
 
-<body>
+<body data-spy="scroll" data-target=".navbar" data-offset="50">
 
     <!-- navbar -->
     <nav class="navbar navbar-we navbar-fixed-top">
@@ -45,24 +68,12 @@
                     </a>
                 </div>
             </div>
-            <div class="navbar-collapse collapse" id="navbar-collapse">
+            <div id="navbar-collapse" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav pull-right">
                     <li class="active"><a href="#about">SOBRE</a></li>
-                    <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">EVENTOS<span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="#conferences">CONFERÊNCIAS</a></li>
-                            <li><a href="#projects">PROJETOS</a></li>
-                            <li><a href="#reunions">REUNIÕES</a></li>
-                            <li><a href="#workshops">WORKSHOPS</a></li>
-                        </ul>
-                    </li>
-                    <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">FUNCIONALIDADES<span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="#">CRIAR EVENTO</a></li>
-                            <li><a href="#">GERIR EVENTO</a></li>
-                            <li><a href="#">INSCREVER EM EVENTO</a></li>
-                        </ul>
-                    </li>
+                    <li><a href="#events">EVENTOS</a></li>
+                    <li><a href="#features">FUNCIONALIDADES</a></li>
+                    <li><a href="#api">API</a></li>
                     <li><a href="#team">A NOSSA EQUIPA</a></li>
                     <li><a href="#contact">CONTACTOS</a></li>
                     <li><a href="main.html">ÁREA RESERVADA</a></li>
@@ -73,48 +84,46 @@
     <div id="main" class="container-fluid">
         <!-- about section -->
         <div id="about" class="row full-div">
+            <div id="pitch" class="center-block">
+                <div class="embed-responsive embed-responsive-16by9">
+                    <iframe id="player" class="embed-responsive-item" src="https://www.youtube.com/embed/txTqtm58AqM?rel=0&amp;controls=0&amp;autoplay=1;showinfo=0"
+                        frameborder="0" allowfullscreen></iframe>
+                </div>
+            </div>
         </div>
         <!-- events section -->
         <div id="events" class="row full-div">
             <h1 class="text-center">Eventos</h1>
-            </br>
-            </br>
             <div class="row">
                 <div class="col-md-3">
                     <a id="btnEvent" href="#conferences" class="btn center-block">
                         <img class="center-block" src="assets/common/img/main/conferences.jpg" alt="">
                         <h3 class="text-center">Conferências</h3>
                     </a>
-                    </br>
                 </div>
                 <div class="col-md-3">
                     <a id="btnEvent" href="#projects" class="btn center-block">
                         <img class="center-block" src="assets/common/img/main/projects.jpg" alt="">
                         <h3 class="text-center">Projetos</h3>
                     </a>
-                    </br>
                 </div>
                 <div class="col-md-3">
                     <a id="btnEvent" href="#reunions" class="btn center-block">
                         <img class="center-block" src="assets/common/img/main/reunions.jpg" alt="">
                         <h3 class="text-center">Reuniões</h3>
                     </a>
-                    </br>
                 </div>
                 <div class="col-md-3">
                     <a id="btnEvent" href="#workshops" class="btn center-block">
                         <img class="center-block" src="assets/common/img/main/workshops.jpg" alt="">
                         <h3 class="text-center">Workshops</h3>
                     </a>
-                    </br>
                 </div>
             </div>
         </div>
         <!-- conferences section -->
         <div id="conferences" class="row full-div">
             <h1 class="text-center">Conferências</h1>
-            </br>
-            </br>
             <div id="confRow" class="row collapse" data-template-chosen="">
                 <script id="mustacheConferences" type="text/template">
                     <div class="item">
@@ -127,14 +136,11 @@
                     </div>
                 </script>
             </div>
-            <button id="btnConfViewMore" type="button" class="btn btn-link center-block" data-toggle="collapse" data-target="#confRow"><i class="fa fa-plus-square-o fa-2x" aria-hidden="true" style="color: rgb(13, 182, 184);"></i></button></br>
-            </br>
+            <button id="btnConfViewMore" type="button" class="btn btn-link center-block" data-toggle="collapse" data-target="#confRow"><i class="fa fa-plus-square-o fa-2x" aria-hidden="true" style="color: rgb(13, 182, 184);"></i></button>
         </div>
         <!-- projects section -->
         <div id="projects" class="row full-div">
             <h1 class="text-center">Projetos</h1>
-            </br>
-            </br>
             <div id="projRow" class="row collapse" data-template-chosen="">
                 <script id="mustacheProjects" type="text/template">
                     <div class="item">
@@ -147,14 +153,11 @@
                     </div>
                 </script>
             </div>
-            <button id="btnProjViewMore" type="button" class="btn btn-link center-block" data-toggle="collapse" data-target="#projRow"><i class="fa fa-plus-square-o fa-2x" aria-hidden="true" style="color: rgb(13, 182, 184);"></i></button></br>
-            </br>
+            <button id="btnProjViewMore" type="button" class="btn btn-link center-block" data-toggle="collapse" data-target="#projRow"><i class="fa fa-plus-square-o fa-2x" aria-hidden="true" style="color: rgb(13, 182, 184);"></i></button>
         </div>
         <!-- reunions section -->
         <div id="reunions" class="row full-div">
             <h1 class="text-center">Reuniões</h1>
-            </br>
-            </br>
             <div id="reunRow" class="row collapse" data-template-chosen="">
                 <script id="mustacheReunions" type="text/template">
                     <div class="item">
@@ -167,14 +170,11 @@
                     </div>
                 </script>
             </div>
-            <button id="btnReunViewMore" type="button" class="btn btn-link center-block" data-toggle="collapse" data-target="#reunRow"><i class="fa fa-plus-square-o fa-2x" aria-hidden="true" style="color: rgb(13, 182, 184);"></i></button></br>
-            </br>
+            <button id="btnReunViewMore" type="button" class="btn btn-link center-block" data-toggle="collapse" data-target="#reunRow"><i class="fa fa-plus-square-o fa-2x" aria-hidden="true" style="color: rgb(13, 182, 184);"></i></button>
         </div>
         <!-- workshops section -->
         <div id="workshops" class="row full-div">
             <h1 class="text-center">Workshops</h1>
-            </br>
-            </br>
             <div id="workRow" class="row collapse" data-template-chosen="">
                 <script id="mustacheWorkshops" type="text/template">
                     <div class="item">
@@ -187,43 +187,48 @@
                     </div>
                 </script>
             </div>
-            <button id="btnWorkViewMore" type="button" class="btn btn-link center-block" data-toggle="collapse" data-target="#workRow"><i class="fa fa-plus-square-o fa-2x" aria-hidden="true" style="color: rgb(13, 182, 184);"></i></button></br>
-            </br>
+            <button id="btnWorkViewMore" type="button" class="btn btn-link center-block" data-toggle="collapse" data-target="#workRow"><i class="fa fa-plus-square-o fa-2x" aria-hidden="true" style="color: rgb(13, 182, 184);"></i></button>
         </div>
         <!-- features section -->
         <div id="features" class="row full-div">
             <h1 class="text-center">Funcionalidades</h1>
-            </br>
-            </br>
             <div class="row">
                 <div class="col-md-4">
                     <a id="btnCreateEvent" href="#" class="btn center-block">
                         <img class="center-block" src="assets/common/img/main/createEvent.jpg" alt="">
                         <h3 class="text-center">Criar evento</h3>
                     </a>
-                    </br>
                 </div>
                 <div class="col-md-4">
                     <a id="btnManageEvent" href="#" class="btn center-block">
                         <img class="center-block" src="assets/common/img/main/manageEvent.jpg" alt="">
                         <h3 class="text-center">Gerir evento</h3>
                     </a>
-                    </br>
                 </div>
                 <div class="col-md-4">
                     <a id="btnSubscribeEvent" href="#" class="btn center-block">
                         <img class="center-block" src="assets/common/img/main/subscribeEvent.jpg" alt="">
                         <h3 class="text-center">Inscrever em evento</h3>
                     </a>
-                    </br>
+                </div>
+            </div>
+        </div>
+        <!-- features section -->
+        <div id="api" class="row full-div">
+            <h1 class="text-center">API</h1>
+            <div class="row">
+                <div class="col-md-12">
+                    <a id="btnApi" href="#" class="btn center-block">
+                        <img class="center-block" src="assets/common/img/main/api.png" alt="">
+                        <h3 class="text-center">API que disponibiliza todas as </br>informações dos nosso eventos.</h3>
+                        <h3 class="text-center">Disponível em: {name}.webitcloud.net</h3>
+                    </a>
                 </div>
             </div>
         </div>
         <!-- team section -->
         <div id="team" class="row full-div">
             <h1 class="text-center">A Nossa Equipa</h1>
-            </br>
-            </br>
             <div class="row">
                 <div class="col-md-4">
                     <div id="andreGouveia" class="center-block">
@@ -239,7 +244,6 @@
                             <a id="btnEmail" href="mailto:9150508@esmad.ipp.pt" class="btn btn-link"><span><i class="fa fa-envelope-o fa-2x" aria-hidden="true" style="color: rgb(13, 182, 184);"></i></span></a>
                         </div>
                     </div>
-                    </br>
                 </div>
                 <div class="col-md-4">
                     <div id="joaoRafaelSantos" class="center-block">
@@ -255,7 +259,6 @@
                             <a id="btnEmail" href="mailto:9150539@esmad.ipp.pt" class="btn btn-link"><span><i class="fa fa-envelope-o fa-2x" aria-hidden="true" style="color: rgb(13, 182, 184);"></i></span></a>
                         </div>
                     </div>
-                    </br>
                 </div>
                 <div class="col-md-4">
                     <div id="franciscoMoreira" class="center-block">
@@ -271,7 +274,6 @@
                             <a id="btnEmail" href="mailto:9150529@esmad.ipp.pt" class="btn btn-link"><span><i class="fa fa-envelope-o fa-2x" aria-hidden="true" style="color: rgb(13, 182, 184);"></i></span></a>
                         </div>
                     </div>
-                    </br>
                 </div>
             </div>
         </div>
@@ -307,34 +309,24 @@
                     </form>
                 </div>
             </div>
-            </br>
         </div>
         <!-- footer section -->
         <div id="footer" class="row full-div">
-            </br>
             <!-- translate section -->
             <script type="text/javascript" src="assets/common/js/translate/translate.js"></script>
             <div id="google_translate_element2" style="display: none"></div>
-            <!--<div id="flags" class="text-center">
-                <a href="#" onclick="doGTranslate('pt|en');return false;" title="English" class="flag nturl notranslate"><img src="assets/common/img/flags/uk.png" height="18" width="25" alt="en" /></a>
-                <a href="#" onclick="doGTranslate('pt|zh-TW');return false;" title="Chinese (Traditional)" class="flag nturl notranslate"><img src="assets/common/img/flags/ch.png" height="18" width="25" alt="zh-TW" /></a>
-                <a href="#" onclick="doGTranslate('pt|fr');return false;" title="French" class="flag nturl notranslate"><img src="assets/common/img/flags/fr.png" height="18" width="25" alt="fr" /></a>
-                <a href="#" onclick="doGTranslate('pt|de');return false;" title="German" class="flag nturl notranslate"><img src="assets/common/img/flags/de.png" height="18" width="25" alt="de" /></a>
-                <a href="#" onclick="doGTranslate('pt|it');return false;" title="Italian" class="flag nturl notranslate"><img src="assets/common/img/flags/it.png" height="18" width="25" alt="it" /></a>
-                <a href="#" onclick="doGTranslate('en|pt');return false;" title="Portuguese" class="flag nturl notranslate"><img src="assets/common/img/flags/pt.png" height="18" width="25" alt="pt" /></a>
-                <a href="#" onclick="doGTranslate('pt|ru');return false;" title="Russian" class="flag nturl notranslate"><img src="assets/common/img/flags/ru.png" height="18" width="25" alt="ru" /></a>
-                <a href="#" onclick="doGTranslate('pt|es');return false;" title="Spanish" class="flag nturl notranslate"><img src="assets/common/img/flags/es.png" height="18" width="25" alt="es" /></a>
-            </div>-->
             <div id="flags" class="text-center">
-                <a href="#" onclick="doGTranslate('pt|en');return false;" title="English" class="flag nturl notranslate">EN</a>
-                <a href="#" onclick="doGTranslate('pt|fr');return false;" title="French" class="flag nturl notranslate">FR</a>
-                <a href="#" onclick="doGTranslate('pt|de');return false;" title="German" class="flag nturl notranslate">DE</a>
-                <a href="#" onclick="doGTranslate('pt|it');return false;" title="Italian" class="flag nturl notranslate">IT</a>
-                <a href="#" onclick="doGTranslate('en|pt');return false;" title="Portuguese" class="flag nturl notranslate">PT</a>
-                <a href="#" onclick="doGTranslate('pt|es');return false;" title="Spanish" class="flag nturl notranslate">ES</a>
+                <a id="en" href="#" onclick="doGTranslate('pt|en');return false;" title="English" class="flag nturl notranslate">EN</a>
+                <a id="CH" href="#" onclick="doGTranslate('pt|zh-TW');return false;" title="Chinese (Traditional)" class="flag nturl notranslate">CH</a>
+                <a id="fr" href="#" onclick="doGTranslate('pt|fr');return false;" title="French" class="flag nturl notranslate">FR</a>
+                <a id="de" href="#" onclick="doGTranslate('pt|de');return false;" title="German" class="flag nturl notranslate">DE</a>
+                <a id="it" href="#" onclick="doGTranslate('pt|it');return false;" title="Italian" class="flag nturl notranslate">IT</a>
+                <a id="pt" href="#" onclick="doGTranslate('en|pt');return false;" title="Portuguese" class="flag nturl notranslate">PT</a>
+                <a id="ru" href="#" onclick="doGTranslate('pt|ru');return false;" title="Russian" class="flag nturl notranslate">RU</a>
+                <a id="es" href="#" onclick="doGTranslate('pt|es');return false;" title="Spanish" class="flag nturl notranslate">ES</a>
             </div>
             <!-- copyright message -->
-            <h4 class="text-center">worldevents by JAF ©</h4>
+            <h4 class="text-center">worldevents ©</h4>
         </div>
     </div>
     <!-- jquery -->

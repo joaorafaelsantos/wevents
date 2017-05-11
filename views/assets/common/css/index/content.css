@@ -5,41 +5,58 @@
 /* sections */
 
 #about {
-    background: url("../../img/main/theme.jpg") no-repeat center center fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-    height: 0;
-    padding-top: 66.74%;
+    padding-top: 105px;
+    padding-bottom: 60px;
+}
+
+#pitch {
+    width: 50%;
+    height: 50%;
+}
+
+@media (max-width: 1366px) {
+    #pitch {
+        width: 90%;
+        height: 90%;
+    }
+}
+
+#btnEvent {
+    padding-bottom: 30px;
 }
 
 #btnEvent:hover {
     opacity: 0.8;
 }
 
-#events {
+#btnConfViewMore,
+#btnProjViewMore,
+#btnReunViewMore,
+#btnWorkViewMore {
+    padding-bottom: 30px;
+}
+
+#events,
+#projects,
+#workshops,
+#api,
+#contact {
     background-color: rgb(245, 245, 245);
+    border-bottom: thin solid rgba(189, 190, 192, 0.5);
 }
 
-#conferences {
+#conferences,
+#reunions,
+#features,
+#team {
     background-color: rgb(255, 255, 255);
+    border-bottom: thin solid rgba(189, 190, 192, 0.5);
 }
 
-#projects {
-    background-color: rgb(245, 245, 245);
-}
-
-#reunions {
-    background-color: rgb(255, 255, 255);
-}
-
-#workshops {
-    background-color: rgb(245, 245, 245);
-}
-
-#features {
-    background-color: rgb(255, 255, 255);
+#btnCreateEvent,
+#btnManageEvent,
+#btnSubscribeEvent {
+    padding-bottom: 30px;
 }
 
 #btnCreateEvent:hover,
@@ -48,8 +65,12 @@
     opacity: 0.8;
 }
 
-#team {
-    background-color: rgb(245, 245, 245);
+#btnApi {
+    padding-bottom: 30px;
+}
+
+#btnApi:hover {
+    opacity: 0.8;
 }
 
 #andreGouveia:hover,
@@ -59,10 +80,6 @@
 #btnLinkedin:hover,
 #btnEmail:hover {
     opacity: 0.8;
-}
-
-#contact {
-    background-color: rgb(255, 255, 255);
 }
 
 
@@ -93,5 +110,6 @@
 /* footer */
 
 #footer {
-    background-color: rgb(245, 245, 245);
+    background-color: rgb(255, 255, 255);
+    padding-top: 20px;
 }
