@@ -18,7 +18,7 @@ $(function () {
     function loadSubscribedEvents() {
         $("#content").load("main/subscribedEvents.html");
     }
-    
+
     // Button begin
     $("#btnBegin").click(function () {
         loadBegin();
@@ -37,7 +37,7 @@ $(function () {
         close();
     });
 
-    //Load begin page on start
+    // Load begin page on start
     loadBegin();
 
     // If windows smaller or equal than 1366, close sidebar and do toggle animation
@@ -51,9 +51,8 @@ $(function () {
     // Active class on a 
     $('.sidenav a').click(function (e) {
         e.preventDefault();
-        $('a').removeClass('active');
+        $('.sidenav a').removeClass('active');
         $(this).addClass('active');
     });
-
 
 });
