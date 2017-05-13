@@ -13,20 +13,20 @@ $(function () {
 
     var data = {};
 
-    $.ajax({
-        type: 'POST',
-        data: JSON.stringify(data),
-        contentType: 'application/json',
-        url: 'http://localhost:3000/loadEvents',
-        success: function (data) {
-            organizeData(data)
-            structureJson();
-            renderTemplate("#confRow", conferences, "Conferences");
-            renderTemplate("#projRow", projects, "Projects");
-            renderTemplate("#reunRow", reunions, "Reunions");
-            renderTemplate("#workRow", workshops, "Workshops");
-        }
-    });
+    // $.ajax({
+    //     type: 'POST',
+    //     data: JSON.stringify(data),
+    //     contentType: 'application/json',
+    //     url: 'http://localhost:3000/loadEvents',
+    //     success: function (data) {
+    //         organizeData(data)
+    //         structureJson();
+    //         renderTemplate("#confRow", conferences, "Conferences");
+    //         renderTemplate("#projRow", projects, "Projects");
+    //         renderTemplate("#reunRow", reunions, "Reunions");
+    //         renderTemplate("#workRow", workshops, "Workshops");
+    //     }
+    // });
 
     // Structure to json pattern
     function structureJson() {

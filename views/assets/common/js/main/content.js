@@ -6,17 +6,17 @@ $(function () {
 
     // Load begin page
     function loadBegin() {
-        $("#content").load("main/begin.html");
+        $("#content").load("pages/main/begin.html");
     }
 
     // Load my events page
     function loadMyEvents() {
-        $("#content").load("main/myEvents.html");
+        $("#content").load("pages/main/myEvents.html");
     }
 
     // Load subscribed events page
     function loadSubscribedEvents() {
-        $("#content").load("main/subscribedEvents.html");
+        $("#content").load("pages/main/subscribedEvents.html");
     }
 
     // Button begin

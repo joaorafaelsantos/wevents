@@ -30,6 +30,10 @@
     <link rel="stylesheet" href="assets/common/css/translate.css">
     <link rel="stylesheet" href="assets/common/css/index/config.css">
     <link rel="stylesheet" href="assets/common/css/index/content.css">
+    <link rel="stylesheet" href="assets/common/css/login/config.css">
+    <link rel="stylesheet" href="assets/common/css/login/login.css">
+    <link rel="stylesheet" href="assets/common/css/login/create.css">
+    <link rel="stylesheet" href="assets/common/css/login/recover.css">
     <!-- google analytics -->
     <script>
         (function (i, s, o, g, r, a, m) {
@@ -75,237 +79,239 @@
                     <li><a href="#api">API</a></li>
                     <li><a href="#team">A NOSSA EQUIPA</a></li>
                     <li><a href="#contact">CONTACTOS</a></li>
-                    <li><a href="main.html">ÁREA RESERVADA</a></li>
+                    <li><a href="#" id="reservedArea"> ÁREA RESERVADA</a></li>
                 </ul>
             </div>
     </nav>
     <!-- content -->
     <div id="main" class="container-fluid">
-        <!-- about section -->
-        <div id="about" class="row full-div">
-            <div id="pitch" class="center-block">
-                <div class="embed-responsive embed-responsive-16by9">
-                    <iframe id="player" class="embed-responsive-item" src="https://www.youtube.com/embed/txTqtm58AqM?rel=0&amp;controls=0&amp;autoplay=1;showinfo=0"
-                        frameborder="0" allowfullscreen></iframe>
+        <div id="content">
+            <!-- about section -->
+            <div id="about" class="row full-div">
+                <div id="pitch" class="center-block">
+                    <div class="embed-responsive embed-responsive-16by9">
+                        <iframe id="player" class="embed-responsive-item" src="https://www.youtube.com/embed/txTqtm58AqM?rel=0&amp;controls=0&amp;autoplay=1;showinfo=0"
+                            frameborder="0" allowfullscreen></iframe>
+                    </div>
                 </div>
             </div>
-        </div>
-        <!-- events section -->
-        <div id="events" class="row full-div">
-            <h1 class="text-center">Eventos</h1>
-            <div class="row">
-                <div class="col-md-3">
-                    <a id="btnEvent" href="#conferences" class="btn center-block">
-                        <img class="center-block" src="assets/common/img/main/conferences.jpg" alt="">
-                        <h3 class="text-center">Conferências</h3>
-                    </a>
-                </div>
-                <div class="col-md-3">
-                    <a id="btnEvent" href="#projects" class="btn center-block">
-                        <img class="center-block" src="assets/common/img/main/projects.jpg" alt="">
-                        <h3 class="text-center">Projetos</h3>
-                    </a>
-                </div>
-                <div class="col-md-3">
-                    <a id="btnEvent" href="#reunions" class="btn center-block">
-                        <img class="center-block" src="assets/common/img/main/reunions.jpg" alt="">
-                        <h3 class="text-center">Reuniões</h3>
-                    </a>
-                </div>
-                <div class="col-md-3">
-                    <a id="btnEvent" href="#workshops" class="btn center-block">
-                        <img class="center-block" src="assets/common/img/main/workshops.jpg" alt="">
-                        <h3 class="text-center">Workshops</h3>
-                    </a>
+            <!-- events section -->
+            <div id="events" class="row full-div">
+                <h1 class="text-center">Eventos</h1>
+                <div class="row">
+                    <div class="col-md-3">
+                        <a id="btnEvent" href="#conferences" class="btn center-block">
+                            <img class="center-block" src="assets/common/img/main/conferences.jpg" alt="">
+                            <h3 class="text-center">Conferências</h3>
+                        </a>
+                    </div>
+                    <div class="col-md-3">
+                        <a id="btnEvent" href="#projects" class="btn center-block">
+                            <img class="center-block" src="assets/common/img/main/projects.jpg" alt="">
+                            <h3 class="text-center">Projetos</h3>
+                        </a>
+                    </div>
+                    <div class="col-md-3">
+                        <a id="btnEvent" href="#reunions" class="btn center-block">
+                            <img class="center-block" src="assets/common/img/main/reunions.jpg" alt="">
+                            <h3 class="text-center">Reuniões</h3>
+                        </a>
+                    </div>
+                    <div class="col-md-3">
+                        <a id="btnEvent" href="#workshops" class="btn center-block">
+                            <img class="center-block" src="assets/common/img/main/workshops.jpg" alt="">
+                            <h3 class="text-center">Workshops</h3>
+                        </a>
+                    </div>
                 </div>
             </div>
-        </div>
-        <!-- conferences section -->
-        <div id="conferences" class="row full-div">
-            <h1 class="text-center">Conferências</h1>
-            <div id="confRow" class="row collapse" data-template-chosen="">
-                <script id="mustacheConferences" type="text/template">
-                    <div class="item">
-                        {{#conferences}}
-                        <div class="col-md-4"><img class="center-block" src="assets/common/img/conferences/conference1.png" alt=""></br>
-                            <p class="text-center">{{nome_evento}}</br>{{data_desc}}</br>{{morada}}</br>{{cidade}}, {{pais}}</p>
-                            </br>
+            <!-- conferences section -->
+            <div id="conferences" class="row full-div">
+                <h1 class="text-center">Conferências</h1>
+                <div id="confRow" class="row collapse" data-template-chosen="">
+                    <script id="mustacheConferences" type="text/template">
+                        <div class="item">
+                            {{#conferences}}
+                            <div class="col-md-4"><img class="center-block" src="assets/common/img/conferences/conference1.png" alt=""></br>
+                                <p class="text-center">{{nome_evento}}</br>{{data_desc}}</br>{{morada}}</br>{{cidade}}, {{pais}}</p>
+                                </br>
+                            </div>
+                            {{/conferences}}
                         </div>
-                        {{/conferences}}
-                    </div>
-                </script>
+                    </script>
+                </div>
+                <button id="btnConfViewMore" type="button" class="btn btn-link center-block" data-toggle="collapse" data-target="#confRow"><i class="fa fa-plus-square-o fa-2x" aria-hidden="true" style="color: rgb(13, 182, 184);"></i></button>
             </div>
-            <button id="btnConfViewMore" type="button" class="btn btn-link center-block" data-toggle="collapse" data-target="#confRow"><i class="fa fa-plus-square-o fa-2x" aria-hidden="true" style="color: rgb(13, 182, 184);"></i></button>
-        </div>
-        <!-- projects section -->
-        <div id="projects" class="row full-div">
-            <h1 class="text-center">Projetos</h1>
-            <div id="projRow" class="row collapse" data-template-chosen="">
-                <script id="mustacheProjects" type="text/template">
-                    <div class="item">
-                        {{#projects}}
-                        <div class="col-md-4"><img class="center-block" src="assets/common/img/conferences/conference1.png" alt=""></br>
-                            <p class="text-center">{{nome_evento}}</br>{{data_desc}}</br>{{morada}}</br>{{cidade}}, {{pais}}</p>
-                            </br>
+            <!-- projects section -->
+            <div id="projects" class="row full-div">
+                <h1 class="text-center">Projetos</h1>
+                <div id="projRow" class="row collapse" data-template-chosen="">
+                    <script id="mustacheProjects" type="text/template">
+                        <div class="item">
+                            {{#projects}}
+                            <div class="col-md-4"><img class="center-block" src="assets/common/img/conferences/conference1.png" alt=""></br>
+                                <p class="text-center">{{nome_evento}}</br>{{data_desc}}</br>{{morada}}</br>{{cidade}}, {{pais}}</p>
+                                </br>
+                            </div>
+                            {{/projects}}
                         </div>
-                        {{/projects}}
-                    </div>
-                </script>
+                    </script>
+                </div>
+                <button id="btnProjViewMore" type="button" class="btn btn-link center-block" data-toggle="collapse" data-target="#projRow"><i class="fa fa-plus-square-o fa-2x" aria-hidden="true" style="color: rgb(13, 182, 184);"></i></button>
             </div>
-            <button id="btnProjViewMore" type="button" class="btn btn-link center-block" data-toggle="collapse" data-target="#projRow"><i class="fa fa-plus-square-o fa-2x" aria-hidden="true" style="color: rgb(13, 182, 184);"></i></button>
-        </div>
-        <!-- reunions section -->
-        <div id="reunions" class="row full-div">
-            <h1 class="text-center">Reuniões</h1>
-            <div id="reunRow" class="row collapse" data-template-chosen="">
-                <script id="mustacheReunions" type="text/template">
-                    <div class="item">
-                        {{#reunions}}
-                        <div class="col-md-4"><img class="center-block" src="assets/common/img/conferences/conference1.png" alt=""></br>
-                            <p class="text-center">{{nome_evento}}</br>{{data_desc}}</br>{{morada}}</br>{{cidade}}, {{pais}}</p>
-                            </br>
+            <!-- reunions section -->
+            <div id="reunions" class="row full-div">
+                <h1 class="text-center">Reuniões</h1>
+                <div id="reunRow" class="row collapse" data-template-chosen="">
+                    <script id="mustacheReunions" type="text/template">
+                        <div class="item">
+                            {{#reunions}}
+                            <div class="col-md-4"><img class="center-block" src="assets/common/img/conferences/conference1.png" alt=""></br>
+                                <p class="text-center">{{nome_evento}}</br>{{data_desc}}</br>{{morada}}</br>{{cidade}}, {{pais}}</p>
+                                </br>
+                            </div>
+                            {{/reunions}}
                         </div>
-                        {{/reunions}}
-                    </div>
-                </script>
+                    </script>
+                </div>
+                <button id="btnReunViewMore" type="button" class="btn btn-link center-block" data-toggle="collapse" data-target="#reunRow"><i class="fa fa-plus-square-o fa-2x" aria-hidden="true" style="color: rgb(13, 182, 184);"></i></button>
             </div>
-            <button id="btnReunViewMore" type="button" class="btn btn-link center-block" data-toggle="collapse" data-target="#reunRow"><i class="fa fa-plus-square-o fa-2x" aria-hidden="true" style="color: rgb(13, 182, 184);"></i></button>
-        </div>
-        <!-- workshops section -->
-        <div id="workshops" class="row full-div">
-            <h1 class="text-center">Workshops</h1>
-            <div id="workRow" class="row collapse" data-template-chosen="">
-                <script id="mustacheWorkshops" type="text/template">
-                    <div class="item">
-                        {{#workshops}}
-                        <div class="col-md-4"><img class="center-block" src="assets/common/img/conferences/conference1.png" alt=""></br>
-                            <p class="text-center">{{nome_evento}}</br>{{data_desc}}</br>{{morada}}</br>{{cidade}}, {{pais}}</p>
-                            </br>
+            <!-- workshops section -->
+            <div id="workshops" class="row full-div">
+                <h1 class="text-center">Workshops</h1>
+                <div id="workRow" class="row collapse" data-template-chosen="">
+                    <script id="mustacheWorkshops" type="text/template">
+                        <div class="item">
+                            {{#workshops}}
+                            <div class="col-md-4"><img class="center-block" src="assets/common/img/conferences/conference1.png" alt=""></br>
+                                <p class="text-center">{{nome_evento}}</br>{{data_desc}}</br>{{morada}}</br>{{cidade}}, {{pais}}</p>
+                                </br>
+                            </div>
+                            {{/workshops}}
                         </div>
-                        {{/workshops}}
+                    </script>
+                </div>
+                <button id="btnWorkViewMore" type="button" class="btn btn-link center-block" data-toggle="collapse" data-target="#workRow"><i class="fa fa-plus-square-o fa-2x" aria-hidden="true" style="color: rgb(13, 182, 184);"></i></button>
+            </div>
+            <!-- features section -->
+            <div id="features" class="row full-div">
+                <h1 class="text-center">Funcionalidades</h1>
+                <div class="row">
+                    <div class="col-md-4">
+                        <a id="btnCreateEvent" href="#" class="btn center-block">
+                            <img class="center-block" src="assets/common/img/main/createEvent.jpg" alt="">
+                            <h3 class="text-center">Criar evento</h3>
+                        </a>
                     </div>
-                </script>
-            </div>
-            <button id="btnWorkViewMore" type="button" class="btn btn-link center-block" data-toggle="collapse" data-target="#workRow"><i class="fa fa-plus-square-o fa-2x" aria-hidden="true" style="color: rgb(13, 182, 184);"></i></button>
-        </div>
-        <!-- features section -->
-        <div id="features" class="row full-div">
-            <h1 class="text-center">Funcionalidades</h1>
-            <div class="row">
-                <div class="col-md-4">
-                    <a id="btnCreateEvent" href="#" class="btn center-block">
-                        <img class="center-block" src="assets/common/img/main/createEvent.jpg" alt="">
-                        <h3 class="text-center">Criar evento</h3>
-                    </a>
-                </div>
-                <div class="col-md-4">
-                    <a id="btnManageEvent" href="#" class="btn center-block">
-                        <img class="center-block" src="assets/common/img/main/manageEvent.jpg" alt="">
-                        <h3 class="text-center">Gerir evento</h3>
-                    </a>
-                </div>
-                <div class="col-md-4">
-                    <a id="btnSubscribeEvent" href="#" class="btn center-block">
-                        <img class="center-block" src="assets/common/img/main/subscribeEvent.jpg" alt="">
-                        <h3 class="text-center">Inscrever em evento</h3>
-                    </a>
-                </div>
-            </div>
-        </div>
-        <!-- features section -->
-        <div id="api" class="row full-div">
-            <h1 class="text-center">API</h1>
-            <div class="row">
-                <div class="col-md-12">
-                    <a id="btnApi" href="#" class="btn center-block">
-                        <img class="center-block" src="assets/common/img/main/api.png" alt="">
-                        <h3 class="text-center">API que disponibiliza todas as </br>informações dos nosso eventos.</h3>
-                        <h3 class="text-center">Disponível em: {name}.webitcloud.net</h3>
-                    </a>
-                </div>
-            </div>
-        </div>
-        <!-- team section -->
-        <div id="team" class="row full-div">
-            <h1 class="text-center">A Nossa Equipa</h1>
-            <div class="row">
-                <div class="col-md-4">
-                    <div id="andreGouveia" class="center-block">
-                        <img class="center-block" src="assets/common/img/team/picAndre.png" alt="">
-                        <h3 class="text-center">André Gouveia</h3>
+                    <div class="col-md-4">
+                        <a id="btnManageEvent" href="#" class="btn center-block">
+                            <img class="center-block" src="assets/common/img/main/manageEvent.jpg" alt="">
+                            <h3 class="text-center">Gerir evento</h3>
+                        </a>
                     </div>
-                    <div class="row">
-                        <div class="col-md-12 center-block text-center">
-                            <a id="btnFacebook" href="https://www.facebook.com/andre.gouveia.526" target="_blank" class="btn btn-link" <span><i class="fa fa-facebook-square fa-2x" aria-hidden="true" style="color: rgb(13, 182, 184);"></i></span>
-                            </a>
-                            <a id="btnLinkedin" href="https://www.linkedin.com/in/afcgouveia" target="_blank" class="btn btn-link" <span><i class="fa fa-linkedin-square fa-2x" aria-hidden="true" style="color: rgb(13, 182, 184);"></i></span>
-                            </a>
-                            <a id="btnEmail" href="mailto:9150508@esmad.ipp.pt" class="btn btn-link"><span><i class="fa fa-envelope-o fa-2x" aria-hidden="true" style="color: rgb(13, 182, 184);"></i></span></a>
+                    <div class="col-md-4">
+                        <a id="btnSubscribeEvent" href="#" class="btn center-block">
+                            <img class="center-block" src="assets/common/img/main/subscribeEvent.jpg" alt="">
+                            <h3 class="text-center">Inscrever em evento</h3>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!-- api section -->
+            <div id="api" class="row full-div">
+                <h1 class="text-center">API</h1>
+                <div class="row">
+                    <div class="col-md-12">
+                        <a id="btnApi" href="#" class="btn center-block"><img class="center-block" src="assets/common/img/main/api.png" alt="" />
+                            <h3 class="text-center">API que disponibiliza todas as</br>informações dos nosso eventos.</h3>
+                            <h3 class="text-center">Disponível em: {name}.webitcloud.net</h3>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!-- team section -->
+            <div id="team" class="row full-div">
+                <h1 class="text-center">A Nossa Equipa</h1>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div id="andreGouveia" class="center-block">
+                            <img class="center-block" src="assets/common/img/team/picAndre.png" alt="">
+                            <h3 class="text-center">André Gouveia</h3>
                         </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div id="joaoRafaelSantos" class="center-block">
-                        <img class="center-block" src="assets/common/img/team/picJoao.png" alt="">
-                        <h3 class="text-center">João Rafael Santos</h3>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12 center-block text-center">
-                            <a id="btnFacebook" href="https://www.facebook.com/joaosantosjrs" target="_blank" class="btn btn-link" <span><i class="fa fa-facebook-square fa-2x" aria-hidden="true" style="color: rgb(13, 182, 184);"></i></span>
-                            </a>
-                            <a id="btnLinkedin" href="https://www.linkedin.com/in/joaorafaelsantos" target="_blank" class="btn btn-link" <span><i class="fa fa-linkedin-square fa-2x" aria-hidden="true" style="color: rgb(13, 182, 184);"></i></span>
-                            </a>
-                            <a id="btnEmail" href="mailto:9150539@esmad.ipp.pt" class="btn btn-link"><span><i class="fa fa-envelope-o fa-2x" aria-hidden="true" style="color: rgb(13, 182, 184);"></i></span></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div id="franciscoMoreira" class="center-block">
-                        <img class="center-block" src="assets/common/img/team/picFrancisco.png" alt="">
-                        <h3 class="text-center">Francisco Moreira</h3>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12 center-block text-center">
-                            <a id="btnFacebook" href="https://www.facebook.com/francisco.moreira.965" target="_blank" class="btn btn-link" <span><i class="fa fa-facebook-square fa-2x" aria-hidden="true" style="color: rgb(13, 182, 184);"></i></span>
-                            </a>
-                            <a id="btnLinkedin" href="https://www.linkedin.com/in/francisco-moreira-1584a5b3/" target="_blank" class="btn btn-link" <span><i class="fa fa-linkedin-square fa-2x" aria-hidden="true" style="color: rgb(13, 182, 184);"></i></span>
-                            </a>
-                            <a id="btnEmail" href="mailto:9150529@esmad.ipp.pt" class="btn btn-link"><span><i class="fa fa-envelope-o fa-2x" aria-hidden="true" style="color: rgb(13, 182, 184);"></i></span></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- contact section -->
-        <div id="contact" class="row full-div">
-            <h1 class="text-center">Contactos</h1>
-            <div class="row">
-                <div class="col-md-12">
-                    <form id="form" class="form-horizontal">
-                        <div class="form-group">
-                            <div class="col-sm-4 col-sm-offset-4">
-                                <label for="">Nome*</label>
-                                <input id="name" type="text" class="form-control">
+                        <div class="row">
+                            <div class="col-md-12 center-block text-center">
+                                <a id="btnFacebook" href="https://www.facebook.com/andre.gouveia.526" target="_blank" class="btn btn-link"> <span><i class="fa fa-facebook-square fa-2x" aria-hidden="true" style="color: rgb(13, 182, 184);"></i></span>
+                                </a>
+                                <a id="btnLinkedin" href="https://www.linkedin.com/in/afcgouveia" target="_blank" class="btn btn-link"> <span><i class="fa fa-linkedin-square fa-2x" aria-hidden="true" style="color: rgb(13, 182, 184);"></i></span>
+                                </a>
+                                <a id="btnEmail" href="mailto:9150508@esmad.ipp.pt" class="btn btn-link"><span><i class="fa fa-envelope-o fa-2x" aria-hidden="true" style="color: rgb(13, 182, 184);"></i></span></a>
                             </div>
                         </div>
-                        <div class="form-group">
-                            <div class="col-sm-4 col-sm-offset-4">
-                                <label for="">Email*</label>
-                                <input id="email" type="email" class="form-control">
+                    </div>
+                    <div class="col-md-4">
+                        <div id="joaoRafaelSantos" class="center-block">
+                            <img class="center-block" src="assets/common/img/team/picJoao.png" alt="">
+                            <h3 class="text-center">João Rafael Santos</h3>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 center-block text-center">
+                                <a id="btnFacebook" href="https://www.facebook.com/joaosantosjrs" target="_blank" class="btn btn-link"> <span><i class="fa fa-facebook-square fa-2x" aria-hidden="true" style="color: rgb(13, 182, 184);"></i></span>
+                                </a>
+                                <a id="btnLinkedin" href="https://www.linkedin.com/in/joaorafaelsantos" target="_blank" class="btn btn-link"> <span><i class="fa fa-linkedin-square fa-2x" aria-hidden="true" style="color: rgb(13, 182, 184);"></i></span>
+                                </a>
+                                <a id="btnEmail" href="mailto:9150539@esmad.ipp.pt" class="btn btn-link"><span><i class="fa fa-envelope-o fa-2x" aria-hidden="true" style="color: rgb(13, 182, 184);"></i></span></a>
                             </div>
                         </div>
-                        <div class="form-group">
-                            <div class="col-sm-4 col-sm-offset-4">
-                                <label for="">Mensagem*</label>
-                                <textarea id="comment" class="form-control vresize" rows="5"></textarea>
+                    </div>
+                    <div class="col-md-4">
+                        <div id="franciscoMoreira" class="center-block">
+                            <img class="center-block" src="assets/common/img/team/picFrancisco.png" alt="">
+                            <h3 class="text-center">Francisco Moreira</h3>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 center-block text-center">
+                                <a id="btnFacebook" href="https://www.facebook.com/francisco.moreira.965" target="_blank" class="btn btn-link"> <span><i class="fa fa-facebook-square fa-2x" aria-hidden="true" style="color: rgb(13, 182, 184);"></i></span>
+                                </a>
+                                <a id="btnLinkedin" href="https://www.linkedin.com/in/francisco-moreira-1584a5b3/" target="_blank" class="btn btn-link">
+                                    <span><i class="fa fa-linkedin-square fa-2x" aria-hidden="true" style="color: rgb(13, 182, 184);"></i></span>
+                                </a>
+                                <a id="btnEmail" href="mailto:9150529@esmad.ipp.pt" class="btn btn-link"><span><i class="fa fa-envelope-o fa-2x" aria-hidden="true" style="color: rgb(13, 182, 184);"></i></span></a>
                             </div>
                         </div>
-                        <div class="form-group">
-                            <div class="col-sm-4 col-sm-offset-4">
-                                <button id="btnSendMessage" type="submit" class="btn btn-we">Enviar mensagem</button>
+                    </div>
+                </div>
+            </div>
+            <!-- contact section -->
+            <div id="contact" class="row full-div">
+                <h1 class="text-center">Contactos</h1>
+                <div class="row">
+                    <div class="col-md-12">
+                        <form id="form" class="form-horizontal">
+                            <div class="form-group">
+                                <div class="col-sm-4 col-sm-offset-4">
+                                    <label for="">Nome*</label>
+                                    <input id="name" type="text" class="form-control">
+                                </div>
                             </div>
-                        </div>
-                    </form>
+                            <div class="form-group">
+                                <div class="col-sm-4 col-sm-offset-4">
+                                    <label for="">E-mail*</label>
+                                    <input id="email" type="email" class="form-control">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-4 col-sm-offset-4">
+                                    <label for="">Mensagem*</label>
+                                    <textarea id="comment" class="form-control vresize" rows="5"></textarea>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-4 col-sm-offset-4">
+                                    <button id="btnSendMessage" type="submit" class="btn btn-we">Enviar mensagem</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>

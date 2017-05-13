@@ -1,0 +1,40 @@
+/*------------- worldevents -----------*/
+/*-------------------------------------*/
+/*---------- login/login.css ----------*/
+
+#user,
+#password {
+    background-color: rgb(245, 245, 245);
+    color: rgb(13, 182, 184);
+    font-family: PortoSans-Light;
+    font-size: 15px;
+}
+
+#btnLogin {
+    margin-top: 20px;
+    font-family: PortoSans-Light;
+    font-size: 18px;
+    color: rgb(255, 255, 255);
+    font-weight: bolder;
+}
+
+#btnFacebookLog,
+#btnGoogle {
+    font-family: PortoSans-Light;
+    font-size: 18px;
+    color: rgb(255, 255, 255);
+}
+
+#btnFacebookLog {
+    background-color: rgb(66, 103, 178);
+}
+
+#btnGoogle {
+    background-color: rgb(221, 75, 57);
+}
+
+#or {
+    font-family: PortoSans-Light;
+    font-size: 30px;
+    color: rgb(0, 0, 0);
+}

@@ -1,0 +1,27 @@
+/*------------- worldevents -----------*/
+/*-------------------------------------*/
+/*---------- login/create.css ---------*/
+
+#regEmail,
+#regPassword,
+#regRepeatPassword {
+    background-color: rgb(245, 245, 245);
+    color: rgb(13, 182, 184);
+    font-family: PortoSans-Light;
+    font-size: 15px;
+}
+
+#regRepeatPassword {
+    background-color: rgb(245, 245, 245);
+    color: rgb(13, 182, 184);
+    font-family: PortoSans-Light;
+    font-size: 15px;
+}
+
+#btnCreate {
+    margin-top: 20px;
+    font-family: PortoSans-Light;
+    font-size: 18px;
+    color: rgb(255, 255, 255);
+    font-weight: bolder;
+}
