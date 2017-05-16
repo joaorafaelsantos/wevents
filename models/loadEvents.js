@@ -26,7 +26,7 @@ app.post('/loadEvents', function (req, res) {
 });
 
 app.use(function(req, res, next){
-    res.status(404).send("Sorry, page not found");
+    res.status(404).sendFile("../views/pages/errors/error.html");
 });
 
 app.listen(port, function () {
