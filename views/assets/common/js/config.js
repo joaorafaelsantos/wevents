@@ -80,10 +80,8 @@ $(function () {
         if (!auth) {
             $("nav").remove();
             $("#content").load("pages/login/login.html");
-            $("#footer").css({
-                "background-color": "rgb(245, 245, 245)",
-                "border-top": "thin solid rgba(189, 190, 192, 0.5)"
-            });
+            $("#footer").removeAttr("style");
+            $("#footer").find("h4").remove();
         } else {
             window.location.replace("main.html");
         }

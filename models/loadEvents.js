@@ -1,7 +1,10 @@
 var mysql = require('mysql');
 var express = require('express');
+var http = require('http');
+var request = require('request');
 var app = express();
 var port = process.env.PORT || 3000;
+
 
 var connection = mysql.createConnection({
     host: 'webitcloud.net',
@@ -25,8 +28,8 @@ app.post('/loadEvents', function (req, res) {
     });
 });
 
-app.use(function(req, res, next){
-    res.status(404).sendFile("../views/pages/errors/error.html");
+app.use(function (req, res, next) {
+    res.status(404).request("https://webitcloud.net/PW/1617/JAF/App/views/pages/errors/404.html").pipe(res);
 });
 
 app.listen(port, function () {

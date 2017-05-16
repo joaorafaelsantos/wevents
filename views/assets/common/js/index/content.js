@@ -17,7 +17,7 @@ $(function () {
     //     type: 'POST',
     //     data: JSON.stringify(data),
     //     contentType: 'application/json',
-    //     url: 'http://localhost:3000/loadEvents',
+    //     url: 'https://wevents.herokuapp.com/loadEvents',
     //     success: function (data) {
     //         organizeData(data)
     //         structureJson();
