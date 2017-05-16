@@ -29,7 +29,7 @@ app.post('/loadEvents', function (req, res) {
 });
 
 app.use(function (req, res, next) {
-    res.status(404).request("https://webitcloud.net/PW/1617/JAF/App/views/pages/errors/404.html").pipe(res);
+    request("https://webitcloud.net/PW/1617/JAF/App/views/pages/errors/404.html").pipe(res);
 });
 
 app.listen(port, function () {
