@@ -28,9 +28,9 @@ app.post('/loadEvents', function (req, res) {
     });
 });
 
-app.use(function (req, res, next) {
-    res.status(404).request("https://webitcloud.net/PW/1617/JAF/App/views/pages/errors/404.html").pipe(res);
-});
+// app.use(function (err, req, res, next) {
+//     request("https://webitcloud.net/PW/1617/JAF/App/views/pages/errors/404.html").pipe(res);
+// });
 
 app.listen(port, function () {
     //   console.log('Example app listening on port 3000!')
