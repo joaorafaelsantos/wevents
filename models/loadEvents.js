@@ -25,6 +25,10 @@ app.post('/loadEvents', function (req, res) {
     });
 });
 
+app.use(function(req, res, next){
+    res.status(404).send("Sorry, page not found");
+});
+
 app.listen(port, function () {
     //   console.log('Example app listening on port 3000!')
 })
