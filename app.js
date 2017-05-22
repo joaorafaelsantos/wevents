@@ -6,7 +6,7 @@ var app = express();
 var port = process.env.PORT || 3000;
 
 // files
-var routes = require("controllers/routes.js");
+var routes = require("./controllers/routes.js");
 
 // load
 
