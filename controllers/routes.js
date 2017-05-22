@@ -1,4 +1,4 @@
-var loadEvents = require("../models/greetings.js");
+var loadEvents = require("../models/loadEvents.js");
 
 var exports = module.exports = {};
 
