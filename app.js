@@ -1,9 +1,9 @@
-var mysql = require('mysql');
+mysql = require('mysql');
 express = require('express');
-var http = require('http');
-var request = require('request');
+http = require('http');
+request = require('request');
 app = express();
-var port = process.env.PORT || 3000;
+port = process.env.PORT || 3000;
 
 // files
 var routes = require("./controllers/routes.js");
@@ -11,5 +11,4 @@ var routes = require("./controllers/routes.js");
 // load
 routes.routes();
 
-
-app.listen(port);
+app.listen(global.port);
