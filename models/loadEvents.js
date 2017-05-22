@@ -1,8 +1,9 @@
+var http = require('http');
 var exports = module.exports = {};
 
 exports.loadEvents = function () {
 
-    var http = require('http');
+
 
     var connection = mysql.createConnection({
         host: 'webitcloud.net',
