@@ -7,6 +7,7 @@ exports.init = function () {
         global.request("https://webitcloud.net/PW/1617/JAF/App/views/index.html").pipe(res);
         console.log("entrei")
     });
+    loadEvents.connection();
     global.app.post('/loadEvents', function (req, res) {
         loadEvents.loadEvents();
         console.log("entrei2")
