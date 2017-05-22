@@ -1,6 +1,6 @@
 var exports = module.exports = function (res) {};
 
-exports.loadEvents = function () {
+exports.loadEvents = function (res) {
 
 
 
