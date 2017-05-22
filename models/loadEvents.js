@@ -15,22 +15,22 @@ var connection = mysql.createConnection({
 
 connection.connect();
 
-app.get('/', function (req, res) {
+app.get('/home', function (req, res) {
     request("https://webitcloud.net/PW/1617/JAF/App/views/index.html").pipe(res);
 });
 
-app.post('/loadEvents', function (req, res) {
+// app.post('/loadEvents', function (req, res) {
 
-    var events;
-    connection.query('SELECT nome_evento, descricao, morada, cidade, pais, data_desc FROM Evento, Localidade, Data_Hora, Categoria WHERE Evento.id_localidade = Localidade.id_localidade AND Evento.id_data_hora = Data_Hora.id_data_hora AND Evento.id_categoria = Categoria.id_categoria;', function (err, rows, fields) {
-        if (!err) {
-            events = rows;
-            res.send(events);
-        } else {
-            console.log('Error while performing Query.', err);
-        }
-    });
-});
+//     var events;
+//     connection.query('SELECT nome_evento, descricao, morada, cidade, pais, data_desc FROM Evento, Localidade, Data_Hora, Categoria WHERE Evento.id_localidade = Localidade.id_localidade AND Evento.id_data_hora = Data_Hora.id_data_hora AND Evento.id_categoria = Categoria.id_categoria;', function (err, rows, fields) {
+//         if (!err) {
+//             events = rows;
+//             res.send(events);
+//         } else {
+//             console.log('Error while performing Query.', err);
+//         }
+//     });
+// });
 
 // app.use(function (err, req, res, next) {
 //     request("https://webitcloud.net/PW/1617/JAF/App/views/pages/errors/404.html").pipe(res);
