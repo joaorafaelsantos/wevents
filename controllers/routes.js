@@ -10,7 +10,7 @@ exports.init = function () {
     });
 
     global.app.post('/loadEvents', function (req, res) {
-        //loadEvents.loadEvents();
+        loadEvents.loadEvents();
         console.log("entrei2")
     });
 };
