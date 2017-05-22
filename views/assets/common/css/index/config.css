@@ -6,14 +6,6 @@ body {
     top: 0px !important;
 }
 
-/* clear grey effect on active event of button */
-
-.btn:focus,
-.btn:active {
-    outline: none !important;
-    box-shadow: none;
-}
-
 /* personalized h3 and h4 */
 
 h3 {
@@ -26,22 +18,6 @@ h4 {
     font-family: PortoSans-Regular;
     font-size: 105%;
     color: black;
-}
-
-/* personalized button */
-
-.btn-we {
-    color: #FFFFFF;
-    background-color: rgb(13, 182, 184);
-}
-
-.btn-we:hover,
-.btn-we:focus,
-.btn-we:active,
-.btn-we.active,
-.open .dropdown-toggle.btn-we {
-    color: #FFFFFF;
-    background-color: rgba(13, 182, 184, 0.8);
 }
 
 .row {

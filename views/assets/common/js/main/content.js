@@ -14,6 +14,11 @@ $(function () {
         $("#content").load("pages/main/myEvents.html");
     }
 
+    // Load create event page
+    function loadCreateEvent() {
+        $("#content").load("pages/main/createEvent.html");
+    }
+
     // Load subscribed events page
     function loadSubscribedEvents() {
         $("#content").load("pages/main/subscribedEvents.html");
@@ -28,6 +33,12 @@ $(function () {
     // Button my events
     $("#btnMyEvents").click(function () {
         loadMyEvents();
+        close();
+    });
+
+    // Button create event
+    $("#btnCreateEvent").click(function () {
+        loadCreateEvent();
         close();
     });
 

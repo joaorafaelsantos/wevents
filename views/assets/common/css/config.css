@@ -20,6 +20,7 @@ body {
     width: 100vw;
 }
 
+
 /* personalized h1 */
 
 h1 {
@@ -29,3 +30,31 @@ h1 {
     padding-top: 30px;
     padding-bottom: 30px;
 }
+
+
+/* clear grey effect on active event of button */
+
+.btn:focus,
+.btn:active {
+    outline: none !important;
+    box-shadow: none;
+}
+
+
+/* personalized button */
+
+.btn-we {
+    color: #FFFFFF;
+    background-color: rgb(13, 182, 184);
+}
+
+.btn-we:hover,
+.btn-we:focus,
+.btn-we:active,
+.btn-we.active,
+.open .dropdown-toggle.btn-we {
+    color: #FFFFFF;
+    background-color: rgba(13, 182, 184, 0.8);
+}
+
+

@@ -64,12 +64,11 @@
 }
 
 
-/* Style page content - use this if you want to push the page content to the right when you open the side navigation */
+/* Style page content */
 
 #main {
     transition: margin-left .5s;
     padding: 0px;
-    /*padding-left: 300px;*/
 }
 
 
@@ -95,7 +94,7 @@
         width: 0px;
     }
     #main {
-        padding-left: 0px;
+        padding-left: 20px;
         opacity: 1;
     }
 }
@@ -105,7 +104,7 @@
         width: 300px;
     }
     #main {
-        padding-left: 300px;
+        padding-left: 315px;
         opacity: 1;
     }
 }

@@ -6,6 +6,7 @@
     background-color: rgb(245, 245, 245);
     color: rgb(13, 182, 184);
     border-bottom: thin solid rgba(189, 190, 192, 0.5);
+    border-top: thin solid rgba(189, 190, 192, 0.5);
 }
 
 #welcome {

@@ -15,6 +15,10 @@ var connection = mysql.createConnection({
 
 connection.connect();
 
+app.get('/', function (req, res) {
+    request("https://webitcloud.net/PW/1617/JAF/App/views/index.html").pipe(res);
+});
+
 app.post('/loadEvents', function (req, res) {
 
     var events;
