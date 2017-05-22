@@ -1,6 +1,6 @@
 var loadEvents = require("../models/loadEvents.js");
 
-var exports = module.exports = {};
+var exports = module.exports = function (res) {};
 
 exports.init = function () {
 

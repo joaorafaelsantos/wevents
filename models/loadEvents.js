@@ -1,4 +1,4 @@
-var exports = module.exports = function(res) {};
+var exports = module.exports = function (res) {};
 
 exports.loadEvents = function () {
 
