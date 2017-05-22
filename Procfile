@@ -1,1 +1,1 @@
-web: node models/loadEvents.js
+web: node app.js
