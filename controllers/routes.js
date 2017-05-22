@@ -8,8 +8,9 @@ exports.routes = function () {
         global.request("https://webitcloud.net/PW/1617/JAF/App/views/index.html").pipe(res);
     });
 
-    global.app.post('/loadEvents', function (req, res) {
-        loadEvents.loadEvents();
+    global.app.get('/loadEvents', function (req, res) {
+        console.log("entrei")
+        // loadEvents.loadEvents();
     });
 
 };
