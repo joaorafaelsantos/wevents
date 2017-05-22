@@ -1,8 +1,8 @@
 var loadEvents = require("../models/loadEvents.js");
 
-var exports = module.exports = function (res) {};
+var exports = module.exports = {};
 
-exports.init = function (res) {
+exports.init = function () {
 
     global.app.get('/home', function (req, res) {
         global.request("https://webitcloud.net/PW/1617/JAF/App/views/index.html").pipe(res);
@@ -10,7 +10,7 @@ exports.init = function (res) {
     });
 
     global.app.post('/loadEvents', function (req, res) {
-        loadEvents.loadEvents();
+        loadEvents.loadEvents(res);
         console.log("entrei2")
     });
 };

@@ -9,6 +9,6 @@ port = process.env.PORT || 3000;
 var routes = require("./controllers/routes.js");
 
 // load
-routes.init(res);
+routes.init();
 
 app.listen(global.port);
