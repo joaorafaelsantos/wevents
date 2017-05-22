@@ -9,7 +9,7 @@ exports.init = function () {
 };
 
 exports.loadEvents = function () {
-    global.app.post('/loadEvents', function (req, res) {
+    global.app.get('/loadEvents', function (req, res) {
         console.log("entrei")
         // loadEvents.loadEvents();
     });
