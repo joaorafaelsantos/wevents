@@ -1,4 +1,3 @@
-var http = require('http');
 var exports = module.exports = {};
 
 exports.loadEvents = function () {
