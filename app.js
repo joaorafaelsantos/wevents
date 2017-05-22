@@ -5,10 +5,10 @@ request = require('request');
 app = express();
 port = process.env.PORT || 3000;
 
-// files
+// load files
 var routes = require("./controllers/routes.js");
 
-// load
+// app
 routes.init();
 
 app.listen(global.port);
