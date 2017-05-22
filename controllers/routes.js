@@ -1,16 +1,15 @@
-// var loadEvents = require("../models/loadEvents.js");
+var loadEvents = require("../models/loadEvents.js");
 
 var exports = module.exports = {};
 
 exports.routes = function () {
 
     global.app.get('/home', function (req, res) {
-        console.log("entrei")
         global.request("https://webitcloud.net/PW/1617/JAF/App/views/index.html").pipe(res);
     });
 
-    // app.post('/loadEvents', function (req, res) {
-    //     loadEvents.loadEvents();
-    // });
+    global.app.post('/loadEvents', function (req, res) {
+        loadEvents.loadEvents();
+    });
 
 };
