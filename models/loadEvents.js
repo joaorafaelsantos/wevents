@@ -1,3 +1,4 @@
+var module = require('module');
 var exports = module.exports = {};
 
 exports.connection = function () {

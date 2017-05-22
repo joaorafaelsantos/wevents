@@ -1,3 +1,5 @@
+var module = require('module');
+
 var loadEvents = require("../models/loadEvents.js");
 
 var exports = module.exports = {};
