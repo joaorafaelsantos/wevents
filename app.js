@@ -10,6 +10,5 @@ var routes = require("./controllers/routes.js");
 
 // load
 routes.init();
-routes.loadEvents();
 
 app.listen(global.port);
