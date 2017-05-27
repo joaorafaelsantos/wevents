@@ -24,7 +24,7 @@ exports.init = function () {
     });
 
     global.app.post('/login', function (req, res) {
-        login.login();
+        login.login(req, res);
     });
 
     global.app.post('/createUser', function (req, res) {
