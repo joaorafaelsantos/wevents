@@ -11,7 +11,6 @@ exports.bodyParser = function() {
 exports.createEvent = function (request, response) {
 
     response.send('You sent the name "' + request.body.name + '".');
-    console.log(request.body)
 
     // connection.connection();
 
