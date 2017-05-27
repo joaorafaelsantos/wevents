@@ -34,7 +34,7 @@ exports.createEvent = function (request, response) {
 
     var dataQuery = [];
     for (var i = 0; i < 2; i++) {
-        global.connection.query(querysInsert[0], function (err, rows, fields) {
+        global.connection.query(querysInsert[i], function (err, rows, fields) {
             if (!err) {
                 console.log('Inserted');
             } else {
@@ -42,7 +42,7 @@ exports.createEvent = function (request, response) {
             }
             console.log(dataQuery)
         });
-        global.connection.query(querysSelect[0], function (err, rows, fields) {
+        global.connection.query(querysSelect[i], function (err, rows, fields) {
             if (!err) {
                 var tempData = rows;
                 dataQuery.push(tempData);
@@ -51,9 +51,10 @@ exports.createEvent = function (request, response) {
             }
             console.log(dataQuery)
         });
-        
+
     } //console.log(name, date, hour, address, city, country, typeEvent, privacy);
     var queryInsertEvent = "INSERT INTO Evento nome_evento, id_localidade, id_data_hora, id_categoria, privacidade) VALUES ('" + name + "', " + dataQuery[1].tempData[0].id_localidade + ", '" + dataQuery[0].tempData[0].id_data_hora + "', " + typeEvent + ", " + privacy + ");";
+    console.log(queryInsertEvent);
     global.connection.query(queryInsertEvent, function (err, rows, fields) {
         if (!err) {
             console.log('Inserted');
