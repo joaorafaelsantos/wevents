@@ -56,7 +56,7 @@ exports.createEvent = function (request, response) {
             console.log('Error while performing Query.', err);
         }
     });
-    global.connection.query("INSERT INTO Evento (nome_evento, id_localidade, id_data_hora, id_categoria, privacidade) VALUES (" + name + ", " + 46 + ", " + 46 + ", " + 1 + ", " + 0 + ");", function (err, rows, fields) {
+    global.connection.query("INSERT INTO Evento (nome_evento, id_localidade, id_data_hora, id_categoria, privacidade) VALUES (" + name + ", " + 50 + ", " + 56 + ", " + 1 + ", " + 0 + ");", function (err, rows, fields) {
         console.log("INSERT INTO Evento (nome_evento, id_localidade, id_data_hora, id_categoria, privacidade) VALUES (" + name + ", " + tempLocalidade + ", " + tempDataHora + ", " + typeEvent + ", " + privacy + ");")
         if (!err) {
             console.log('Inserted');
