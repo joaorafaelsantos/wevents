@@ -34,7 +34,7 @@ exports.createEvent = function (request, response) {
 
     var dataQuery = [];
     for (var i = 0; i < 2; i++) {
-        global.connection.query(queryInsert[0], function (err, rows, fields) {
+        global.connection.query(querysInsert[0], function (err, rows, fields) {
             if (!err) {
                 console.log('Inserted');
             } else {
@@ -42,7 +42,7 @@ exports.createEvent = function (request, response) {
             }
             console.log(dataQuery)
         });
-        global.connection.query(querySelect[0], function (err, rows, fields) {
+        global.connection.query(querysSelect[0], function (err, rows, fields) {
             if (!err) {
                 var tempData = rows;
                 dataQuery.push(tempData);
