@@ -38,8 +38,7 @@ exports.createEvent = function (request, response) {
         });
         global.connection.query(querySelect, function (err, rows, fields) {
             if (!err) {
-                tempData = rows;
-                dataQuery.push(tempData);
+                dataQuery.push(rows);
             } else {
                 console.log('Error while performing Query.', err);
             }
@@ -54,8 +53,7 @@ exports.createEvent = function (request, response) {
         });
         global.connection.query(querySelect2, function (err, rows, fields) {
             if (!err) {
-                tempData = rows;
-                dataQuery.push(tempData);
+                dataQuery.push(rows);
             } else {
                 console.log('Error while performing Query.', err);
             }
