@@ -17,9 +17,9 @@ exports.login = function (request, response) {
     global.connection.query(query, function (err, rows, fields) {
         if (!err) {
             if (rows[0].value == 0) {
-                global.request("https://webitcloud.net/PW/1617/JAF/App/views/pages/login/login.html").pipe(response);
+                global.request("https://wevents.herokuapp.com/login").pipe(response);
             } else {
-                global.request("https://webitcloud.net/PW/1617/JAF/App/views/main").pipe(response);
+                global.request("https://wevents.herokuapp.com/portal").pipe(response);
             }
         } else {
             console.log('Error while performing Query.', err);
