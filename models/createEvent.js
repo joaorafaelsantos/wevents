@@ -16,7 +16,8 @@ exports.createEvent = function (request, response) {
     var country = request.body.country;
     var typeEvent = request.body.selEvent;
     var privacy = request.body.optradio;
-    response.send(name, date, address, city, country, typeEvent, privacy);
+    response.send(privacy);
+    // name, date, address, city, country, typeEvent, 
 
     // connection.connection();
 
