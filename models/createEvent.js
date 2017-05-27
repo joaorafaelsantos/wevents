@@ -22,19 +22,27 @@ exports.createEvent = function (request, response) {
     var country = global.connection.escape(request.body.country);
     var typeEvent = global.connection.escape(request.body.selEvent);
     var privacy = global.connection.escape(request.body.optRadio);
-    console.log(request.body);
-    // console.log(name, date, hour, address, city, country, typeEvent, privacy);
+    //console.log(name, date, hour, address, city, country, typeEvent, privacy);
+    var querys = [];
+    // var query = "INSERT INTO Data_Hora (data_desc, hora) VALUES (" + date + ", " + hour + ");";
+    // var query2 = "INSERT INTO Localidade (morada, cidade, pais) VALUES (" + address + ", " + city + ", " + country +");";
+    // var query3 = "INSERT INTO Evento nome_evento, id_localidade, id_data_hora, id_categoria, privacidade) VALUES (" + nome_evento + ", " + city + ", " + country +");";
+    // nome_evento,localidade,data,tipo_evento,privacidade_evento,img_evento);
+    // query.push(query, query2, query3);
+    // for (var i = 0; i < 3; i++) {
 
-    // connection.connection();
+    // }
+    var tempData;
+    global.connection.query('SELECT id_data_hora FROM Data_Hora ORDER BY id_data_hora DESC LIMIT 1;', function (err, rows, fields) {
+        if (!err) {
+            tempData = rows;
+            response.send(events);
+        } else {
+            console.log('Error while performing Query.', err);
+        }
+    });
+    console.log(tempData)
 
-    // var events;
-    // global.connection.query('SELECT nome_evento, descricao, morada, cidade, pais, data_desc FROM Evento, Localidade, Data_Hora, Categoria WHERE Evento.id_localidade = Localidade.id_localidade AND Evento.id_data_hora = Data_Hora.id_data_hora AND Evento.id_categoria = Categoria.id_categoria AND Evento.privacidade = 0;', function (err, rows, fields) {
-    //     if (!err) {
-    //         events = rows;
-    //         response.send(events);
-    //     } else {
-    //         console.log('Error while performing Query.', err);
-    //     }
-    // });
+    "SELECT id_data_hora FROM Data_Hora ORDER BY id_data_hora DESC LIMIT 1;"
 
 };
