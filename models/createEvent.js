@@ -58,9 +58,10 @@ exports.createEvent = function (request, response) {
             console.log('Error while performing Query.', err);
         }
     });
-    var queryInsertEvent = "INSERT INTO Evento nome_evento, id_localidade, id_data_hora, id_categoria, privacidade) VALUES ('" + name + "', " + tempLocalidade + ", '" + tempDataHora + "', " + typeEvent + ", " + privacy + ");";
-    console.log(queryInsertEvent);
+
     global.connection.query(queryInsertEvent, function (err, rows, fields) {
+        var queryInsertEvent = "INSERT INTO Evento nome_evento, id_localidade, id_data_hora, id_categoria, privacidade) VALUES ('" + name + "', " + tempLocalidade + ", '" + tempDataHora + "', " + typeEvent + ", " + privacy + ");";
+        console.log(queryInsertEvent);
         if (!err) {
             console.log('Inserted');
         } else {
