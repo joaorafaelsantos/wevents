@@ -21,7 +21,8 @@ exports.createEvent = function (request, response) {
     var city = global.connection.escape(request.body.city);
     var country = global.connection.escape(request.body.country);
     var typeEvent = global.connection.escape(request.body.selEvent);
-    typeEvent = parseInt(typeEvent);
+    // typeEvent = parseInt(typeEvent);
+    console.log(typeof typeEvent)
     var privacy = global.connection.escape(request.body.optRadio);
     privacy = parseInt(privacy);
 
