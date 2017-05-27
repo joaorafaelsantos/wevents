@@ -5,11 +5,11 @@ var exports = module.exports = {};
 
 exports.init = function () {
 
-    global.app.use(global.bodyParser.urlencoded({
+    global.app.use(bodyParser.urlencoded({
         extended: true
     }));
 
-    global.app.use(global.bodyParser.json());
+    global.app.use(bodyParser.json());
 
     global.app.get('/', function (req, res) {
         global.request("https://webitcloud.net/PW/1617/JAF/App/views/index.html").pipe(res);
