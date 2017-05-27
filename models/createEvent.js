@@ -59,7 +59,7 @@ exports.createEvent = function (request, response) {
         }
     });
 
-    global.connection.query("INSERT INTO Evento nome_evento, id_localidade, id_data_hora, id_categoria, privacidade) VALUES (" + name + ", " + tempLocalidade + ", " + tempDataHora + ", " + typeEvent + ", " + privacy + ");", function (err, rows, fields) {
+    global.connection.query("INSERT INTO Evento nome_evento, id_localidade, id_data_hora, id_categoria, privacidade) VALUES (" + name + ", " + tempLocalidade + ", " + tempDataHora + ", " + parseInt(typeEvent) + ", " + parseInt(privacy) + ");", function (err, rows, fields) {
         console.log("INSERT INTO Evento nome_evento, id_localidade, id_data_hora, id_categoria, privacidade) VALUES (" + name + ", " + tempLocalidade + ", " + tempDataHora + ", " + typeEvent + ", " + privacy + ");")
         if (!err) {
             console.log('Inserted');
