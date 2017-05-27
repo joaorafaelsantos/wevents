@@ -2,6 +2,12 @@
 
 var exports = module.exports = {};
 
+exports.bodyParser = function() {
+    global.app.use(global.bodyParser.urlencoded({
+        extended: true
+    }));
+}
+
 exports.createEvent = function (request, response) {
 
     response.send('You sent the name "' + request.body.name + '".');
