@@ -41,6 +41,14 @@ exports.createEvent = function (request, response) {
             console.log('Error while performing Query.', err);
         }
     });
+    global.connection.query('SELECT * FROM Data_Hora;', function (err, rows, fields) {
+        if (!err) {
+            tempData = rows;
+            response.send(tempData);
+        } else {
+            console.log('Error while performing Query.', err);
+        }
+    });
     console.log(tempData)
 
     "SELECT id_data_hora FROM Data_Hora ORDER BY id_data_hora DESC LIMIT 1;"
