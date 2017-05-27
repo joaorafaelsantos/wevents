@@ -31,7 +31,6 @@ exports.init = function () {
         createUser.createUser();
     });
 
-    createEvent.bodyParser();
     global.app.post('/createEvent', function (req, res) {
         createEvent.createEvent(req, res);
     });

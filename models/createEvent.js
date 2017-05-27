@@ -1,12 +1,9 @@
 var connection = require("../models/connection.js");
+var bodyParser = require("../models/bodyParser.js");
 
 var exports = module.exports = {};
 
-exports.bodyParser = function () {
-    global.app.use(global.bodyParser.urlencoded({
-        extended: true
-    }));
-}
+bodyParser.bodyParser();
 
 exports.createEvent = function (request, response) {
     connection.connection();
