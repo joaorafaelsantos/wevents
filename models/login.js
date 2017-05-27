@@ -12,11 +12,15 @@ exports.login = function (request, response) {
     var password = global.connection.escape(request.body.password);
     console.log(email, password);
 
-    var query = "SELECT EXISTS(SELECT email, password FROM Utilizador WHERE email = " + email + " AND password = " + password + ");";
+    var query = "SELECT EXISTS(SELECT email, password FROM Utilizador WHERE email = " + email + " AND password = " + password + ") as value;";
 
     global.connection.query(query, function (err, rows, fields) {
         if (!err) {
-            console.log(rows)
+            if (rows[0].value == 0) {
+                global.request("https://webitcloud.net/PW/1617/JAF/App/views/pages/login/login.html").pipe(res);
+            } else {
+                global.request("https://webitcloud.net/PW/1617/JAF/App/views/main").pipe(res);
+            }
         } else {
             console.log('Error while performing Query.', err);
         }
