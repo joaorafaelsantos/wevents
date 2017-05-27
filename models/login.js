@@ -8,7 +8,7 @@ exports.bodyParser = function () {
     }));
 }
 
-exports.login = function (request, response) {
+exports.login = function () {
     connection.connection();
 
     var email = global.connection.escape(request.body.email);
