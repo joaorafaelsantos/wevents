@@ -11,14 +11,6 @@ exports.init = function () {
         global.request("https://webitcloud.net/PW/1617/JAF/App/views/index.html").pipe(res);
     });
 
-    global.app.get('/portal', function (req, res) {
-        global.request("https://webitcloud.net/PW/1617/JAF/App/views/main.html").pipe(res);
-    });
-
-    global.app.get('/login', function (req, res) {
-        global.request("https://webitcloud.net/PW/1617/JAF/App/views/pages/login/login.html").pipe(res);
-    });
-
     global.app.post('/', function (req, res) {
         loadEvents.loadEvents(res);
     });
