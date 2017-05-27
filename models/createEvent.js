@@ -14,7 +14,7 @@ exports.createEvent = function (request, response) {
     var name = global.connection.escape(request.body.name);
     // var date = global.connection.escape(request.body.date);
     var date = request.body.date;
-    date.split(" ");
+    date = date.split(" ");
     var address = global.connection.escape(request.body.address);
     var city = global.connection.escape(request.body.city);
     var country = global.connection.escape(request.body.country);
