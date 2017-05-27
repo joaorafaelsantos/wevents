@@ -21,8 +21,9 @@ exports.createEvent = function (request, response) {
     var city = global.connection.escape(request.body.city);
     var country = global.connection.escape(request.body.country);
     var typeEvent = global.connection.escape(request.body.selEvent);
+    typeEvent = parseInt(typeEvent);
     var privacy = global.connection.escape(request.body.optRadio);
-    console.log(name)
+    privacy = parseInt(privacy);
 
     var queryInsert = "INSERT INTO Data_Hora (data_desc, hora) VALUES ('" + date + "', '" + hour + "');";
     var queryInsert2 = "INSERT INTO Localidade (morada, cidade, pais) VALUES (" + address + ", " + city + ", " + country + ");";
