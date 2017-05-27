@@ -1,4 +1,4 @@
-// var connection = require("../models/connection.js");
+var connection = require("../models/connection.js");
 
 var exports = module.exports = {};
 
@@ -10,7 +10,7 @@ exports.bodyParser = function () {
 
 exports.createEvent = function (request, response) {
     connection.connection();
-    
+
     var name = global.connection.escape(request.body.name);
     var date = global.connection.escape(request.body.date);
     var address = global.connection.escape(request.body.address);
