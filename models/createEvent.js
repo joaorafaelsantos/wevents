@@ -9,13 +9,15 @@ exports.bodyParser = function () {
 }
 
 exports.createEvent = function (request, response) {
-    var name = request.body.name;
-    var date = request.body.date;
-    var address = request.body.address;
-    var city = request.body.city;
-    var country = request.body.country;
-    var typeEvent = request.body.selEvent;
-    var privacy = request.body.optradio;
+    connection.connection();
+    
+    var name = global.connection.escape(request.body.name);
+    var date = global.connection.escape(request.body.date);
+    var address = global.connection.escape(request.body.address);
+    var city = global.connection.escape(request.body.city);
+    var country = global.connection.escape(request.body.country);
+    var typeEvent = global.connection.escape(request.body.selEvent);
+    var privacy = global.connection.escape(request.body.optRadio);
     console.log(name, date, address, city, country, typeEvent, privacy);
 
     // connection.connection();
