@@ -27,6 +27,8 @@ exports.createEvent = function (request, response) {
     var queryInsert2 = "INSERT INTO Localidade (morada, cidade, pais) VALUES (" + address + ", " + city + ", " + country + ");";
     var querySelect = 'SELECT id_data_hora FROM Data_Hora ORDER BY id_data_hora DESC LIMIT 1;';
     var querySelect2 = 'SELECT id_localidade FROM Localidade ORDER BY id_localidade DESC LIMIT 1;';
+    var tempDataHora;
+    var tempLocalidade;
     global.connection.query(queryInsert, function (err, rows, fields) {
         if (!err) {
             console.log('Inserted');
@@ -36,7 +38,7 @@ exports.createEvent = function (request, response) {
     });
     global.connection.query(querySelect, function (err, rows, fields) {
         if (!err) {
-            global.tempDataHora = rows[0].id_data_hora
+            tempDataHora = rows[0].id_data_hora
         } else {
             console.log('Error while performing Query.', err);
         }
@@ -51,12 +53,12 @@ exports.createEvent = function (request, response) {
     });
     global.connection.query(querySelect2, function (err, rows, fields) {
         if (!err) {
-            global.tempLocalidade = rows[0].id_localidade
+            tempLocalidade = rows[0].id_localidade
         } else {
             console.log('Error while performing Query.', err);
         }
     });
-    global.connection.query("INSERT INTO Evento (nome_evento, id_localidade, id_data_hora, id_categoria, privacidade) VALUES (" + name + ", " + 50 + ", " + 56 + ", " + 1 + ", " + 0 + ");", function (err, rows, fields) {
+    global.connection.query("INSERT INTO Evento (nome_evento, id_localidade, id_data_hora, id_categoria, privacidade) VALUES (" + name + ", " + tempLocalidade + ", " + tempDataHora + ", " + typeEvent + ", " + privacy + ");", function (err, rows, fields) {
         console.log("INSERT INTO Evento (nome_evento, id_localidade, id_data_hora, id_categoria, privacidade) VALUES (" + name + ", " + tempLocalidade + ", " + tempDataHora + ", " + typeEvent + ", " + privacy + ");")
         if (!err) {
             console.log('Inserted');
