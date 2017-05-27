@@ -17,9 +17,9 @@ exports.login = function (request, response) {
     global.connection.query(query, function (err, rows, fields) {
         if (!err) {
             if (rows[0].value == 0) {
-                global.request("https://wevents.herokuapp.com/login").pipe(response);
+                request.redirect("https://wevents.herokuapp.com/login");
             } else {
-                global.request("https://wevents.herokuapp.com/portal").pipe(response);
+                request.redirect("https://wevents.herokuapp.com/portal");
             }
         } else {
             console.log('Error while performing Query.', err);
