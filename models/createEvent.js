@@ -27,7 +27,8 @@ exports.createEvent = function (request, response) {
     var queryInsert2 = "INSERT INTO Localidade (morada, cidade, pais) VALUES (" + address + ", " + city + ", " + country + ");";
     var querySelect = 'SELECT id_data_hora FROM Data_Hora ORDER BY id_data_hora DESC LIMIT 1;';
     var querySelect2 = 'SELECT id_localidade FROM Localidade ORDER BY id_localidade DESC LIMIT 1;';
-    var tempData;
+    var tempDataHora;
+    var tempLocalidade;
     global.connection.query(queryInsert, function (err, rows, fields) {
         if (!err) {
             console.log('Inserted');
