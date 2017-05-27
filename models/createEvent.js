@@ -45,7 +45,7 @@ exports.createEvent = function (request, response) {
     global.connection.query('SELECT * FROM Data_Hora;', function (err, rows, fields) {
         if (!err) {
             tempData2 = rows;
-            console.log(tempData.id_data_hora, tempData2)
+            console.log(tempData[0].id_data_hora, tempData2)
         } else {
             console.log('Error while performing Query.', err);
         }
