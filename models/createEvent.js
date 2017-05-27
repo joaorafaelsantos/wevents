@@ -24,7 +24,7 @@ exports.createEvent = function (request, response) {
     var privacy = global.connection.escape(request.body.optRadio);
 
     var queryInsert = "INSERT INTO Data_Hora (data_desc, hora) VALUES ('" + date + "', '" + hour + "');";
-    var queryInsert2 = "INSERT INTO Localidade (morada, cidade, pais) VALUES ('" + address + "', '" + city + "', '" + country + "');";
+    var queryInsert2 = "INSERT INTO Localidade (morada, cidade, pais) VALUES (" + address + ", " + city + ", " + country + ");";
     var querySelect = 'SELECT id_data_hora FROM Data_Hora ORDER BY id_data_hora DESC LIMIT 1;';
     var querySelect2 = 'SELECT id_localidade FROM Localidade ORDER BY id_localidade DESC LIMIT 1;';
     var dataQuery = [];
@@ -54,14 +54,14 @@ exports.createEvent = function (request, response) {
         });
         global.connection.query(querySelect2, function (err, rows, fields) {
             if (!err) {
-                var tempData = rows;
+                tempData = rows;
                 dataQuery.push(tempData);
             } else {
                 console.log('Error while performing Query.', err);
             }
         });
  //console.log(name, date, hour, address, city, country, typeEvent, privacy);
-    var queryInsertEvent = "INSERT INTO Evento nome_evento, id_localidade, id_data_hora, id_categoria, privacidade) VALUES ('" + name + "', " + dataQuery[1].tempData[0].id_localidade + ", '" + dataQuery[0].tempData[0].id_data_hora + "', " + typeEvent + ", " + privacy + ");";
+    //var queryInsertEvent = "INSERT INTO Evento nome_evento, id_localidade, id_data_hora, id_categoria, privacidade) VALUES ('" + name + "', " + dataQuery[1].tempData[0].id_localidade + ", '" + dataQuery[0].tempData[0].id_data_hora + "', " + typeEvent + ", " + privacy + ");";
     console.log(queryInsertEvent);
     global.connection.query(queryInsertEvent, function (err, rows, fields) {
         if (!err) {
