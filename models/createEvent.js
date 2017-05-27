@@ -23,33 +23,45 @@ exports.createEvent = function (request, response) {
     var typeEvent = global.connection.escape(request.body.selEvent);
     var privacy = global.connection.escape(request.body.optRadio);
     //console.log(name, date, hour, address, city, country, typeEvent, privacy);
-    var querys = [];
-    // var query = "INSERT INTO Data_Hora (data_desc, hora) VALUES (" + date + ", " + hour + ");";
-    // var query2 = "INSERT INTO Localidade (morada, cidade, pais) VALUES (" + address + ", " + city + ", " + country +");";
+    var querysInsert = [];
+    var queryInsert = "INSERT INTO Data_Hora (data_desc, hora) VALUES (" + date + ", " + hour + ");";
+    var queryInsert2 = "INSERT INTO Localidade (morada, cidade, pais) VALUES (" + address + ", " + city + ", " + country + ");";
+    querysInsert.push(queryInsert, queryInsert2);
+    var querySelect = [];
+    var querySelect = 'SELECT id_data_hora FROM Data_Hora ORDER BY id_data_hora DESC LIMIT 1;';
+    var querySelect2 = 'SELECT id_localidade FROM Localidade ORDER BY id_localidade DESC LIMIT 1;';
+    querysSelect.push(querySelect, querySelect2);
+
     // var query3 = "INSERT INTO Evento nome_evento, id_localidade, id_data_hora, id_categoria, privacidade) VALUES (" + nome_evento + ", " + city + ", " + country +");";
     // nome_evento,localidade,data,tipo_evento,privacidade_evento,img_evento);
     // query.push(query, query2, query3);
-    // for (var i = 0; i < 3; i++) {
+    var dataQuery = [];
+    for (var i = 0; i < 2; i++) {
+        global.connection.query(queryInsert[0], function (err, rows, fields) {
+            if (!err) {
+                console.log('Inserted');
+            } else {
+                console.log('Error while performing Query.', err);
+            }
+        });
+        global.connection.query(querySelect[0], function (err, rows, fields) {
+            if (!err) {
+                var tempData = rows;
+                dataQuery.push(tempData);
+            } else {
+                console.log('Error while performing Query.', err);
+            }
+        });
+    } //console.log(name, date, hour, address, city, country, typeEvent, privacy);
+    var queryInsertEvent = "INSERT INTO Evento nome_evento, id_localidade, id_data_hora, id_categoria, privacidade) VALUES (" + name + ", " + dataQuery[1].tempData[0].id_localidade + ", " + dataQuery[0].tempData[0].id_data_hora + ", " + typeEvent + ", " + privacy + ");";
+    global.connection.query(queryInsertEvent, function (err, rows, fields) {
+        if (!err) {
+            console.log('Inserted');
+        } else {
+            console.log('Error while performing Query.', err);
+        }
+    });
 
-    // }
-    var tempData;
-    var tempData2;
-    global.connection.query('SELECT id_data_hora FROM Data_Hora ORDER BY id_data_hora DESC LIMIT 1;', function (err, rows, fields) {
-        if (!err) {
-            tempData = rows;
-            console.log(tempData)
-        } else {
-            console.log('Error while performing Query.', err);
-        }
-    });
-    global.connection.query('SELECT * FROM Data_Hora;', function (err, rows, fields) {
-        if (!err) {
-            tempData2 = rows;
-            console.log(tempData[0].id_data_hora, tempData2)
-        } else {
-            console.log('Error while performing Query.', err);
-        }
-    });
 
 
     "SELECT id_data_hora FROM Data_Hora ORDER BY id_data_hora DESC LIMIT 1;"
