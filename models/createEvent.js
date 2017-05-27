@@ -39,7 +39,6 @@ exports.createEvent = function (request, response) {
     global.connection.query(querySelect, function (err, rows, fields) {
         if (!err) {
             tempDataHora = rows[0].id_data_hora
-            console.log(tempDataHora)
         } else {
             console.log('Error while performing Query.', err);
         }
@@ -55,20 +54,19 @@ exports.createEvent = function (request, response) {
     global.connection.query(querySelect2, function (err, rows, fields) {
         if (!err) {
             tempLocalidade = rows[0].id_localidade
-            console.log(tempLocalidade)
         } else {
             console.log('Error while performing Query.', err);
         }
     });
-    // var queryInsertEvent = "INSERT INTO Evento nome_evento, id_localidade, id_data_hora, id_categoria, privacidade) VALUES ('" + name + "', " + dataQuery[1].tempData[0].id_localidade + ", '" + dataQuery[0].tempData[0].id_data_hora + "', " + typeEvent + ", " + privacy + ");";
-    // console.log(queryInsertEvent);
-    // global.connection.query(queryInsertEvent, function (err, rows, fields) {
-    //     if (!err) {
-    //         console.log('Inserted');
-    //     } else {
-    //         console.log('Error while performing Query.', err);
-    //     }
-    // });
+    var queryInsertEvent = "INSERT INTO Evento nome_evento, id_localidade, id_data_hora, id_categoria, privacidade) VALUES ('" + name + "', " + tempLocalidade + ", '" + tempDataHora + "', " + typeEvent + ", " + privacy + ");";
+    console.log(queryInsertEvent);
+    global.connection.query(queryInsertEvent, function (err, rows, fields) {
+        if (!err) {
+            console.log('Inserted');
+        } else {
+            console.log('Error while performing Query.', err);
+        }
+    });
 
 
 
