@@ -2,15 +2,21 @@
 
 var exports = module.exports = {};
 
-exports.bodyParser = function() {
+exports.bodyParser = function () {
     global.app.use(global.bodyParser.urlencoded({
         extended: true
     }));
 }
 
 exports.createEvent = function (request, response) {
-
-    response.send('You sent the name "' + request.body.date + '".');
+    var name = request.body.name;
+    var date = request.body.date;
+    var address = request.body.address;
+    var city = request.body.city;
+    var country = request.body.country;
+    var typeEvent = request.body.selEvent;
+    var privacy = request.body.optradio;
+    response.send(name, date, address, city, country, typeEvent, privacy);
 
     // connection.connection();
 
