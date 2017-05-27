@@ -4,7 +4,7 @@ var exports = module.exports = {};
 
 exports.createEvent = function (request, response) {
 
-    response.send('You sent the name "' + request.body + '".');
+    response.send('You sent the name "' + request.body.name + '".');
 
     // connection.connection();
 
