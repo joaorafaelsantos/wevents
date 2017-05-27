@@ -1,5 +1,6 @@
 mysql = require('mysql');
 express = require('express');
+bodyParser = require('body-parser');
 http = require('http');
 request = require('request');
 app = express();
