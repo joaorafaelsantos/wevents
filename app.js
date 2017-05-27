@@ -1,5 +1,7 @@
 mysql = require('mysql');
 express = require('express');
+multer  = require('multer')
+upload = multer({ dest: 'uploads/' })
 bodyParser = require('body-parser');
 http = require('http');
 request = require('request');
