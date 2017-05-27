@@ -60,7 +60,7 @@ exports.createEvent = function (request, response) {
     });
 
     global.connection.query(queryInsertEvent, function (err, rows, fields) {
-        var queryInsertEvent = "INSERT INTO Evento nome_evento, id_localidade, id_data_hora, id_categoria, privacidade) VALUES ('" + name + "', " + tempLocalidade + ", '" + tempDataHora + "', " + typeEvent + ", " + privacy + ");";
+        var queryInsertEvent = "INSERT INTO Evento nome_evento, id_localidade, id_data_hora, id_categoria, privacidade) VALUES (" + name + ", " + tempLocalidade + ", '" + tempDataHora + "', " + typeEvent + ", " + privacy + ");";
         console.log(queryInsertEvent);
         if (!err) {
             console.log('Inserted');
