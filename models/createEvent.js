@@ -26,7 +26,7 @@ exports.createEvent = function (request, response) {
     var querysInsert = [];
     var queryInsert = "INSERT INTO Data_Hora (data_desc, hora) VALUES ('" + date + "', '" + hour + "');";
     console.log(queryInsert);
-    var queryInsert2 = "INSERT INTO Localidade (morada, cidade, pais) VALUES (" + address + ", " + city + ", " + country + ");";
+    var queryInsert2 = "INSERT INTO Localidade (morada, cidade, pais) VALUES ('" + address + "', '" + city + "', '" + country + "');";
     querysInsert.push(queryInsert, queryInsert2);
     var querysSelect = [];
     var querySelect = 'SELECT id_data_hora FROM Data_Hora ORDER BY id_data_hora DESC LIMIT 1;';
