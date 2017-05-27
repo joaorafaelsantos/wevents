@@ -16,11 +16,11 @@ exports.login = function (request, response) {
 
     global.connection.query(query, function (err, rows, fields) {
         if (!err) {
-            // if (rows[0].value == 0) {
-            //     request.redirect("https://wevents.herokuapp.com/login");
-            // } else {
-            //     request.redirect("https://wevents.herokuapp.com/portal");
-            // }
+            if (rows[0].value == 0) {
+                request.redirect("https://wevents.herokuapp.com/login");
+            } else {
+                request.redirect("https://wevents.herokuapp.com/portal");
+            }
         } else {
             console.log('Error while performing Query.', err);
         }
