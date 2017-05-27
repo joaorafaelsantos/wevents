@@ -2,9 +2,9 @@
 
 var exports = module.exports = {};
 
-exports.createEvents = function (request, response) {
+exports.createEvent = function (request, response) {
 
-    response.send('You sent the name "' + request.body.name + '".');
+    response.send('You sent the name "' + request.body + '".');
 
     // connection.connection();
 

@@ -1,5 +1,5 @@
 var loadEvents = require("../models/loadEvents.js");
-var createEvents = require("../models/createEvents.js");
+var createEvent = require("../models/createEvent.js");
 
 var exports = module.exports = {};
 
@@ -9,6 +9,8 @@ exports.init = function () {
         extended: true
     }));
 
+    global.app.use(global.bodyParser.json());
+
     global.app.get('/', function (req, res) {
         global.request("https://webitcloud.net/PW/1617/JAF/App/views/index.html").pipe(res);
     });
@@ -17,8 +19,8 @@ exports.init = function () {
         loadEvents.loadEvents(res);
     });
 
-    global.app.post('/createEvents', function (req, res) {
-        createEvents.createEvents(req, res);
+    global.app.post('/createEvent', function (req, res) {
+        createEvent.createEvent(req, res);
     });
 
     global.app.get('*', function (req, res) {
