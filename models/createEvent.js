@@ -25,6 +25,7 @@ exports.createEvent = function (request, response) {
     //console.log(name, date, hour, address, city, country, typeEvent, privacy);
     var querysInsert = [];
     var queryInsert = "INSERT INTO Data_Hora (data_desc, hora) VALUES (" + date + ", " + hour + ");";
+    console.log(queryInsert);
     var queryInsert2 = "INSERT INTO Localidade (morada, cidade, pais) VALUES (" + address + ", " + city + ", " + country + ");";
     querysInsert.push(queryInsert, queryInsert2);
     var querysSelect = [];
@@ -35,27 +36,27 @@ exports.createEvent = function (request, response) {
     // var query3 = "INSERT INTO Evento nome_evento, id_localidade, id_data_hora, id_categoria, privacidade) VALUES (" + nome_evento + ", " + city + ", " + country +");";
     // nome_evento,localidade,data,tipo_evento,privacidade_evento,img_evento);
     // query.push(query, query2, query3);
-    var dataQuery = [];
-    for (var i = 0; i < 2; i++) {
-        global.connection.query(queryInsert[0], function (err, rows, fields) {
-            if (!err) {
-                console.log('Inserted');
-            } else {
-                console.log('Error while performing Query.', err);
-            }
-            console.log(dataQuery)
-        });
-        global.connection.query(querySelect[0], function (err, rows, fields) {
-            if (!err) {
-                var tempData = rows;
-                dataQuery.push(tempData);
-            } else {
-                console.log('Error while performing Query.', err);
-            }
-            console.log(dataQuery)
-        });
+    // var dataQuery = [];
+    // for (var i = 0; i < 2; i++) {
+    //     global.connection.query(queryInsert[0], function (err, rows, fields) {
+    //         if (!err) {
+    //             console.log('Inserted');
+    //         } else {
+    //             console.log('Error while performing Query.', err);
+    //         }
+    //         console.log(dataQuery)
+    //     });
+    //     global.connection.query(querySelect[0], function (err, rows, fields) {
+    //         if (!err) {
+    //             var tempData = rows;
+    //             dataQuery.push(tempData);
+    //         } else {
+    //             console.log('Error while performing Query.', err);
+    //         }
+    //         console.log(dataQuery)
+    //     });
         
-    } //console.log(name, date, hour, address, city, country, typeEvent, privacy);
+    // } //console.log(name, date, hour, address, city, country, typeEvent, privacy);
     // var queryInsertEvent = "INSERT INTO Evento nome_evento, id_localidade, id_data_hora, id_categoria, privacidade) VALUES (" + name + ", " + dataQuery[1].tempData[0].id_localidade + ", " + dataQuery[0].tempData[0].id_data_hora + ", " + typeEvent + ", " + privacy + ");";
     // global.connection.query(queryInsertEvent, function (err, rows, fields) {
     //     if (!err) {
