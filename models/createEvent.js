@@ -10,7 +10,7 @@ exports.bodyParser = function() {
 
 exports.createEvent = function (request, response) {
 
-    response.send('You sent the name "' + request.body.name + '".');
+    response.send('You sent the name "' + request.body.date + '".');
 
     // connection.connection();
 
