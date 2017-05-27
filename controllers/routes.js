@@ -1,7 +1,7 @@
 var loadEvents = require("../models/loadEvents.js");
 var createEvent = require("../models/createEvent.js");
-var createEvent = require("../models/login.js");
-var createEvent = require("../models/createUser.js");
+var login = require("../models/login.js");
+var createUser = require("../models/createUser.js");
 
 var exports = module.exports = {};
 
