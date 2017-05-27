@@ -28,6 +28,7 @@ exports.createEvent = function (request, response) {
     var querySelect = 'SELECT id_data_hora FROM Data_Hora ORDER BY id_data_hora DESC LIMIT 1;';
     var querySelect2 = 'SELECT id_localidade FROM Localidade ORDER BY id_localidade DESC LIMIT 1;';
     var dataQuery = [];
+    var tempData;
         global.connection.query(queryInsert, function (err, rows, fields) {
             if (!err) {
                 console.log('Inserted');
@@ -37,7 +38,7 @@ exports.createEvent = function (request, response) {
         });
         global.connection.query(querySelect, function (err, rows, fields) {
             if (!err) {
-                var tempData = rows;
+                tempData = rows;
                 dataQuery.push(tempData);
             } else {
                 console.log('Error while performing Query.', err);
