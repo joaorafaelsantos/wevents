@@ -13,21 +13,15 @@ exports.init = function () {
         global.request("https://webitcloud.net/PW/1617/JAF/App/views/index.html").pipe(res);
     });
 
-    // load login page
-
-    global.app.post('/loadLoginPage', function (req, res) {
-        global.request("https://webitcloud.net/PW/1617/JAF/App/views/pages/login/login.html").pipe(res);
-    });
-
     // api
     global.app.post('/', function (req, res) {
         loadEvents.loadEvents(res);
     });
 
     // check login ***
-    global.app.post('/checkLogin', function (req, res) {
-        login.login(req, res);
-    });
+    // global.app.post('/login', function (req, res) {
+    //     login.login(req, res);
+    // });
 
     // create user ***
     global.app.post('/createUser', function (req, res) {
