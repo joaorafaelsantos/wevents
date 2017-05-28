@@ -15,10 +15,7 @@ exports.login = function (request, response, auth) {
     global.auth = false;
     global.connection.query(query, function (err, rows, fields) {
         if (!err) {
-            if (rows[0].value == 0) {
-                global.request("https://wevents.herokuapp.com").pipe(response);
-            } else {
-                //global.request("https://webitcloud.net/PW/1617/JAF/App/views/main.html").pipe(response);
+            if (rows[0].value != 0) {
                 global.auth = true;
             }
         } else {
