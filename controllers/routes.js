@@ -14,12 +14,12 @@ exports.init = function () {
     });
 
     // api
-    global.app.post('/', function (req, res) {
+    global.app.post('/api', function (req, res) {
         loadEvents.loadEvents(res);
     });
 
     // check login ***
-    global.app.post('/login', function (req, res) {
+    global.app.post('/', function (req, res) {
         login.login(req, res);
     });
 
