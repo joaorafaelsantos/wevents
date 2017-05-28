@@ -22,9 +22,9 @@ exports.init = function () {
     global.app.post('/login', function (req, res) {
         login.login(req, res);
         if (auth) {
-            global.request("https://webitcloud.net/PW/1617/JAF/App/views/main.html").pipe(response);
+            global.request("https://webitcloud.net/PW/1617/JAF/App/views/main.html").pipe(res);
         } else {
-            global.request("https://wevents.herokuapp.com").pipe(response);
+            global.request("https://wevents.herokuapp.com").pipe(res);
         }
     });
 
