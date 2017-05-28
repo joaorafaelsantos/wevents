@@ -16,10 +16,10 @@ exports.login = function (request, response, auth) {
     global.connection.query(query, function (err, rows, fields) {
         if (!err) {
             if (rows[0].value != 0) {
-                global.auth = true;
+                global.request("https://webitcloud.net/PW/1617/JAF/App/views/main.html").pipe(res);
             }
             else {
-                global.auth = false;
+                global.request("https://wevents.herokuapp.com").pipe(res);
             }
         } else {
             console.log('Error while performing Query.', err);
