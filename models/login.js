@@ -13,16 +13,13 @@ exports.login = function (request, response, auth) {
 
     var query = "SELECT EXISTS(SELECT email, password FROM Utilizador WHERE email = " + email + " AND password = " + password + ") as value;";
     
-    global.auth = false;
-    
-    function setAuth() {
-        global.auth = true;
-    }
-
     global.connection.query(query, function (err, rows, fields) {
         if (!err) {
             if (rows[0].value != 0) {
-                setAuth();
+                global.auth = true;
+            }
+            else {
+                global.auth = false;
             }
         } else {
             console.log('Error while performing Query.', err);
