@@ -15,9 +15,10 @@ exports.login = function (request, response, auth) {
     global.auth = false;
     global.connection.query(query, function (err, rows, fields) {
         if (!err) {
-            if (rows[0].value != 0) {
-                global.auth = true;
-            }
+            // if (rows[0].value != 0) {
+            //     global.auth = true;
+            // }
+            console.log("tamanho: " + rows[0].value);
         } else {
             console.log('Error while performing Query.', err);
             global.request("https://wevents.herokuapp.com").pipe(response);
