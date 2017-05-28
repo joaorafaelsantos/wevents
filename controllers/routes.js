@@ -19,10 +19,9 @@ exports.init = function () {
     });
 
     // check login ***
-    var auth;
     global.app.post('/login', function (req, res) {
         login.login(req, res);
-        console.log("Auth é: " + auth);
+        console.log("Auth é: " + global.auth);
     });
 
     // create user ***
