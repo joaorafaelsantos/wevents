@@ -19,9 +19,10 @@ exports.init = function () {
     });
 
     // check login ***
-    // global.app.post('/login', function (req, res) {
-    //     login.login(req, res);
-    // });
+    global.app.post('/login', function (req, res) {
+        login.login(req, res);
+        console.log(auth)
+    });
 
     // create user ***
     global.app.post('/createUser', function (req, res) {
