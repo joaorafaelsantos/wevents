@@ -7,36 +7,39 @@ var exports = module.exports = {};
 
 exports.init = function () {
 
-    // Load homepage
+    // load homepage
 
     global.app.get('/', function (req, res) {
         global.request("https://webitcloud.net/PW/1617/JAF/App/views/index.html").pipe(res);
     });
 
-    // Load login page
+    // load login page
 
     global.app.post('/loadLoginPage', function (req, res) {
         global.request("https://webitcloud.net/PW/1617/JAF/App/views/pages/login/login.html").pipe(res);
     });
 
-    // API
+    // api
     global.app.post('/', function (req, res) {
         loadEvents.loadEvents(res);
     });
 
-    //
+    // check login ***
     global.app.post('/checkLogin', function (req, res) {
         login.login(req, res);
     });
 
+    // create user ***
     global.app.post('/createUser', function (req, res) {
         createUser.createUser();
     });
 
+    // create event *** 
     global.app.post('/createEvent', function (req, res) {
         createEvent.createEvent(req, res);
     });
 
+    // 404 error handler
     global.app.get('*', function (req, res) {
         global.request("https://webitcloud.net/PW/1617/JAF/App/views/pages/errors/404.html").pipe(res);
     });
