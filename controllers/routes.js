@@ -22,7 +22,7 @@ exports.init = function () {
     var auth;
     global.app.post('/login', function (req, res, auth) {
         login.login(req, res);
-        console.log(auth);
+        console.log("Auth é: " + auth);
     });
 
     // create user ***
