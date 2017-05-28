@@ -11,8 +11,6 @@ exports.login = function (request, response, auth) {
     var email = global.connection.escape(request.body.email);
     var password = global.connection.escape(request.body.password);
 
-    console.log(email, password)
-
     var query = "SELECT EXISTS(SELECT email, password FROM Utilizador WHERE email = " + email + " AND password = " + password + ") as value;";
     global.auth = false;
     global.connection.query(query, function (err, rows, fields) {
