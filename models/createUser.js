@@ -19,8 +19,10 @@ exports.createUser = function (request, response) {
     global.connection.query(query, function (err, rows, fields) {
         if (!err) {
             console.log('Inserted');
+            global.request("https://wevents.herokuapp.com/portal").pipe(response);
         } else {
             console.log('Error while performing Query.', err);
+            global.request("https://wevents.herokuapp.com").pipe(response);
         }
     });
 };
