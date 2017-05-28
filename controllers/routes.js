@@ -16,7 +16,7 @@ exports.init = function () {
     // Load login page
 
     global.app.post('/loadLoginPage', function (req, res) {
-        global.request("https://webitcloud.net/PW/1617/JAF/App/views/pages/login/login.html").pipe(response);
+        global.request("https://webitcloud.net/PW/1617/JAF/App/views/pages/login/login.html").pipe(res);
     });
 
     // API
