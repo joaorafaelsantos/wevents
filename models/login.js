@@ -12,14 +12,13 @@ exports.login = function (request, response, auth) {
     var password = global.connection.escape(request.body.password);
 
     var query = "SELECT EXISTS(SELECT email, password FROM Utilizador WHERE email = " + email + " AND password = " + password + ") as value;";
-    
+
     global.connection.query(query, function (err, rows, fields) {
         if (!err) {
             if (rows[0].value != 0) {
-                global.request("https://webitcloud.net/PW/1617/JAF/App/views/main.html").pipe(res);
-            }
-            else {
-                global.request("https://wevents.herokuapp.com").pipe(res);
+                global.request("https://webitcloud.net/PW/1617/JAF/App/views/main.html").pipe(response);
+            } else {
+                global.request("https://wevents.herokuapp.com").pipe(response);
             }
         } else {
             console.log('Error while performing Query.', err);
