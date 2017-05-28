@@ -17,7 +17,6 @@ exports.login = function (request, response, auth) {
     global.auth = false;
     global.connection.query(query, function (err, rows, fields) {
         if (!err) {
-            console.log("tamanho" + rows[0].value)
             if (rows[0].value != 0) {
                 global.auth = true;
             }
