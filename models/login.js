@@ -10,14 +10,13 @@ exports.login = function (request, response, auth) {
 
     var email = global.connection.escape(request.body.email);
     var password = global.connection.escape(request.body.password);
-    console.log(email, password);
 
     var query = "SELECT EXISTS(SELECT email, password FROM Utilizador WHERE email = " + email + " AND password = " + password + ") as value;";
 
     global.connection.query(query, function (err, rows, fields) {
         if (!err) {
             if (rows[0].value != 0) {
-                global.request("https://webitcloud.net/PW/1617/JAF/App/views/main.html").pipe(response);
+                response.send("success");
             } else {
                 response.send("fail");
             }
