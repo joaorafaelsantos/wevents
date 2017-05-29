@@ -9,7 +9,7 @@ port = process.env.PORT || 3000;
 
 global.app.use(cookieSession({
     name: 'session',
-    keys: [ /* secret keys */ ],
+    keys: [keys[0]],
 
     // Cookie Options
     maxAge: 24 * 60 * 60 * 1000 // 24 hours
