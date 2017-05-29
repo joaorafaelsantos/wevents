@@ -9,8 +9,6 @@ exports.init = function () {
 
     global.app.use(cookieSession({
         name: 'session',
-        keys: [keys[0]],
-
         // Cookie Options
         maxAge: 24 * 60 * 60 * 1000 // 24 hours
     }))
