@@ -17,6 +17,8 @@ exports.login = function (request, response, auth) {
         if (!err) {
             if (rows[0].value != 0) {
                 response.send("success");
+                req.session.user = email;
+                req.session.password = password;
             } else {
                 response.send("fail");
             }
