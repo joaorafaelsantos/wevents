@@ -13,6 +13,11 @@ exports.init = function () {
         global.request("https://webitcloud.net/PW/1617/JAF/App/views/index.html").pipe(res);
     });
 
+    // load portal
+    global.app.get('/portal', function (req, res) {
+        global.request("https://webitcloud.net/PW/1617/JAF/App/views/main.html").pipe(res);
+    });
+
     // api
     global.app.post('/api', function (req, res) {
         loadEvents.loadEvents(res);
