@@ -18,7 +18,7 @@ exports.login = function (request, response, auth) {
             if (rows[0].value != 0) {
                 global.request("https://webitcloud.net/PW/1617/JAF/App/views/main.html").pipe(response);
             } else {
-                global.request("https://wevents.herokuapp.com").pipe(response);
+                response.send("fail");
             }
         } else {
             console.log('Error while performing Query.', err);
