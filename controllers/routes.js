@@ -16,7 +16,9 @@ exports.init = function () {
     // load portal
     global.app.post('/portal', function (req, res) {
         // global.request("https://webitcloud.net/PW/1617/JAF/App/views/main.html").pipe(res);
-        res.send("<h1>teste</h1>");
+
+        var content = "    <link rel='stylesheet' href='https://webitcloud.net/PW/1617/JAF/App/views/assets/common/css/main/createEvent.css'></head><body><nav class='navbar navbar-we navbar-fixed-top'><div class='container-fluid'><div class='navbar-header'><button id='btnToggle' class='navbar-toggle collapsed pull-left' type='button' data-toggle='collapse'><span class='sr-only'>Toggle navigation</span><span class='icon-bar top-bar'></span><span class='icon-bar middle-bar'></span><span class='icon-bar bottom-bar'></span></button><div class='navbar-brand navbar-right'><a class='' href='#'><img class='' alt='Brand' src='https://webitcloud.net/PW/1617/JAF/App/views/assets/common/img/logo/logo.svg'></a></div></div></nav></body>"
+        res.send(content);
     });
 
     // api
