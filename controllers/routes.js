@@ -16,7 +16,8 @@ exports.init = function () {
     // load portal
     global.app.post('/portal', function (req, res) {
         var content = global.request("https://webitcloud.net/PW/1617/JAF/App/views/main.html").pipe(res);
-        res.send(content.toString());
+        console.log(content.toString());
+        // res.send(content.toString());
     });
 
     // api
