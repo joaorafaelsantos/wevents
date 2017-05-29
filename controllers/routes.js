@@ -26,7 +26,8 @@ exports.init = function () {
         if (req.session.user != undefined && req.session.password != undefined) {
             global.request("https://webitcloud.net/PW/1617/JAF/App/views/main.html").pipe(res);
         } else {
-            global.request("https://wevents.herokuapp.com").pipe(res);
+            res.send('not auth');
+            res.status(403).send('Forbidden');
         }
     });
 
