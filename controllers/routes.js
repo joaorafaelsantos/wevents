@@ -19,14 +19,15 @@ exports.init = function () {
 
     global.app.get('/', function (req, res) {
         global.request("https://webitcloud.net/PW/1617/JAF/App/views/index.html").pipe(res);
-        console.log(req.session.user);
     });
 
     // load portal
     global.app.get('/portal', function (req, res) {
-        //global.request("https://webitcloud.net/PW/1617/JAF/App/views/main.html").pipe(res);
-        // Update views
-        console.log(req.session.user);
+        if (req.session.user != undefined && req.session.password != undefined) {
+            global.request("https://webitcloud.net/PW/1617/JAF/App/views/main.html").pipe(res);
+        } else {
+            global.request("https://wevents.herokuapp.com").pipe(res);
+        }
     });
 
     // api
