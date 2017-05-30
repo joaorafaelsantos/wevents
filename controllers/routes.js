@@ -15,6 +15,7 @@ exports.init = function () {
 
     // load portal
     global.app.get('/portal', function (req, res) {
+        console.log("user: " + req.session.user + " password: " + req.session.password);
         // if (req.session.user != undefined && req.session.password != undefined) {
         //     global.request("https://webitcloud.net/PW/1617/JAF/App/views/main.html").pipe(res);
         // } else {
