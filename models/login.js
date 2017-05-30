@@ -22,7 +22,7 @@ exports.login = function (request, response) {
                 request.session.password = password;
                 request.session.key = "*\~/*" + email + "*\./*" + password + "*\|/*" + password.length + "*\%/*" + email.length + "*\}/*" + "tsiw_2017" + "*\ª/*"
                 //response.send("success");
-                return response.redirect('https://webitcloud.net/PW/1617/JAF/App/views/main.html');
+                response.redirect('https://webitcloud.net/PW/1617/JAF/App/views/main.html');
             } else {
                 response.send("fail");
             }
