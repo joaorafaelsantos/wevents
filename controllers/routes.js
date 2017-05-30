@@ -30,7 +30,7 @@ exports.init = function () {
 
     // check permission
     global.app.post('/checkPermission', function (req, res) {
-        console.log(req.body.data);
+        console.log(req.body.url);
     });
 
     // api
