@@ -9,8 +9,7 @@ exports.init = function () {
 
     // load homepage
     global.app.get('/', function (req, res) {
-        // global.request("https://webitcloud.net/PW/1617/JAF/App/views/index.html").pipe(res);
-        res.redirect('https://webitcloud.net/PW/1617/JAF/App/views/index.html');
+        global.request("https://webitcloud.net/PW/1617/JAF/App/views/index.html").pipe(res);
     });
 
     // load portal
