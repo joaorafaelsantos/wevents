@@ -30,6 +30,11 @@ exports.init = function () {
         }
     });
 
+    // check permission
+    global.app.post('/checkPermission', function (req, res) {
+        console.log(req.body);
+    });
+
     // api
     global.app.post('/api', function (req, res) {
         loadEvents.loadEvents(res);
