@@ -35,8 +35,7 @@ exports.init = function () {
     // check login ***
     global.app.post('/', function (req, res) {
         login.login(req, res);
-        console.log("res" + res);
-        console.log("req" + req);
+        console.log("user," + req.session.user + ", password," + req.session.password);
     });
 
     // create user ***
