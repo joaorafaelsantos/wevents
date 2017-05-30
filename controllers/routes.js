@@ -18,7 +18,6 @@ exports.init = function () {
             var key = "*\~/*" + req.session.user + "*\./*" + req.session.password + "*\|/*" + req.session.password.length + "*\%/*" + req.session.user.length + "*\}/*" + "tsiw_2017" + "*\ª/*";
             if (req.session.key == key) {
                 global.request("https://webitcloud.net/PW/1617/JAF/App/views/main.html").pipe(res);
-                console.log(req.session);
             } else {
                 global.request("https://webitcloud.net/PW/1617/JAF/App/views/pages/errors/403.html").pipe(res);
             }
@@ -36,6 +35,11 @@ exports.init = function () {
     // check login ***
     global.app.post('/', function (req, res) {
         login.login(req, res);
+    });
+
+    global.app.post('/logout', function (req, res) {
+        res.session = null;
+        res.send("logout");
     });
 
     // create user ***
