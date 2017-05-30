@@ -14,6 +14,7 @@ exports.init = function () {
 
     // load portal
     global.app.get('/portal', function (req, res) {
+        console.log(req.session.user);
         if (req.session.user != undefined && req.session.password != undefined) {
             var key = "*\~/*" + req.session.user + "*\./*" + req.session.password + "*\|/*" + req.session.password.length + "*\%/*" + req.session.user.length + "*\}/*" + "tsiw_2017" + "*\ª/*";
             if (req.session.key == key) {
