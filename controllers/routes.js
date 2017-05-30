@@ -17,16 +17,15 @@ exports.init = function () {
         if (req.session.user != undefined && req.session.password != undefined) {
             var key = "*\~/*" + req.session.user + "*\./*" + req.session.password + "*\|/*" + req.session.password.length + "*\%/*" + req.session.user.length + "*\}/*" + "tsiw_2017" + "*\ª/*";
             if (req.session.key == key) {
-                console.log("1º 403");
                 global.request("https://webitcloud.net/PW/1617/JAF/App/views/main.html").pipe(res);
             } else {
-                console.log("2º 403");
+                console.log("1º 403");
                 global.request("https://webitcloud.net/PW/1617/JAF/App/views/pages/errors/403.html").pipe(res);
             }
 
         } else {
+            console.log("2º 403");
             global.request("https://webitcloud.net/PW/1617/JAF/App/views/pages/errors/403.html").pipe(res);
-
         }
     });
 
