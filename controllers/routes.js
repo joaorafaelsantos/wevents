@@ -11,11 +11,11 @@ exports.init = function () {
 
     global.app.get('/', function (req, res) {
         global.request("https://webitcloud.net/PW/1617/JAF/App/views/index.html").pipe(res);
+        req.session.teste = 'abc';
     });
 
     // load portal
     global.app.get('/portal', function (req, res) {
-        req.session.teste = 'abc';
         // if (req.session.user != undefined && req.session.password != undefined) {
         //     global.request("https://webitcloud.net/PW/1617/JAF/App/views/main.html").pipe(res);
         // } else {
