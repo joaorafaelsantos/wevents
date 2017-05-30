@@ -19,12 +19,10 @@ exports.init = function () {
             if (req.session.key == key) {
                 global.request("https://webitcloud.net/PW/1617/JAF/App/views/main.html").pipe(res);
             } else {
-                console.log("1º 403");
                 global.request("https://webitcloud.net/PW/1617/JAF/App/views/pages/errors/403.html").pipe(res);
             }
 
         } else {
-            console.log("2º 403");
             global.request("https://webitcloud.net/PW/1617/JAF/App/views/pages/errors/403.html").pipe(res);
         }
     });
