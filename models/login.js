@@ -18,7 +18,7 @@ exports.login = function (request, response) {
     global.connection.query(query, function (err, rows, fields) {
         if (!err) {
             if (rows[0].value != 0) {
-                response.send("success");
+                //response.send("success");
                 request.session.user = email;
                 request.session.password = password;
             } else {
