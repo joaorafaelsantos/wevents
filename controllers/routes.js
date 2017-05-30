@@ -28,14 +28,6 @@ exports.init = function () {
         }
     });
 
-    // check permission
-    global.app.post('/checkPermission', function (req, res) {
-        var url = req.body.url;
-        if (url != "https://wevents.herokuapp.com/portal") {
-            global.request("https://webitcloud.net/PW/1617/JAF/App/views/pages/errors/403.html").pipe(res);
-        }
-    });
-
     // api
     global.app.post('/api', function (req, res) {
         loadEvents.loadEvents(res);
