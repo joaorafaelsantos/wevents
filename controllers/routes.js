@@ -23,7 +23,8 @@ exports.init = function () {
             }
 
         } else {
-            global.request("https://webitcloud.net/PW/1617/JAF/App/views/pages/errors/403.html").pipe(res);
+            //global.request("https://webitcloud.net/PW/1617/JAF/App/views/pages/errors/403.html").pipe(res);
+            res.send("403");
         }
     });
 
