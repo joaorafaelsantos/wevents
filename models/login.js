@@ -1,9 +1,11 @@
 var connection = require("../models/connection.js");
 var bodyParser = require("../models/bodyParser.js");
+var cookieSession = require("../models/cookieSession.js");
 
 var exports = module.exports = {};
 
 bodyParser.bodyParser();
+cookieSession.cookieSession();
 
 exports.login = function (request, response) {
     connection.connection();
