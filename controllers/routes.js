@@ -15,11 +15,10 @@ exports.init = function () {
     // load portal
     global.app.get('/portal', function (req, res) {
         if (req.session.user != undefined && req.session.password != undefined) {
-            console.log("entrei-1");
             var key = "*\~/*" + req.session.user + "*\./*" + req.session.password + "*\|/*" + req.session.password.length + "*\%/*" + req.session.user.length + "*\}/*" + "tsiw_2017" + "*\ª/*";
             if (req.session.key == key) {
                 global.request("https://webitcloud.net/PW/1617/JAF/App/views/main.html").pipe(res);
-                console.log(req.session.key.maxAge);
+                console.log(req.session.maxAge);
             } else {
                 global.request("https://webitcloud.net/PW/1617/JAF/App/views/pages/errors/403.html").pipe(res);
             }
