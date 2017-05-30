@@ -5,6 +5,6 @@ exports.cookieSession = function () {
         name: 'session',
         keys: ['key1', 'key2'],
         // Cookie Options
-        maxAge: 0.5 * 60 * 60 * 10000 // 30 minutes
+        maxAge: 1 * 60 * 60 * 1000 // 1 hour
     }));
 }
