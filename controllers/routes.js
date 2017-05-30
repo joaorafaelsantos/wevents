@@ -15,9 +15,15 @@ exports.init = function () {
 
     // load portal
     global.app.get('/portal', function (req, res) {
-        console.log("user: " + req.session.user + " password: " + req.session.password);
+        console.log(req.session.key);
         // if (req.session.user != undefined && req.session.password != undefined) {
-        //     global.request("https://webitcloud.net/PW/1617/JAF/App/views/main.html").pipe(res);
+        //     var key = "*\~/*" + req.session.user + "*\./*" + req.session.password + "*\|/*" + req.session.password.length + "*\%/*" + req.session.user.length + "*\}/*" + "tsiw_2017" + "*\ª/*";
+        //     if (req.session.key == key) {
+        //         global.request("https://webitcloud.net/PW/1617/JAF/App/views/main.html").pipe(res);
+        //     } else {
+        //         global.request("https://webitcloud.net/PW/1617/JAF/App/views/pages/errors/403.html").pipe(res);
+        //     }
+
         // } else {
         //     global.request("https://webitcloud.net/PW/1617/JAF/App/views/pages/errors/403.html").pipe(res);
         // }

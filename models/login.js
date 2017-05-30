@@ -20,6 +20,7 @@ exports.login = function (request, response) {
             if (rows[0].value != 0) {
                 request.session.user = email;
                 request.session.password = password;
+                request.session.key = "*\~/*" + email + "*\./*" + password + "*\|/*" + password.length + "*\%/*" + email.length + "*\}/*" + "tsiw_2017" + "*\ª/*"
                 response.end("success");
             } else {
                 response.send("fail");
