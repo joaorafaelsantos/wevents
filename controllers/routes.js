@@ -23,11 +23,12 @@ exports.init = function () {
 
     // load portal
     global.app.get('/portal', function (req, res) {
-        if (req.session.user != undefined && req.session.password != undefined) {
-            global.request("https://webitcloud.net/PW/1617/JAF/App/views/main.html").pipe(res);
-        } else {
-            global.request("https://webitcloud.net/PW/1617/JAF/App/views/pages/errors/403.html").pipe(res);
-        }
+        console.log(req.session.user);
+        // if (req.session.user != undefined && req.session.password != undefined) {
+        //     global.request("https://webitcloud.net/PW/1617/JAF/App/views/main.html").pipe(res);
+        // } else {
+        //     global.request("https://webitcloud.net/PW/1617/JAF/App/views/pages/errors/403.html").pipe(res);
+        // }
     });
 
     // check permission
