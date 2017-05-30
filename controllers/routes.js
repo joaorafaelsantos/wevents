@@ -26,8 +26,7 @@ exports.init = function () {
         if (req.session.user != undefined && req.session.password != undefined) {
             global.request("https://webitcloud.net/PW/1617/JAF/App/views/main.html").pipe(res);
         } else {
-            res.send('not auth');
-            res.status(403).send('Forbidden');
+            global.request("https://webitcloud.net/PW/1617/JAF/App/views/pages/errors/403.html").pipe(res);
         }
     });
 
