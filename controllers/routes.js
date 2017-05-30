@@ -11,7 +11,7 @@ exports.init = function () {
 
     global.app.get('/', function (req, res) {
         global.request("https://webitcloud.net/PW/1617/JAF/App/views/index.html").pipe(res);
-        req.session.teste = 'abc';
+        req.session = null;
     });
 
     // load portal
@@ -36,6 +36,8 @@ exports.init = function () {
     // check login ***
     global.app.post('/', function (req, res) {
         login.login(req, res);
+        console.log("res" + res);
+        console.log("req" + req);
     });
 
     // create user ***
