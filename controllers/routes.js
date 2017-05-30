@@ -19,7 +19,7 @@ exports.init = function () {
             var key = "*\~/*" + req.session.user + "*\./*" + req.session.password + "*\|/*" + req.session.password.length + "*\%/*" + req.session.user.length + "*\}/*" + "tsiw_2017" + "*\ª/*";
             if (req.session.key == key) {
                 global.request("https://webitcloud.net/PW/1617/JAF/App/views/main.html").pipe(res);
-                res.send(req.session.key.maxAge);
+                console.log(req.session.key.maxAge);
             } else {
                 global.request("https://webitcloud.net/PW/1617/JAF/App/views/pages/errors/403.html").pipe(res);
             }
