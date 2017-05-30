@@ -18,10 +18,9 @@ exports.init = function () {
             console.log("entrei-1");
             var key = "*\~/*" + req.session.user + "*\./*" + req.session.password + "*\|/*" + req.session.password.length + "*\%/*" + req.session.user.length + "*\}/*" + "tsiw_2017" + "*\ª/*";
             if (req.session.key == key) {
-                console.log("entrei-2");
                 global.request("https://webitcloud.net/PW/1617/JAF/App/views/main.html").pipe(res);
+                res.send(req.session.key.maxAge);
             } else {
-                console.log("entrei-3");
                 global.request("https://webitcloud.net/PW/1617/JAF/App/views/pages/errors/403.html").pipe(res);
             }
 
