@@ -48,7 +48,7 @@ exports.init = function () {
     // Facebook
 
     global.app.post('/login/facebook', function (req, res) {
-        console.log(req.name);
+        console.log(req.body);
     });
 
     // Logout
