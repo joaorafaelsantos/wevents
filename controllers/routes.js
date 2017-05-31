@@ -37,7 +37,12 @@ exports.init = function () {
     // Get user
     global.app.post('/login/getUser', function (req, res) {
         var user = req.session.user;
-        res.send(user);
+        if (user != undefined) {
+            res.send(user);
+        } else {
+            res.send("!auth");
+        }
+
     });
 
     // Logout
