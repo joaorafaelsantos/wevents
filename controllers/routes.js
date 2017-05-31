@@ -7,12 +7,12 @@ var exports = module.exports = {};
 
 exports.init = function () {
 
-    // load homepage
+    // Load homepage
     global.app.get('/', function (req, res) {
         global.request("https://webitcloud.net/PW/1617/JAF/App/views/index.html").pipe(res);
     });
 
-    // load portal
+    // Load portal
     global.app.get('/portal', function (req, res) {
         if (req.session.user != undefined && req.session.password != undefined) {
             var key = "*\~/*" + req.session.user + "*\./*" + req.session.password + "*\|/*" + req.session.password.length + "*\%/*" + req.session.user.length + "*\}/*" + "tsiw_2017" + "*\ª/*";
@@ -27,28 +27,40 @@ exports.init = function () {
         }
     });
 
-    // api
-    global.app.post('/api', function (req, res) {
-        loadEvents.loadEvents(res);
-    });
+    /* Login */
 
-    // check login ***
-    global.app.post('/', function (req, res) {
+    // Check login
+    global.app.post('/login/checkLogin', function (req, res) {
         login.login(req, res);
     });
 
-    global.app.post('/logout', function (req, res) {
+    // Get user
+    global.app.post('/login/getUser', function (req, res) {
+        var user = req.session.user;
+        res.send(user);
+    });
+
+    // Logout
+
+    global.app.post('/login/logout', function (req, res) {
         res.session = null;
         res.send("logout");
     });
 
-    // create user ***
-    global.app.post('/createUser', function (req, res) {
+    // Create user ***
+    global.app.post('/login/createUser', function (req, res) {
         createUser.createUser();
     });
 
-    // create event *** 
-    global.app.post('/createEvent', function (req, res) {
+    /* Events */
+
+    // Get Events (only public events)
+    global.app.post('/events/getEvents', function (req, res) {
+        loadEvents.loadEvents(res);
+    });
+
+    // Create event
+    global.app.post('/events/createEvent', function (req, res) {
         createEvent.createEvent(req, res);
     });
 

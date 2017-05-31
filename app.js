@@ -7,10 +7,10 @@ cookieSession = require('cookie-session')
 app = express();
 port = process.env.PORT || 3000;
 
-// load files
+// Load files
 var routes = require("./controllers/routes.js");
 
-// app
+// App
 routes.init();
 
 
