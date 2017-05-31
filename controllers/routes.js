@@ -48,7 +48,7 @@ exports.init = function () {
     // Logout
 
     global.app.post('/login/logout', function (req, res) {
-        res.session = null;
+        req.session = null;
         res.send("logout");
     });
 
