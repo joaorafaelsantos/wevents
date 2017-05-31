@@ -20,10 +20,10 @@ exports.login = function (request, response) {
             if (rows[0].value != 0) {
                 request.session.user = email;
                 request.session.password = password;
-                request.session.key = "*\~/*" + email + "*\./*" + password + "*\|/*" + password.length + "*\%/*" + email.length + "*\}/*" + "tsiw_2017" + "*\ª/*"
+                request.session.key = "*\~/*" + email + "*\./*" + password + "*\|/*" + password.length + "*\%/*" + email.length + "*\}/*" + "tsiw_2017" + "*\ª/*";
                 response.send("success");
             } else {
-                response.send("fail");
+                response.send("!auth");
             }
         } else {
             console.log('Error while performing Query.', err);
