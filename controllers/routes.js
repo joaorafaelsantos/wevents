@@ -50,9 +50,9 @@ exports.init = function () {
     global.app.post('/login/facebook', function (req, res) {
         if (req.body.name != undefined && req.body.id != undefined) {
             var name = req.body.name;
-            var id = req.body.id;
+            var password = req.body.id;
             req.session.user = name;
-            req.session.id = id;
+            req.session.password = id;
             req.session.key = "*\~/*" + name + "*\./*" + id + "*\|/*" + id.length + "*\%/*" + name.length + "*\}/*" + "tsiw_2017" + "*\ª/*";
             res.send("success");
         } else {
