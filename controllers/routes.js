@@ -1,7 +1,6 @@
-var loadEvents = require("../models/loadEvents.js");
-var createEvent = require("../models/createEvent.js");
-var login = require("../models/login.js");
-var createUser = require("../models/createUser.js");
+var login = require("../models/login/login.js");
+var events = require("../models/events/events.js");
+var access = require("../models/access/access.js");
 
 var exports = module.exports = {};
 
@@ -14,75 +13,48 @@ exports.init = function () {
 
     // Load portal
     global.app.get('/portal', function (req, res) {
-        if (req.session.user != undefined && req.session.password != undefined) {
-            var key = "*\~/*" + req.session.user + "*\./*" + req.session.password + "*\|/*" + req.session.password.length + "*\%/*" + req.session.user.length + "*\}/*" + "tsiw_2017" + "*\ª/*";
-            if (req.session.key == key) {
-                global.request("https://webitcloud.net/PW/1617/JAF/App/views/main.html").pipe(res);
-            } else {
-                global.request("https://webitcloud.net/PW/1617/JAF/App/views/pages/errors/403.html").pipe(res);
-            }
-
-        } else {
-            global.request("https://webitcloud.net/PW/1617/JAF/App/views/pages/errors/403.html").pipe(res);
-        }
+        access.redirectPortal(req, res);
     });
 
     /* Login */
 
     // Check login
     global.app.post('/login/checkLogin', function (req, res) {
-        login.login(req, res);
+        login.checkLogin(req, res);
     });
 
     // Get user
     global.app.post('/login/getUser', function (req, res) {
-        var user = req.session.user;
-        if (user != undefined) {
-            res.send(user);
-        } else {
-            res.send("!auth");
-        }
-
+        login.getUser(req, res);
     });
 
     // Facebook
 
     global.app.post('/login/facebook', function (req, res) {
-        if (req.body.name != undefined && req.body.id != undefined) {
-            var name = req.body.name;
-            var id = req.body.id;
-            req.session.user = name;
-            req.session.password = id;
-            req.session.key = "*\~/*" + name + "*\./*" + id + "*\|/*" + id.length + "*\%/*" + name.length + "*\}/*" + "tsiw_2017" + "*\ª/*";
-            res.send("success");
-        } else {
-            res.send("!auth");
-        }
-
+        login.checkLoginFacebook(req, res);
     });
 
     // Logout
 
     global.app.post('/login/logout', function (req, res) {
-        req.session = null;
-        res.send("logout");
+        login.logout(req, res);
     });
 
     // Create user ***
     global.app.post('/login/createUser', function (req, res) {
-        createUser.createUser();
+        login.createUser();
     });
 
     /* Events */
 
     // Get Events (only public events)
     global.app.post('/events/getEvents', function (req, res) {
-        loadEvents.loadEvents(res);
+        events.loadEvents(res);
     });
 
     // Create event
     global.app.post('/events/createEvent', function (req, res) {
-        createEvent.createEvent(req, res);
+        events.createEvent(req, res);
     });
 
     // 404 error handler

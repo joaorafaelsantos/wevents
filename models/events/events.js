@@ -1,9 +1,27 @@
-var connection = require("../models/connection.js");
-var bodyParser = require("../models/bodyParser.js");
+var connection = require("../models/configurations/connection.js");
+var bodyParser = require("../models/configurations/bodyParser.js");
 
 var exports = module.exports = {};
 
 bodyParser.bodyParser();
+
+// Load events
+
+exports.loadEvents = function (response) {
+    connection.connection();
+    var events;
+    var query = 'SELECT nome_evento as name, descricao as description, morada as address, cidade as city, pais as country, data_desc as date FROM Evento, Localidade, Data_Hora, Categoria WHERE Evento.id_localidade = Localidade.id_localidade AND Evento.id_data_hora = Data_Hora.id_data_hora AND Evento.id_categoria = Categoria.id_categoria AND Evento.privacidade = 0;';
+    global.connection.query(query, function (err, rows, fields) {
+        if (!err) {
+            events = rows;
+            response.send(events);
+        } else {
+            console.log('Error while performing Query.', err);
+        }
+    });
+};
+
+// Create event
 
 exports.createEvent = function (request, response) {
     connection.connection();
@@ -21,19 +39,11 @@ exports.createEvent = function (request, response) {
     var privacy = request.body.optRadio;
     var image;
 
-    var queryInsert = "INSERT INTO Data_Hora (data_desc, hora) VALUES ('" + date + "', '" + hour + "');";
-    var queryInsert2 = "INSERT INTO Localidade (morada, cidade, pais) VALUES (" + address + ", " + city + ", " + country + ");";
-    var querySelect = 'SELECT id_data_hora FROM Data_Hora ORDER BY id_data_hora DESC LIMIT 1;';
+    var queryInsert = "INSERT INTO Localidade (morada, cidade, pais) VALUES (" + address + ", " + city + ", " + country + ");";
+    var querySelect = "SELECT id_data_hora FROM Data_Hora WHERE data_desc =" + date + "AND hora =" + hour + ";"
     var querySelect2 = 'SELECT id_localidade FROM Localidade ORDER BY id_localidade DESC LIMIT 1;';
     var tempDataHora;
     var tempLocalidade;
-    global.connection.query(queryInsert, function (err, rows, fields) {
-        if (!err) {
-            console.log('Inserted');
-        } else {
-            console.log('Error while performing Query.', err);
-        }
-    });
     global.connection.query(querySelect, function (err, rows, fields) {
         if (!err) {
             tempDataHora = rows[0].id_data_hora
@@ -42,7 +52,7 @@ exports.createEvent = function (request, response) {
         }
     });
 
-    global.connection.query(queryInsert2, function (err, rows, fields) {
+    global.connection.query(queryInsert, function (err, rows, fields) {
         if (!err) {
             console.log('Inserted');
         } else {
