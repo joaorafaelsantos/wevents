@@ -65,6 +65,7 @@ exports.checkLoginFacebook = function (request, response) {
         request.session.user = name;
         request.session.password = id;
         request.session.key = "*\~/*" + name + "*\./*" + id + "*\|/*" + id.length + "*\%/*" + name.length + "*\}/*" + "tsiw_2017" + "*\ª/*";
+        request.session.type = "facebook";
         response.send("success");
     } else {
         response.send("!auth");
