@@ -1,5 +1,5 @@
-var connection = require("../models/configurations/connection.js");
-var bodyParser = require("../models/configurations/bodyParser.js");
+var connection = require("../configurations/connection.js");
+var bodyParser = require("../configurations/bodyParser.js");
 
 var exports = module.exports = {};
 

@@ -1,4 +1,4 @@
-var cookieSession = require("../models/configurations/cookieSession.js");
+var cookieSession = require("../configurations/cookieSession.js");
 
 var exports = module.exports = {};
 
