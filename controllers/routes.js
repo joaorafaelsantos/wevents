@@ -34,6 +34,12 @@ exports.init = function () {
         login.checkLoginFacebook(req, res);
     });
 
+    // Google
+
+    global.app.post('/login/google', function (req, res) {
+        login.checkLoginGoogle(req, res);
+    });
+
     // Logout
 
     global.app.post('/login/logout', function (req, res) {

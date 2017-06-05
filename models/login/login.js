@@ -72,6 +72,22 @@ exports.checkLoginFacebook = function (request, response) {
     }
 };
 
+// Check facebook login
+
+exports.checkLoginGoogle = function (request, response) {
+    if (request.body.name != undefined && request.body.id != undefined) {
+        var name = request.body.name;
+        var id = request.body.id;
+        request.session.user = name;
+        request.session.password = id;
+        request.session.key = "*\~/*" + name + "*\./*" + id + "*\|/*" + id.length + "*\%/*" + name.length + "*\}/*" + "tsiw_2017" + "*\ª/*";
+        request.session.type = "google";
+        response.send("success");
+    } else {
+        response.send("!auth");
+    }
+};
+
 // Get user
 
 exports.getUser = function (request, response) {
