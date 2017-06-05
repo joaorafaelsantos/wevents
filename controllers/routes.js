@@ -42,7 +42,7 @@ exports.init = function () {
 
     // Create user ***
     global.app.post('/login/createUser', function (req, res) {
-        login.createUser();
+        login.createUser(req, res);
     });
 
     /* Events */
