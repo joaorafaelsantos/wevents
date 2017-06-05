@@ -76,6 +76,7 @@ exports.checkLoginFacebook = function (request, response) {
 
 exports.checkLoginGoogle = function (request, response) {
     if (request.body.name != undefined && request.body.id != undefined) {
+        console.log(request.body.name)
         var name = request.body.name;
         var id = request.body.id;
         request.session.user = name;
