@@ -14,8 +14,9 @@ exports.createUser = function (request, response) {
 
     var email = global.connection.escape(request.body.email);
     var password = global.connection.escape(request.body.password);
+    console.log(email, password)
 
-    var query = "INSERT INTO Utilizador (password, email, id_tipo_utilizador) VALUES (" + password + "," + email + ", 2);";
+    // var query = "INSERT INTO Utilizador (password, email, id_tipo_utilizador) VALUES ('joao', 'joao', 2);"
 
     global.connection.query(query, function (err, rows, fields) {
         if (!err) {
