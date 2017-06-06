@@ -36,27 +36,37 @@ exports.checkLogin = function (request, response) {
     var email = global.connection.escape(request.body.email);
     var password = global.connection.escape(request.body.password);
 
-    var query = "SELECT id_utilizador, email, password FROM Utilizador WHERE email = " + email + " AND password = " + password + ";";
+    var query = "SELECT EXISTS(SELECT email, password FROM Utilizador WHERE email = " + email + " AND password = " + password + ") as value;";
 
     global.connection.query(query, function (err, rows, fields) {
         if (!err) {
-            console.log(rows)
-            if (rows != null) {
+            if (rows[0].value != 0) {
                 request.session.user = email;
                 request.session.password = password;
                 request.session.key = "*\~/*" + email + "*\./*" + password + "*\|/*" + password.length + "*\%/*" + email.length + "*\}/*" + "tsiw_2017" + "*\ª/*";
                 request.session.type = "normal";
-                request.session.id = rows[0].id_utilizador;
                 response.send("success");
             } else {
                 response.send("!auth");
             }
         } else {
-            response.send("!auth");
-            // console.log('Error while performing Query.', err);
-            // global.request("https://wevents.herokuapp.com").pipe(response);
+            console.log('Error while performing Query.', err);
+            global.request("https://wevents.herokuapp.com").pipe(response);
         }
     });
+
+    if (request.session.type == "normal") {
+        var query = "SELECT id_utilizador FROM Utilizador WHERE email = " + request.session.email + " AND password = " + request.session.password + ";";
+        global.connection.query(query, function (err, rows, fields) {
+            if (!err) {
+                request.session.id = rows[0].id_utilizador;
+                console.log("--- ID É : " + request.session.id);
+            } else {
+                console.log('Error while performing Query.', err);
+                global.request("https://wevents.herokuapp.com").pipe(response);
+            }
+        });
+    }
 };
 
 // Check facebook login
