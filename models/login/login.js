@@ -45,7 +45,7 @@ exports.checkLogin = function (request, response) {
                 request.session.password = password;
                 request.session.key = "*\~/*" + email + "*\./*" + password + "*\|/*" + password.length + "*\%/*" + email.length + "*\}/*" + "tsiw_2017" + "*\ª/*";
                 request.session.type = "normal";
-                var query2 = "SELECT id_utilizador FROM Utilizador WHERE email = " + request.session.email + " AND password = " + request.session.password + ";";
+                var query2 = "SELECT id_utilizador FROM Utilizador WHERE email = " + email + " AND password = " + password + ";";
                 global.connection.query(query2, function (err, rows, fields) {
                     if (!err) {
                         request.session.id = rows[0].id_utilizador;
