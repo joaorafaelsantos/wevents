@@ -88,8 +88,9 @@ exports.loadUserEvents = function (request, response) {
         user = request.session.password;
     } else if (request.session.type == "normal") {
         user = request.session.id;
+        console.log(request.session);
     }
-    console.log(request.session);
+
     // var query = 'SELECT nome_evento as name, descricao as description, morada as address, cidade as city, pais as country, data_desc as date, hora as hour FROM Evento, Localidade, Data_Hora, Categoria WHERE Evento.id_localidade = Localidade.id_localidade AND Evento.id_data_hora = Data_Hora.id_data_hora AND Evento.id_categoria = Categoria.id_categoria AND Evento.id_utilizador_criador =' + user + ';';
     // global.connection.query(query, function (err, rows, fields) {
     //     if (!err) {
