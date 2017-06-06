@@ -1,5 +1,6 @@
 var connection = require("../configurations/connection.js");
 var bodyParser = require("../configurations/bodyParser.js");
+var cookieSession = require("../configurations/cookieSession.js");
 
 var exports = module.exports = {};
 
