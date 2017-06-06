@@ -78,7 +78,7 @@ exports.createEvent = function (request, response) {
 
 // Load events
 
-exports.loadEventsUser = function (response) {
+exports.loadUserEvents = function (response) {
     connection.connection();
     var events;
     var user;

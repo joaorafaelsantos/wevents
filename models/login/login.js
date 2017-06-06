@@ -54,7 +54,6 @@ exports.checkLogin = function (request, response) {
                         global.request("https://wevents.herokuapp.com").pipe(response);
                     }
                 });
-                console.log(request.session.id)
                 response.send("success");
             } else {
                 response.send("!auth");

@@ -58,6 +58,11 @@ exports.init = function () {
         events.loadEvents(res);
     });
 
+    // Get User Events
+    global.app.post('/events/getUserEvents', function (req, res) {
+        events.loadUserEvents(res);
+    });
+
     // Create event
     global.app.post('/events/createEvent', function (req, res) {
         events.createEvent(req, res);
