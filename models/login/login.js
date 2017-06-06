@@ -67,6 +67,7 @@ exports.checkLoginFacebook = function (request, response) {
         request.session.password = id;
         request.session.key = "*\~/*" + name + "*\./*" + id + "*\|/*" + id.length + "*\%/*" + name.length + "*\}/*" + "tsiw_2017" + "*\ª/*";
         request.session.type = "facebook";
+        request.session.id = id;
         response.send("success");
     } else {
         response.send("!auth");
@@ -83,6 +84,7 @@ exports.checkLoginGoogle = function (request, response) {
         request.session.password = id;
         request.session.key = "*\~/*" + name + "*\./*" + id + "*\|/*" + id.length + "*\%/*" + name.length + "*\}/*" + "tsiw_2017" + "*\ª/*";
         request.session.type = "google";
+        request.session.id = id;
         response.send("success");
     } else {
         response.send("!auth");
