@@ -5,6 +5,8 @@ var cookieSession = require("../models/configurations/cookieSession.js");
 
 var exports = module.exports = {};
 
+cookieSession.cookieSession();
+
 exports.init = function () {
 
     // Load homepage
