@@ -61,7 +61,6 @@ exports.init = function () {
     // Get User Events
     global.app.post('/events/getUserEvents', function (req, res) {
         events.loadUserEvents(req, res);
-        console.log(req.session.id);
     });
 
     // Create event
