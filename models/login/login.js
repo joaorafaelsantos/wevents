@@ -52,8 +52,9 @@ exports.checkLogin = function (request, response) {
                 response.send("!auth");
             }
         } else {
-            console.log('Error while performing Query.', err);
-            global.request("https://wevents.herokuapp.com").pipe(response);
+            response.send("!auth");
+            // console.log('Error while performing Query.', err);
+            // global.request("https://wevents.herokuapp.com").pipe(response);
         }
     });
 };
