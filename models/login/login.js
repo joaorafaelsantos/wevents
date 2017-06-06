@@ -45,6 +45,16 @@ exports.checkLogin = function (request, response) {
                 request.session.password = password;
                 request.session.key = "*\~/*" + email + "*\./*" + password + "*\|/*" + password.length + "*\%/*" + email.length + "*\}/*" + "tsiw_2017" + "*\ª/*";
                 request.session.type = "normal";
+                var query2 = "SELECT id_utilizador FROM Utilizador WHERE email = " + request.session.email + " AND password = " + request.session.password + ";";
+                global.connection.query(query2, function (err, rows, fields) {
+                    if (!err) {
+                        request.session.id = rows[0].id_utilizador;
+                    } else {
+                        console.log('Error while performing Query.', err);
+                        global.request("https://wevents.herokuapp.com").pipe(response);
+                    }
+                });
+                console.log(request.session.id)
                 response.send("success");
             } else {
                 response.send("!auth");
@@ -54,19 +64,7 @@ exports.checkLogin = function (request, response) {
             global.request("https://wevents.herokuapp.com").pipe(response);
         }
     });
-    connection.connection();
-    console.log(request.session.type);
-    if (request.session.type == "normal") {
-        var query = "SELECT id_utilizador FROM Utilizador WHERE email = " + request.session.email + " AND password = " + request.session.password + ";";
-        global.connection.query(query, function (err, rows, fields) {
-            if (!err) {
-                request.session.id = rows[0].id_utilizador;
-            } else {
-                console.log('Error while performing Query.', err);
-                global.request("https://wevents.herokuapp.com").pipe(response);
-            }
-        });
-    }
+
 };
 
 // Check facebook login
