@@ -91,8 +91,8 @@ exports.loadUserEvents = function (response) {
     global.connection.query(query, function (err, rows, fields) {
         if (!err) {
             events = rows;
-            // response.send(events);
-            console.log(events)
+            response.send(events);
+            // console.log(events)
         } else {
             console.log('Error while performing Query.', err);
         }
