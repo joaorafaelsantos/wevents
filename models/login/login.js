@@ -40,6 +40,7 @@ exports.checkLogin = function (request, response) {
 
     global.connection.query(query, function (err, rows, fields) {
         if (!err) {
+            console.log(rows)
             if (rows != null) {
                 request.session.user = email;
                 request.session.password = password;
