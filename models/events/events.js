@@ -82,6 +82,7 @@ exports.loadUserEvents = function (request, response) {
     connection.connection();
     var events;
     var user;
+    console.log(request.session)
     if (request.session.type != "normal") {
         user = request.session.password;
     } else if (request.session.type == "normal") {
