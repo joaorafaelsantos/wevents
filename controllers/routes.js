@@ -1,11 +1,9 @@
 var login = require("../models/login/login.js");
 var events = require("../models/events/events.js");
 var access = require("../models/access/access.js");
-var cookieSession = require("../models/configurations/cookieSession.js");
 
 var exports = module.exports = {};
 
-cookieSession.cookieSession();
 
 exports.init = function () {
 
@@ -24,7 +22,6 @@ exports.init = function () {
     // Check login
     global.app.post('/login/checkLogin', function (req, res) {
         login.checkLogin(req, res);
-        console.log(req.session);
     });
 
     // Get user

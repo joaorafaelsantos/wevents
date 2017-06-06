@@ -36,7 +36,7 @@ exports.checkLogin = function (request, response) {
     var email = global.connection.escape(request.body.email);
     var password = global.connection.escape(request.body.password);
 
-    var query = "SELECT EXISTS(SELECT email, password FROM Utilizador WHERE email = " + email + " AND password = " + password + ") as value;";
+    var query = "SELECT EXISTS(SELECT email, password FROM Utilizador WHERE email = " + email + " AND password = " + password + ") as value, id_utilizador FROM Utilizador WHERE email =" + email + ";";
 
     global.connection.query(query, function (err, rows, fields) {
         if (!err) {
@@ -45,6 +45,7 @@ exports.checkLogin = function (request, response) {
                 request.session.password = password;
                 request.session.key = "*\~/*" + email + "*\./*" + password + "*\|/*" + password.length + "*\%/*" + email.length + "*\}/*" + "tsiw_2017" + "*\ª/*";
                 request.session.type = "normal";
+                request.session.id = rows[0].id_utilizador;
                 response.send("success");
             } else {
                 response.send("!auth");
@@ -54,17 +55,6 @@ exports.checkLogin = function (request, response) {
             global.request("https://wevents.herokuapp.com").pipe(response);
         }
     });
-    connection.connection();
-    var query2 = "SELECT id_utilizador FROM Utilizador WHERE email = " + email + " AND password = " + password + ";";
-    global.connection.query(query2, function (err, rows, fields) {
-        if (!err) {
-            request.session.id = rows[0].id_utilizador;
-        } else {
-            console.log('Error while performing Query.', err);
-            global.request("https://wevents.herokuapp.com").pipe(response);
-        }
-    });
-
 };
 
 // Check facebook login
