@@ -21,6 +21,7 @@ exports.init = function () {
     // Check login
     global.app.post('/login/checkLogin', function (req, res) {
         login.checkLogin(req, res);
+        console.log(req.session);
     });
 
     // Get user
