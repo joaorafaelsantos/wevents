@@ -36,15 +36,16 @@ exports.checkLogin = function (request, response) {
     var email = global.connection.escape(request.body.email);
     var password = global.connection.escape(request.body.password);
 
-    var query = "SELECT EXISTS(SELECT email, password FROM Utilizador WHERE email = " + email + " AND password = " + password + ") as value;";
+    var query = "SELECT id_utilizador, email, password FROM Utilizador WHERE email = " + email + " AND password = " + password + ";";
 
     global.connection.query(query, function (err, rows, fields) {
         if (!err) {
-            if (rows[0].value != 0) {
+            if (rows != null) {
                 request.session.user = email;
                 request.session.password = password;
                 request.session.key = "*\~/*" + email + "*\./*" + password + "*\|/*" + password.length + "*\%/*" + email.length + "*\}/*" + "tsiw_2017" + "*\ª/*";
                 request.session.type = "normal";
+                request.session.id = rows[0].id_utilizador;
                 response.send("success");
             } else {
                 response.send("!auth");
@@ -76,7 +77,6 @@ exports.checkLoginFacebook = function (request, response) {
 
 exports.checkLoginGoogle = function (request, response) {
     if (request.body.name != undefined && request.body.id != undefined) {
-        console.log(request.body.name)
         var name = request.body.name;
         var id = request.body.id;
         request.session.user = name;

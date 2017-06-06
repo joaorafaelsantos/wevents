@@ -75,3 +75,25 @@ exports.createEvent = function (request, response) {
         }
     });
 };
+
+// Load events
+
+exports.loadEventsUser = function (response) {
+    connection.connection();
+    var events;
+    var user;
+    if (request.session.type != "normal") {
+        user = request.session.password;
+    } else if (request.session.type == "normal") {
+        user = request.session.id;
+    }
+    // var query = 'SELECT nome_evento as name, descricao as description, morada as address, cidade as city, pais as country, data_desc as date, hora as hour FROM Evento, Localidade, Data_Hora, Categoria WHERE Evento.id_localidade = Localidade.id_localidade AND Evento.id_data_hora = Data_Hora.id_data_hora AND Evento.id_categoria = Categoria.id_categoria AND Evento.privacidade = 0;';
+    // global.connection.query(query, function (err, rows, fields) {
+    //     if (!err) {
+    //         events = rows;
+    //         response.send(events);
+    //     } else {
+    //         console.log('Error while performing Query.', err);
+    //     }
+    // });
+};
