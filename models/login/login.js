@@ -55,6 +55,7 @@ exports.checkLogin = function (request, response) {
         }
     });
     connection.connection();
+    console.log(request.session.type);
     if (request.session.type == "normal") {
         var query = "SELECT id_utilizador FROM Utilizador WHERE email = " + request.session.email + " AND password = " + request.session.password + ";";
         global.connection.query(query, function (err, rows, fields) {
