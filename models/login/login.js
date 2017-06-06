@@ -92,6 +92,7 @@ exports.checkLoginGoogle = function (request, response) {
 // Get user
 
 exports.getUser = function (request, response) {
+    var user = request.session.user;
     if (user != undefined) {
         response.send(user);
     } else {
