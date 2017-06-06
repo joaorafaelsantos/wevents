@@ -1,7 +1,7 @@
 var login = require("../models/login/login.js");
 var events = require("../models/events/events.js");
 var access = require("../models/access/access.js");
-var cookieSession = require("../configurations/cookieSession.js");
+var cookieSession = require("../models/configurations/cookieSession.js");
 
 var exports = module.exports = {};
 
