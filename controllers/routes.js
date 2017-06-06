@@ -60,7 +60,7 @@ exports.init = function () {
 
     // Get User Events
     global.app.post('/events/getUserEvents', function (req, res) {
-        events.loadUserEvents(res);
+        events.loadUserEvents(req, res);
     });
 
     // Create event
