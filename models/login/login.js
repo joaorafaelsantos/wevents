@@ -54,7 +54,7 @@ exports.checkLogin = function (request, response) {
             global.request("https://wevents.herokuapp.com").pipe(response);
         }
     });
-
+    connection.connection();
     if (request.session.type == "normal") {
         var query = "SELECT id_utilizador FROM Utilizador WHERE email = " + request.session.email + " AND password = " + request.session.password + ";";
         global.connection.query(query, function (err, rows, fields) {
