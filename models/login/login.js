@@ -60,7 +60,6 @@ exports.checkLogin = function (request, response) {
         global.connection.query(query, function (err, rows, fields) {
             if (!err) {
                 request.session.id = rows[0].id_utilizador;
-                console.log("--- ID É : " + request.session.id);
             } else {
                 console.log('Error while performing Query.', err);
                 global.request("https://wevents.herokuapp.com").pipe(response);
@@ -104,7 +103,7 @@ exports.checkLoginGoogle = function (request, response) {
 // Get user
 
 exports.getUser = function (request, response) {
-    var user = request.session.user;
+    var user = request.session.id;
     if (user != undefined) {
         response.send(user);
     } else {
