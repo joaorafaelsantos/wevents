@@ -4,6 +4,7 @@ var bodyParser = require("../configurations/bodyParser.js");
 var exports = module.exports = {};
 
 bodyParser.bodyParser();
+cookieSession.cookieSession();
 
 // Load events
 
