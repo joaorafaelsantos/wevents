@@ -28,19 +28,20 @@ exports.loadEvents = function (response) {
 exports.createEvent = function (request, response) {
     // connection.connection();
 
-    var name = global.connection.escape(request.body.name);
-    var date = global.connection.escape(request.body.date);
-    var date = request.body.date;
-    var tempDate = date.split(" ");
-    date = tempDate[0];
-    var hour = tempDate[1];
-    var address = global.connection.escape(request.body.address);
-    var city = global.connection.escape(request.body.city);
-    var country = global.connection.escape(request.body.country);
-    var typeEvent = request.body.selEvent;
-    var privacy = request.body.optRadio;
-    var image = request.file;
-    console.log(image);
+    // var name = global.connection.escape(request.body.name);
+    // var date = global.connection.escape(request.body.date);
+    // var date = request.body.date;
+    // var tempDate = date.split(" ");
+    // date = tempDate[0];
+    // var hour = tempDate[1];
+    // var address = global.connection.escape(request.body.address);
+    // var city = global.connection.escape(request.body.city);
+    // var country = global.connection.escape(request.body.country);
+    // var typeEvent = request.body.selEvent;
+    // var privacy = request.body.optRadio;
+    // var image = request.file;
+    // console.log(image);
+    console.log(request.body);
 
     // var queryInsert = "INSERT INTO Localidade (morada, cidade, pais) VALUES (" + address + ", " + city + ", " + country + ");";
     // var querySelect = "SELECT id_data_hora FROM Data_Hora WHERE data_desc =" + date + "AND hora =" + hour + ";"
