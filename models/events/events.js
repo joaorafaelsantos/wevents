@@ -85,7 +85,7 @@ exports.loadUserEvents = function (request, response) {
     var events;
     var id = request.session.id;
 
-    var query = 'SELECT nome_evento as name, descricao as description, morada as address, cidade as city, pais as country, data_desc as date, hora as hour FROM Evento, Localidade, Data_Hora, Categoria WHERE Evento.id_localidade = Localidade.id_localidade AND Evento.id_data_hora = Data_Hora.id_data_hora AND Evento.id_categoria = Categoria.id_categoria AND Evento.id_utilizador_criador =' + id + ';';
+    var query = 'SELECT id_evento as id, nome_evento as name, descricao as description, morada as address, cidade as city, pais as country, data_desc as date, hora as hour FROM Evento, Localidade, Data_Hora, Categoria WHERE Evento.id_localidade = Localidade.id_localidade AND Evento.id_data_hora = Data_Hora.id_data_hora AND Evento.id_categoria = Categoria.id_categoria AND Evento.id_utilizador_criador =' + id + ';';
     global.connection.query(query, function (err, rows, fields) {
         if (!err) {
             events = rows;
