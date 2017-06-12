@@ -95,7 +95,7 @@ exports.init = function () {
         }
     }).single('img'), function (req, res) {
         /*img is the name that you define in the html input type="file" name="img" */
-        console.log(req.body);
+        console.log(req.file);
 
         var connection = mysql.createConnection({
             host: 'webitcloud.net',
