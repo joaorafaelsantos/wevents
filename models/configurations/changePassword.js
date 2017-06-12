@@ -15,7 +15,7 @@ exports.changePassword = function (request, response) {
     var sessionPassword = request.session.password;
     var oldPassword = global.connection.escape(request.body.oldPassword);
     var newPassword = global.connection.escape(request.body.newPassword);
-    if (oldPassword.toString() == sessionPassword) {
+    if (oldPassword == sessionPassword) {
         var sql = "UPDATE Utilizador SET password = " + newPassword + " WHERE email = " + email + ";";
         global.connection.query(sql, function (err, result) {
             if (err) throw err;
