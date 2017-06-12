@@ -48,7 +48,7 @@ exports.createEvent = function (request, response) {
         }
     });
 
-    var query = "INSERT INTO Evento (nome_evento, id_localidade, id_data_hora, id_categoria, privacidade, img_url) VALUES (" + name + ", " + "(SELECT id_localidade FROM Localidade ORDER BY id_localidade DESC LIMIT 1), (SELECT id_data_hora FROM Data_Hora WHERE data_desc =" + date + "' AND hora = '" + hour + ")" + ", " + typeEvent + ", " + privacy + ", " + url + ");"
+    var query = "INSERT INTO Evento (nome_evento, id_localidade, id_data_hora, id_categoria, privacidade, img_url) VALUES (" + name + ", " + "(SELECT id_localidade FROM Localidade ORDER BY id_localidade DESC LIMIT 1), (SELECT id_data_hora FROM Data_Hora WHERE data_desc =" + date + " AND hora = " + hour + ")" + ", " + typeEvent + ", " + privacy + ", " + url + ");"
     console.log(query)
     global.connection.query(query, function (err, rows, fields) {
         if (!err) {
