@@ -39,27 +39,23 @@ exports.createEvent = function (request, response) {
     var privacy = global.connection.escape(request.body.privacy);
 
     var queryInsert = "INSERT INTO Localidade (morada, cidade, pais) VALUES (" + address + ", " + city + ", " + country + ");";
-    var querySelect = "SELECT id_data_hora FROM Data_Hora WHERE data_desc =" + date + " AND hora = " + hour + ";"
-    var querySelect2 = 'SELECT id_localidade FROM Localidade ORDER BY id_localidade DESC LIMIT 1;';
-    var tempDataHora;
-    var tempLocalidade;
-    // global.connection.query(queryInsert, function (err, rows, fields) {
-    //     if (!err) {
-    //         console.log('Inserted');
-    //     } else {
-    //         console.log('Error while performing Query.', err);
-    //     }
-    // });
+
+    global.connection.query(queryInsert, function (err, rows, fields) {
+        if (!err) {
+            console.log('Inserted');
+        } else {
+            console.log('Error while performing Query.', err);
+        }
+    });
 
     var query = "INSERT INTO Evento (nome_evento, id_localidade, id_data_hora, id_categoria, privacidade, img_url) VALUES (" + name + ", " + "(SELECT id_localidade FROM Localidade ORDER BY id_localidade DESC LIMIT 1)" + ", " + "(SELECT id_data_hora FROM Data_Hora WHERE data_desc =" + date + "' AND hora = '" + hour + ")" + ", " + typeEvent + ", " + privacy + ", " + url + ");"
-    console.log(query)
-    // global.connection.query("INSERT INTO Evento (nome_evento, id_localidade, id_data_hora, id_categoria, privacidade, img_url) VALUES (" + name + ", " + tempLocalidade + ", " + tempDataHora + ", " + typeEvent + ", " + privacy + ", " + url + ");", function (err, rows, fields) {
-    //     if (!err) {
-    //         console.log('Inserted');
-    //     } else {
-    //         console.log('Error while performing Query.', err);
-    //     }
-    // });
+    global.connection.query(query, function (err, rows, fields) {
+        if (!err) {
+            console.log('Inserted');
+        } else {
+            console.log('Error while performing Query.', err);
+        }
+    });
 };
 
 // Load events
