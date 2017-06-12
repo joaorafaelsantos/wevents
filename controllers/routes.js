@@ -89,7 +89,7 @@ exports.init = function () {
     });
 
     // Change Password
-    global.app.post('configurations/changePassword', function (req, res) {
+    global.app.post('/configurations/changePassword', function (req, res) {
         changePassword.changePassword(req, res);
     });
 
