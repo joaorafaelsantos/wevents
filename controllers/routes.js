@@ -65,8 +65,8 @@ exports.init = function () {
     });
 
     global.app.post('/teste', global.upload.array(), function (req, res, next) {
-        console.log("TEXTO: ", request.body);
-        console.log("FICHEIRO: ", request.file);
+        console.log("TEXTO: ", res.body);
+        console.log("FICHEIRO: ", res.file);
     })
 
     // Create event
