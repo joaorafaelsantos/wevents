@@ -73,48 +73,4 @@ exports.init = function () {
     global.app.get('*', function (req, res) {
         global.request("https://webitcloud.net/PW/1617/JAF/App/views/pages/errors/404.html").pipe(res);
     });
-
-    storage = multer.diskStorage({
-        destination: function (req, file, callback) {
-            callback(null, './upload')
-        },
-        filename: function (req, file, callback) {
-            callback(null, file.fieldname + '-' + Date.now() + global.path.extname(file.originalname))
-        }
-    })
-
-    global.app.post('/imginsert', global.multer({
-        storage: global.storage,
-        fileFilter: function (req, file, callback) {
-            directory = file.filename;
-            var ext = global.path.extname(file.originalname)
-            if (ext !== '.png' && ext !== '.jpg' && ext !== '.gif' && ext !== '.jpeg') {
-                return callback(res.end('Only images are allowed'), null)
-            }
-            callback(null, true)
-        }
-    }).single('img'), function (req, res) {
-        /*img is the name that you define in the html input type="file" name="img" */
-        console.log(req.file);
-
-        var connection = mysql.createConnection({
-            host: 'webitcloud.net',
-            user: 'webitclo_jaf2',
-            password: 'sNRJy8t@yLzK',
-            database: 'webitclo_G501'
-        });
-        connection.connect();
-
-        var query = connection.query("INSERT INTO Imagem (img) VALUES ('" + req.file.filename + "');", function (err, rows) {
-
-            if (err)
-                throw err;
-            res.redirect('/image');
-        });
-    });
-    global.app.use(global.express.static('upload'))
-
-
-
-
 };
