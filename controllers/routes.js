@@ -76,14 +76,14 @@ exports.init = function () {
 
 
 
-    storage = global.multer.diskStorage({
-        destination: function (req, file, callback) {
-            callback(null, './upload')
-        },
-        filename: function (req, file, callback) {
-            callback(null, file.fieldname + '-' + Date.now() + global.path.extname(file.originalname))
-        }
-    })
+    // storage = global.multer.diskStorage({
+    //     destination: function (req, file, callback) {
+    //         callback(null, './upload')
+    //     },
+    //     filename: function (req, file, callback) {
+    //         callback(null, file.fieldname + '-' + Date.now() + global.path.extname(file.originalname))
+    //     }
+    // })
 
     // global.app.post('/imginsert', multer({
     //     storage: global.storage,
