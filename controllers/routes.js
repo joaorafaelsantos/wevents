@@ -60,7 +60,7 @@ exports.init = function () {
     });
 
     // Get User Events
-    global.app.post('/events/getUserEvents', global.upload.array(), function (req, res) {
+    global.app.post('/events/getUserEvents', global.upload.single('img'), function (req, res) {
         events.loadUserEvents(req, res);
     });
 
