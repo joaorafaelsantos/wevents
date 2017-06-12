@@ -1,6 +1,9 @@
 var login = require("../models/login/login.js");
 var events = require("../models/events/events.js");
 var access = require("../models/access/access.js");
+var mongo = require("../models/configurations/mongo.js");
+var nodemailer = require("../models/configurations/nodemailer.js");
+var changePassword = require("../models/configurations/changePassword.js")
 
 var exports = module.exports = {};
 
@@ -67,6 +70,27 @@ exports.init = function () {
     // Create event
     global.app.post('/events/createEvent', function (req, res) {
         events.createEvent(req, res);
+    });
+
+    // Dashboard get message
+    global.app.post('/dashboard/getMessage', function (req, res) {
+        mongo.readMessages(res);
+    });
+
+    // User send message
+    global.app.post('/user/sendMessage', function (req, res) {
+        mongo.saveMessages(req, res);
+    });
+
+
+    // Send messages
+    global.app.post('/login/recoverPassword', function (req, res) {
+        nodemailer.sendEmail(req, res);
+    });
+
+    // Change Password
+    global.app.post('configurations/changePassword', function (req, res) {
+        changePassword.changePassword(req, res);
     });
 
     // 404 error handler
