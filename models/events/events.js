@@ -73,15 +73,14 @@ exports.createEvent = function (request, response) {
             console.log('Error while performing Query.', err);
         }
     });
-    // global.connection.query("INSERT INTO Evento (nome_evento, id_localidade, id_data_hora, id_categoria, privacidade, img_url) VALUES (" + name + ", " + tempLocalidade + ", " + tempDataHora + ", " + typeEvent + ", " + privacy + ", " + url + ");", function (err, rows, fields) {
-    //     console.log("INSERT INTO Evento (nome_evento, id_localidade, id_data_hora, id_categoria, privacidade) VALUES (" + name + ", " + tempLocalidade + ", " + tempDataHora + ", " + typeEvent + ", " + privacy + ");")
-    //     if (!err) {
-    //         console.log('Inserted');
-    //     } else {
-    //         console.log('Error while performing Query.', err);
-    //     }
-    // });
-    console.log("DADOS: ", tempDataHora, tempLocalidade);
+    global.connection.query("INSERT INTO Evento (nome_evento, id_localidade, id_data_hora, id_categoria, privacidade, img_url) VALUES (" + name + ", " + tempLocalidade + ", " + tempDataHora + ", " + typeEvent + ", " + privacy + ", " + url + ");", function (err, rows, fields) {
+        console.log(tempDataHora, tempLocalidade)
+        if (!err) {
+            console.log('Inserted');
+        } else {
+            console.log('Error while performing Query.', err);
+        }
+    });
 };
 
 // Load events
