@@ -44,7 +44,7 @@ exports.createEvent = function (request, response) {
     console.log(name, date, hour, address, city, country, typeEvent, url, privacy);
 
     // var queryInsert = "INSERT INTO Localidade (morada, cidade, pais) VALUES (" + address + ", " + city + ", " + country + ");";
-    var querySelect = "SELECT id_data_hora FROM Data_Hora WHERE data_desc =" + date + "AND hora =" + hour + ";"
+    var querySelect = "SELECT id_data_hora FROM Data_Hora WHERE data_desc ='" + date + "' AND hora = '" + hour + "';"
     // var querySelect2 = 'SELECT id_localidade FROM Localidade ORDER BY id_localidade DESC LIMIT 1;';
     // var tempDataHora;
     // var tempLocalidade;
