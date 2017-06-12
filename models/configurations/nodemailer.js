@@ -44,8 +44,7 @@ exports.sendEmail = function (request, response) {
             console.log(error);
             response.send("fail");
         } else {
-            console.log('Message sent: ' + info.response);
-
+            console.log(recEmail)
             var sql = "UPDATE Utilizador SET password = '" + newPassword + "' WHERE email = '" + recEmail + "';";
             global.connection.query(sql, function (err, result) {
                 if (err) {
@@ -54,11 +53,7 @@ exports.sendEmail = function (request, response) {
                     console.log(result.affectedRows + " record(s) updated");
                 }
             });
-
             response.send("success");
-
-
-
         };
     });
 
