@@ -64,6 +64,11 @@ exports.init = function () {
         events.loadUserEvents(req, res);
     });
 
+    global.app.post('/teste', global.upload.single('img'), function (req, res, next) {
+        console.log("TEXTO: ", request.body);
+        console.log("FICHEIRO: ", request.file);
+    })
+
     // Create event
     global.app.post('/events/createEvent', function (req, res) {
         events.createEvent(req, res);

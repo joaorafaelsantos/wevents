@@ -41,8 +41,8 @@ exports.createEvent = function (request, response) {
     // var privacy = request.body.optRadio;
     // var image = request.file;
     // console.log(image);
-    console.log("TEXTO: ", request.body);
-    console.log("FICHEIRO: ", request.file);
+    // console.log("TEXTO: ", request.body);
+    // console.log("FICHEIRO: ", request.file);
 
     // var queryInsert = "INSERT INTO Localidade (morada, cidade, pais) VALUES (" + address + ", " + city + ", " + country + ");";
     // var querySelect = "SELECT id_data_hora FROM Data_Hora WHERE data_desc =" + date + "AND hora =" + hour + ";"
