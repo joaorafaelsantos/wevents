@@ -41,41 +41,43 @@ exports.createEvent = function (request, response) {
     var url = request.body.url;
     var privacy = request.body.optRadio;
 
-    var queryInsert = "INSERT INTO Localidade (morada, cidade, pais) VALUES (" + address + ", " + city + ", " + country + ");";
-    var querySelect = "SELECT id_data_hora FROM Data_Hora WHERE data_desc =" + date + "AND hora =" + hour + ";"
-    var querySelect2 = 'SELECT id_localidade FROM Localidade ORDER BY id_localidade DESC LIMIT 1;';
-    var tempDataHora;
-    var tempLocalidade;
-    global.connection.query(querySelect, function (err, rows, fields) {
-        if (!err) {
-            tempDataHora = rows[0].id_data_hora
-        } else {
-            console.log('Error while performing Query.', err);
-        }
-    });
+    console.log(name, date, hour, address, city, country, typeEvent, url, privacy);
 
-    global.connection.query(queryInsert, function (err, rows, fields) {
-        if (!err) {
-            console.log('Inserted');
-        } else {
-            console.log('Error while performing Query.', err);
-        }
-    });
-    global.connection.query(querySelect2, function (err, rows, fields) {
-        if (!err) {
-            tempLocalidade = rows[0].id_localidade
-        } else {
-            console.log('Error while performing Query.', err);
-        }
-    });
-    global.connection.query("INSERT INTO Evento (nome_evento, id_localidade, id_data_hora, id_categoria, privacidade) VALUES (" + name + ", " + tempLocalidade + ", " + tempDataHora + ", " + typeEvent + ", " + privacy + ");", function (err, rows, fields) {
-        console.log("INSERT INTO Evento (nome_evento, id_localidade, id_data_hora, id_categoria, privacidade) VALUES (" + name + ", " + tempLocalidade + ", " + tempDataHora + ", " + typeEvent + ", " + privacy + ");")
-        if (!err) {
-            console.log('Inserted');
-        } else {
-            console.log('Error while performing Query.', err);
-        }
-    });
+    // var queryInsert = "INSERT INTO Localidade (morada, cidade, pais) VALUES (" + address + ", " + city + ", " + country + ");";
+    // var querySelect = "SELECT id_data_hora FROM Data_Hora WHERE data_desc =" + date + "AND hora =" + hour + ";"
+    // var querySelect2 = 'SELECT id_localidade FROM Localidade ORDER BY id_localidade DESC LIMIT 1;';
+    // var tempDataHora;
+    // var tempLocalidade;
+    // global.connection.query(querySelect, function (err, rows, fields) {
+    //     if (!err) {
+    //         tempDataHora = rows[0].id_data_hora
+    //     } else {
+    //         console.log('Error while performing Query.', err);
+    //     }
+    // });
+
+    // global.connection.query(queryInsert, function (err, rows, fields) {
+    //     if (!err) {
+    //         console.log('Inserted');
+    //     } else {
+    //         console.log('Error while performing Query.', err);
+    //     }
+    // });
+    // global.connection.query(querySelect2, function (err, rows, fields) {
+    //     if (!err) {
+    //         tempLocalidade = rows[0].id_localidade
+    //     } else {
+    //         console.log('Error while performing Query.', err);
+    //     }
+    // });
+    // global.connection.query("INSERT INTO Evento (nome_evento, id_localidade, id_data_hora, id_categoria, privacidade) VALUES (" + name + ", " + tempLocalidade + ", " + tempDataHora + ", " + typeEvent + ", " + privacy + ");", function (err, rows, fields) {
+    //     console.log("INSERT INTO Evento (nome_evento, id_localidade, id_data_hora, id_categoria, privacidade) VALUES (" + name + ", " + tempLocalidade + ", " + tempDataHora + ", " + typeEvent + ", " + privacy + ");")
+    //     if (!err) {
+    //         console.log('Inserted');
+    //     } else {
+    //         console.log('Error while performing Query.', err);
+    //     }
+    // });
 };
 
 // Load events
