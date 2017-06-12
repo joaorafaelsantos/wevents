@@ -30,18 +30,13 @@ exports.createEvent = function (request, response) {
 
     var name = global.connection.escape(request.body.name);
     var date = global.connection.escape(request.body.date);
-    var date = request.body.date;
-    var tempDate = date.split(" ");
-    date = tempDate[0];
-    date = date.replace("/", "-");
-    date = date.replace("/", "-");
-    var hour = tempDate[1];
+    var hour = global.connection.escape(request.body.hour);
     var address = global.connection.escape(request.body.address);
     var city = global.connection.escape(request.body.city);
     var country = global.connection.escape(request.body.country);
-    var typeEvent = request.body.selEvent;
-    var url = request.body.url;
-    var privacy = request.body.optRadio;
+    var typeEvent = global.connection.escape(request.body.type);
+    var url = global.connection.escape(request.body.url);
+    var privacy = global.connection.escape(request.body.privacy);
 
     console.log(name, date, hour, address, city, country, typeEvent, url, privacy);
 
@@ -53,7 +48,6 @@ exports.createEvent = function (request, response) {
     global.connection.query(querySelect, function (err, rows, fields) {
         if (!err) {
             tempDataHora = rows[0].id_data_hora;
-            console.log(tempDataHora);
         } else {
             console.log('Error while performing Query.', err);
         }
@@ -74,7 +68,6 @@ exports.createEvent = function (request, response) {
         }
     });
     global.connection.query("INSERT INTO Evento (nome_evento, id_localidade, id_data_hora, id_categoria, privacidade, img_url) VALUES (" + name + ", " + tempLocalidade + ", " + tempDataHora + ", " + typeEvent + ", " + privacy + ", " + url + ");", function (err, rows, fields) {
-        console.log(tempDataHora, tempLocalidade)
         if (!err) {
             console.log('Inserted');
         } else {
