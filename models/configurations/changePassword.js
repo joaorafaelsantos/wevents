@@ -12,7 +12,7 @@ exports.changePassword = function (request, response) {
     connection.connection();
 
     var email = request.session.user;
-    var sessionPassword = request.session.password;
+    var sessionPassword = parseInt(request.session.password);
     var oldPassword = request.body.oldPassword;
     var newPassword = request.body.newPassword;
     console.log(oldPassword, " ", sessionPassword);
