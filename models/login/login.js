@@ -15,28 +15,12 @@ exports.createUser = function (request, response) {
     var email = global.connection.escape(request.body.email);
     var password = global.connection.escape(request.body.password);
 
-    var querySelect = "SELECT EXISTS(SELECT * FROM Utilizador WHERE email =" + email + ");";
     var query = "INSERT INTO Utilizador (password, email, id_tipo_utilizador) VALUES (" + password + "," + email + ", 2);"
 
-    global.connection.query(querySelect, function (err, rows, fields) {
+    global.connection.query(query, function (err, rows, fields) {
         if (!err) {
             console.log('Inserted');
-            if (rows[0] != 0) {
-                console.log("success");
-                global.connection.query(query, function (err, rows, fields) {
-                    if (!err) {
-                        console.log('Inserted');
-                        response.send("success");
-                        // global.request("https://wevents.herokuapp.com").pipe(response);
-                    } else {
-                        console.log('Error while performing Query.', err);
-                        //global.request("https://wevents.herokuapp.com").pipe(response);
-                        response.send("fail");
-                    }
-                });
-            } else {
-                console.log("fail");
-            }
+            response.send("success");
             // global.request("https://wevents.herokuapp.com").pipe(response);
         } else {
             console.log('Error while performing Query.', err);
@@ -44,20 +28,6 @@ exports.createUser = function (request, response) {
             response.send("fail");
         }
     });
-
-    // var query = "INSERT INTO Utilizador (password, email, id_tipo_utilizador) VALUES (" + password + "," + email + ", 2);"
-
-    // global.connection.query(query, function (err, rows, fields) {
-    //     if (!err) {
-    //         console.log('Inserted');
-    //         response.send("success");
-    //         // global.request("https://wevents.herokuapp.com").pipe(response);
-    //     } else {
-    //         console.log('Error while performing Query.', err);
-    //         //global.request("https://wevents.herokuapp.com").pipe(response);
-    //         response.send("fail");
-    //     }
-    // });
 };
 
 // Check normal login
