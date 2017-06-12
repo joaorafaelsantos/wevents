@@ -57,6 +57,7 @@ exports.createEvent = function (request, response) {
             console.log('Error while performing Query.', err);
         }
     });
+    response.send("end");
 };
 
 // Load events
