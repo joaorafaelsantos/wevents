@@ -5,6 +5,7 @@ http = require('http');
 request = require('request');
 cookieSession = require('cookie-session')
 multer = require('multer');
+upload = multer();
 path = require('path');
 app = express();
 port = process.env.PORT || 3000;
