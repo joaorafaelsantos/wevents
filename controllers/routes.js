@@ -32,6 +32,11 @@ exports.init = function () {
         login.getUser(req, res);
     });
 
+    // Get user
+    global.app.post('/login/getTypeLogin', function (req, res) {
+        login.getTypeLogin(req, res);
+    });
+
     // Facebook
 
     global.app.post('/login/facebook', function (req, res) {
