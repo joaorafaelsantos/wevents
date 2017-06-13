@@ -98,8 +98,12 @@ exports.checkLoginGoogle = function (request, response) {
 exports.getUser = function (request, response) {
     var user = request.session.user;
     var id = request.session.id;
+    var data = {
+        user: user,
+        id: id
+    }
     if (user != undefined) {
-        response.send(user);
+        response.send(data);
     } else {
         response.send("!auth");
     }
