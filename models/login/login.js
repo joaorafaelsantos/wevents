@@ -47,7 +47,7 @@ exports.checkLogin = function (request, response) {
                 request.session.password = password;
                 request.session.key = "*\~/*" + email + "*\./*" + password + "*\|/*" + password.length + "*\%/*" + email.length + "*\}/*" + "tsiw_2017" + "*\ª/*";
                 request.session.type = "normal";
-                request.session.id = "n" + rows[0].id_utilizador;
+                request.session.id = rows[0].id_utilizador;
                 response.send("success");
             } else {
                 response.send("!auth");
@@ -69,7 +69,7 @@ exports.checkLoginFacebook = function (request, response) {
         request.session.password = id;
         request.session.key = "*\~/*" + name + "*\./*" + id + "*\|/*" + id.length + "*\%/*" + name.length + "*\}/*" + "tsiw_2017" + "*\ª/*";
         request.session.type = "facebook";
-        request.session.id = "f" + id;
+        request.session.id = id;
         response.send("success");
     } else {
         response.send("!auth");
@@ -86,7 +86,7 @@ exports.checkLoginGoogle = function (request, response) {
         request.session.password = id;
         request.session.key = "*\~/*" + name + "*\./*" + id + "*\|/*" + id.length + "*\%/*" + name.length + "*\}/*" + "tsiw_2017" + "*\ª/*";
         request.session.type = "google";
-        request.session.id = "g" + id;
+        request.session.id = id;
         response.send("success");
     } else {
         response.send("!auth");
