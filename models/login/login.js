@@ -104,8 +104,24 @@ exports.getUser = function (request, response) {
         id: id,
         type: type
     }
+
     if (user != undefined) {
-        response.send(data);
+
+        if (type == "normal") {
+            connection.connection();
+            var query = "SELECT nome from Utilizador WHERE id_utilizador =" + id + ";"
+            global.connection.query(query, function (err, rows, fields) {
+                if (!err) {
+                    data.user = rows[0].nome;
+                    response.send(data);
+                } else {
+                    console.log('Error while performing Query.', err);
+                    response.send("fail");
+                }
+            });
+        } else {
+            response.send(data);
+        }
     } else {
         response.send("!auth");
     }
