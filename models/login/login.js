@@ -72,6 +72,7 @@ exports.checkLoginFacebook = function (request, response) {
         request.session.key = "*\~/*" + name + "*\./*" + id + "*\|/*" + id.length + "*\%/*" + name.length + "*\}/*" + "tsiw_2017" + "*\ª/*";
         request.session.type = "facebook";
         request.session.id = id;
+        request.session.img = "http://graph.facebook.com/" + id + "/picture?type=large";
         response.send("success");
     } else {
         response.send("!auth");
@@ -84,11 +85,13 @@ exports.checkLoginGoogle = function (request, response) {
     if (request.body.name != undefined && request.body.id != undefined) {
         var name = request.body.name;
         var id = request.body.id;
+        var img = request.body.img;
         request.session.user = name;
         request.session.password = id;
         request.session.key = "*\~/*" + name + "*\./*" + id + "*\|/*" + id.length + "*\%/*" + name.length + "*\}/*" + "tsiw_2017" + "*\ª/*";
         request.session.type = "google";
         request.session.id = id;
+        request.session.img = img;
         response.send("success");
     } else {
         response.send("!auth");
@@ -101,20 +104,24 @@ exports.getUser = function (request, response) {
     var user = request.session.user;
     var id = request.session.id;
     var type = request.session.type;
+    var img = request.session.img;
     var data = {
         user: user,
         id: id,
-        type: type
+        type: type,
+        img: img
     }
 
     if (user != undefined) {
 
         if (type == "normal") {
             connection.connection();
-            var query = "SELECT nome from Utilizador WHERE id_utilizador =" + id + ";"
+            var query = "SELECT nome, img_url from Utilizador WHERE id_utilizador =" + id + ";"
             global.connection.query(query, function (err, rows, fields) {
                 if (!err) {
                     data.user = rows[0].nome;
+                    data.img = rows[0].img_url;
+                    request.session.img = rows[0].img_url;
                     response.send(data);
                 } else {
                     console.log('Error while performing Query.', err);
