@@ -70,7 +70,7 @@ exports.checkLoginFacebook = function (request, response) {
         request.session.key = "*\~/*" + name + "*\./*" + id + "*\|/*" + id.length + "*\%/*" + name.length + "*\}/*" + "tsiw_2017" + "*\ª/*";
         request.session.type = "facebook";
         request.session.id = id;
-        request.session.img = "http://graph.facebook.com/" + id + "/picture?type=large";
+        request.session.img = "https://graph.facebook.com/" + id + "/picture?type=large";
         response.send("success");
     } else {
         response.send("!auth");
