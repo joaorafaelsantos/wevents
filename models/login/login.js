@@ -21,6 +21,8 @@ exports.createUser = function (request, response) {
         url = 'https://webitcloud.net/PW/1617/JAF/App/views/assets/common/img/profile/default-avatar.jpg'
     }
 
+    console.log(url)
+
 
     var query = "INSERT INTO Utilizador (password, email, id_tipo_utilizador, nome, img_url) VALUES (" + password + "," + email + ", 2," + name + ", " + url + ");"
 
