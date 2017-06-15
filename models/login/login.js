@@ -22,7 +22,7 @@ exports.createUser = function (request, response) {
     }
 
 
-    var query = "INSERT INTO Utilizador (password, email, id_tipo_utilizador, nome, img_url) VALUES (" + password + "," + email + ", 2," + name + ", " + img + ");"
+    var query = "INSERT INTO Utilizador (password, email, id_tipo_utilizador, nome, img_url) VALUES (" + password + "," + email + ", 2," + name + ", " + url + ");"
 
     global.connection.query(query, function (err, rows, fields) {
         if (!err) {
