@@ -35,6 +35,8 @@ exports.changeImage = function (request, response) {
 
     var email = request.session.user;
 
+    var url = global.connection.escape(request.body.url);
+
     var sql = "UPDATE Utilizador SET img_url = " + url + " WHERE email = " + email + ";";
     global.connection.query(sql, function (err, result) {
         if (!err) {
