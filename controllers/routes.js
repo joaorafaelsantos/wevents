@@ -82,28 +82,32 @@ exports.init = function () {
         events.loadUserSubscribedEvents(req, res);
     });
 
-    // Dashboard get message
-    global.app.post('/dashboard/getMessage', function (req, res) {
-        mongo.readMessages(res);
+    // Get subscribe events available
+    global.app.post('/events/getSubscribeEvent', function (req, res) {
+        events.loadSubscribeEvent(req, res);
     });
 
-    // User send message
+    // // Dashboard get message //*TO DO*//
+    // global.app.post('/dashboard/getMessage', function (req, res) {
+    //     mongo.readMessages(res);
+    // });
+
+    // User send message (index)
     global.app.post('/user/sendMessage', function (req, res) {
         mongo.saveMessages(req, res);
     });
 
-
-    // Send messages
+    // Send messages on password recovery
     global.app.post('/login/recoverPassword', function (req, res) {
         nodemailer.sendEmail(req, res);
     });
 
-    // Change Password
+    // Change password
     global.app.post('/configurations/changePassword', function (req, res) {
         configurations.changePassword(req, res);
     });
 
-    // Change Password
+    // Change image
     global.app.post('/configurations/changeImage', function (req, res) {
         configurations.changeImage(req, res);
     });
