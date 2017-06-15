@@ -15,18 +15,21 @@ exports.createUser = function (request, response) {
     var email = global.connection.escape(request.body.email);
     var password = global.connection.escape(request.body.password);
     var name = global.connection.escape(request.body.name);
+    var url = global.connection.escape(request.body.url);
+
+    if (url == '') {
+        url = 'https://webitcloud.net/PW/1617/JAF/App/views/assets/common/img/profile/default-avatar.jpg'
+    }
 
 
-    var query = "INSERT INTO Utilizador (password, email, id_tipo_utilizador, nome) VALUES (" + password + "," + email + ", 2," + name + ");"
+    var query = "INSERT INTO Utilizador (password, email, id_tipo_utilizador, nome, img_url) VALUES (" + password + "," + email + ", 2," + name + ", " + img + ");"
 
     global.connection.query(query, function (err, rows, fields) {
         if (!err) {
             console.log('Inserted');
             response.send("success");
-            // global.request("https://wevents.herokuapp.com").pipe(response);
         } else {
             console.log('Error while performing Query.', err);
-            //global.request("https://wevents.herokuapp.com").pipe(response);
             response.send("fail");
         }
     });
