@@ -62,12 +62,12 @@ exports.init = function () {
 
     /* Events */
 
-    // Get Events (only public events)
+    // Get events (only public events)
     global.app.post('/events/getEvents', function (req, res) {
         events.loadEvents(res);
     });
 
-    // Get User Events
+    // Get user events
     global.app.post('/events/getUserEvents', function (req, res) {
         events.loadUserEvents(req, res);
     });
@@ -75,6 +75,11 @@ exports.init = function () {
     // Create event
     global.app.post('/events/createEvent', function (req, res) {
         events.createEvent(req, res);
+    });
+
+    // Get user subscribed events
+    global.app.post('/events/getUserSubscribedEvents', function (req, res) {
+        events.loadUserSubscribedEvents(req, res);
     });
 
     // Dashboard get message
