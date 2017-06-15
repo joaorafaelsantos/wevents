@@ -17,7 +17,7 @@ exports.createUser = function (request, response) {
     var name = global.connection.escape(request.body.name);
     var url = global.connection.escape(request.body.url);
 
-    if (url == '') {
+    if (url === '') {
         url = 'https://webitcloud.net/PW/1617/JAF/App/views/assets/common/img/profile/default-avatar.jpg'
     }
 
