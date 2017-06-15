@@ -16,17 +16,16 @@ exports.createUser = function (request, response) {
     var password = global.connection.escape(request.body.password);
     var name = global.connection.escape(request.body.name);
     var url = global.connection.escape(request.body.url);
+    var url2 = '';
 
-    if (url === '') {
-        url = 'https://webitcloud.net/PW/1617/JAF/App/views/assets/common/img/profile/default-avatar.jpg'
-    }
-    if (url == null) {
-        url = 'https://webitcloud.net/PW/1617/JAF/App/views/assets/common/img/profile/default-avatar.jpg'
+    if (url == '') {
+        url2 = 'https://webitcloud.net/PW/1617/JAF/App/views/assets/common/img/profile/default-avatar.jpg'
     }
 
+
+    console.log("O REQUEST É:", request.body.url)
     console.log("O URL É:", url)
-    console.log("O URL É:", url)
-    console.log("O URL É:", url);
+    console.log("O URL2 É:", url2)
 
     var query = "INSERT INTO Utilizador (password, email, id_tipo_utilizador, nome, img_url) VALUES (" + password + "," + email + ", 2," + name + ", " + url + ");"
 
