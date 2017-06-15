@@ -4,7 +4,7 @@ exports.connection = function () {
 
     global.connection = mysql.createConnection({
         host: 'webitcloud.net',
-        user: 'webitclo_jaf3',
+        user: 'webitclo_jaf4',
         password: 'sNRJy8t@yLzK',
         database: 'webitclo_G501'
     });
