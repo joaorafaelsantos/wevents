@@ -28,3 +28,22 @@ exports.changePassword = function (request, response) {
     }
 
 };
+
+exports.changeImage = function (request, response) {
+
+    connection.connection();
+
+    var email = request.session.user;
+
+    var sql = "UPDATE Utilizador SET img_url = " + url + " WHERE email = " + email + ";";
+    global.connection.query(sql, function (err, result) {
+        if (!err) {
+            console.log(result.affectedRows + " record(s) updated");
+            response.send("success");
+        } else {
+            console.log('Error while performing Query.', err);
+            response.send("fail");
+        }
+    });
+
+};

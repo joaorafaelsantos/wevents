@@ -3,7 +3,7 @@ var events = require("../models/events/events.js");
 var access = require("../models/access/access.js");
 var mongo = require("../models/configurations/mongo.js");
 var nodemailer = require("../models/configurations/nodemailer.js");
-var changePassword = require("../models/configurations/changePassword.js")
+var configurations = require("../models/configurations/configurations.js")
 
 var exports = module.exports = {};
 
@@ -95,7 +95,12 @@ exports.init = function () {
 
     // Change Password
     global.app.post('/configurations/changePassword', function (req, res) {
-        changePassword.changePassword(req, res);
+        configurations.changePassword(req, res);
+    });
+
+    // Change Password
+    global.app.post('/configurations/changeImage', function (req, res) {
+        configurations.changeImage(req, res);
     });
 
     // 404 error handler
