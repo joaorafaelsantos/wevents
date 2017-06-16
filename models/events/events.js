@@ -81,7 +81,7 @@ exports.loadUserSubscribedEvents = function (request, response) {
     connection.connection();
     var events;
     var id = request.session.id;
-    console.log(id);
+    console.log("1", id);
     var query = "(SELECT Evento.id_evento as id, Registo.id_utilizador as user_id, nome_evento as name, descricao as description, morada as address, cidade as city, pais as country, data_desc as date, hora as hour, img_url as img FROM Evento, Localidade, Data_Hora, Categoria, Registo WHERE Evento.id_localidade = Localidade.id_localidade AND Evento.id_data_hora = Data_Hora.id_data_hora AND Evento.id_categoria = Categoria.id_categoria AND Evento.id_evento = Registo.id_evento AND id_utilizador =" + id + ");";
     global.connection.query(query, function (err, rows, fields) {
         if (!err) {
@@ -97,6 +97,7 @@ exports.loadSubscribeEvent = function (request, response) {
     connection.connection();
     var events;
     var id = request.session.id;
+    console.log("2", id);
     var query = "SELECT id_evento as id, Evento.id_utilizador_criador as user_id,nome_evento as name, descricao as description, morada as address, cidade as city, pais as country, data_desc as date, hora as hour, img_url as img FROM Evento, Localidade, Data_Hora, Categoria WHERE Evento.id_localidade = Localidade.id_localidade AND Evento.id_data_hora = Data_Hora.id_data_hora AND Evento.id_categoria = Categoria.id_categoria AND Evento.id_utilizador_criador !=" + id + " AND Evento.privacidade = 0 AND id_evento NOT IN (SELECT id_evento as id FROM Registo WHERE id_utilizador =" + id + ");"
     global.connection.query(query, function (err, rows, fields) {
         if (!err) {
@@ -112,6 +113,7 @@ exports.subscribeEvent = function (request, response) {
     connection.connection();
     var events;
     var id = request.session.id;
+    console.log("3", id);
     var id_event = request.body.id;
     var query = "INSERT INTO Registo(id_evento, id_utilizador) SELECT DISTINCT " + id_event + ", " + id + " FROM Registo WHERE (SELECT (SELECT COUNT(*) FROM Registo WHERE id_evento = " + id_event + ") < (SELECT capacidade FROM Evento WHERE id_evento =" + id_event + " )) = 1;";
     global.connection.query(query, function (err, result) {
@@ -119,8 +121,7 @@ exports.subscribeEvent = function (request, response) {
             var numRows = result.affectedRows;
             if (numRows == 1) {
                 response.send("success");
-            }
-            else {
+            } else {
                 response.send("fail");
             }
         } else {
