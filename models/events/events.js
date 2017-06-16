@@ -111,8 +111,8 @@ exports.subscribeEvent = function (request, response) {
     connection.connection();
     var events;
     var id = request.session.id;
-    var id_event = global.connection.escape(request.body.id);
-    var query = "INSERT INTO Registo(id_evento, id_utilizador) SELECT DISTINCT" + parseInt(id_event) + ", " + id + "FROM Registo WHERE (SELECT (SELECT COUNT(*) FROM Registo WHERE id_evento =" + parseInt(id_event) + ") < (SELECT capacidade FROM Evento WHERE id_evento =" + parseInt(id_event) + ")) = 1;";
+    var id_event = request.body.id;
+    var query = "INSERT INTO Registo(id_evento, id_utilizador) SELECT DISTINCT" + id_event + ", " + id + "FROM Registo WHERE (SELECT (SELECT COUNT(*) FROM Registo WHERE id_evento =" + id_event + ") < (SELECT capacidade FROM Evento WHERE id_evento =" + id_event + ")) = 1;";
     global.connection.query(query, function (err, rows, fields) {
         if (!err) {
             console.log(rows.length);
