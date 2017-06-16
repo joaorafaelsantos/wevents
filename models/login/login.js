@@ -21,10 +21,8 @@ exports.createUser = function (request, response) {
 
     global.connection.query(query, function (err, rows, fields) {
         if (!err) {
-            console.log('Inserted');
             response.send("success");
         } else {
-            console.log('Error while performing Query.', err);
             response.send("fail");
         }
     });

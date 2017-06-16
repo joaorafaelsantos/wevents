@@ -12,13 +12,13 @@ cookieSession.cookieSession();
 exports.loadEvents = function (response) {
     connection.connection();
     var events;
-    var query = 'SELECT nome_evento as name, descricao as description, morada as address, cidade as city, pais as country, data_desc as date, hora as hour, img_url as img FROM Evento, Localidade, Data_Hora, Categoria WHERE Evento.id_localidade = Localidade.id_localidade AND Evento.id_data_hora = Data_Hora.id_data_hora AND Evento.id_categoria = Categoria.id_categoria AND Evento.privacidade = 0;';
+    var query = "SELECT nome_evento as name, descricao as description, morada as address, cidade as city, pais as country, data_desc as date, hora as hour, img_url as img, capacidade as capacity FROM Evento, Localidade, Data_Hora, Categoria WHERE Evento.id_localidade = Localidade.id_localidade AND Evento.id_data_hora = Data_Hora.id_data_hora AND Evento.id_categoria = Categoria.id_categoria AND Evento.privacidade = 0 GROUP BY id_evento;";
     global.connection.query(query, function (err, rows, fields) {
         if (!err) {
             events = rows;
             response.send(events);
         } else {
-            console.log('Error while performing Query.', err);
+            response.send("fail");
         }
     });
 };
@@ -43,18 +43,18 @@ exports.createEvent = function (request, response) {
 
     global.connection.query(queryInsert, function (err, rows, fields) {
         if (!err) {
-            console.log('Inserted');
+            response.send("success");
         } else {
-            console.log('Error while performing Query.', err);
+            response.send("fail");
         }
     });
 
     var query = "INSERT INTO Evento (nome_evento, id_localidade, id_data_hora, id_categoria, id_utilizador_criador, privacidade, img_url, capacidade) VALUES (" + name + ", " + "(SELECT id_localidade FROM Localidade ORDER BY id_localidade DESC LIMIT 1), (SELECT id_data_hora FROM Data_Hora WHERE data_desc =" + date + " AND hora = " + hour + ")" + ", " + typeEvent + ", " + request.session.id + ", " + privacy + ", " + url + ", " + capacity + ");"
     global.connection.query(query, function (err, rows, fields) {
         if (!err) {
-            console.log('Inserted');
+            response.send("success");
         } else {
-            console.log('Error while performing Query.', err);
+            response.send("fail");
         }
     });
     response.send("end");
