@@ -112,7 +112,7 @@ exports.subscribeEvent = function (request, response) {
     var events;
     var id = request.session.id;
     var id_event = request.body.id;
-    var query = "INSERT INTO Registo(id_evento, id_utilizador) SELECT DISTINCT " + id_event + ", " + id + "FROM Registo WHERE (SELECT (SELECT COUNT(*) FROM Registo WHERE id_evento = " + id_event + ") < (SELECT capacidade FROM Evento WHERE id_evento =" + id_event + ")) = 1;";
+    var query = "INSERT INTO Registo(id_evento, id_utilizador) SELECT DISTINCT " + id_event + ", " + id + " FROM Registo WHERE (SELECT (SELECT COUNT(*) FROM Registo WHERE id_evento = " + id_event + ") < (SELECT capacidade FROM Evento WHERE id_evento =" + id_event + " )) = 1;";
     console.log(query)
     // global.connection.query(query, function (err, rows, fields) {
     //     if (!err) {
