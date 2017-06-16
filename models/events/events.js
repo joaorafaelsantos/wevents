@@ -39,6 +39,13 @@ exports.createEvent = function (request, response) {
     var privacy = global.connection.escape(request.body.privacy);
     var capacity = global.connection.escape(request.body.capacity);
 
+    var date = (Date.now()).toString();
+    var xKey = '';
+    for (var i = 0; i < date.length; i++) {
+        var element = date[i];
+        xKey += (parseInt(element) + 9).toString(36).toUpperCase();
+    }
+
     var queryInsert = "INSERT INTO Localidade (morada, cidade, pais) VALUES (" + address + ", " + city + ", " + country + ");";
 
     global.connection.query(queryInsert, function (err, rows, fields) {
@@ -49,7 +56,7 @@ exports.createEvent = function (request, response) {
         }
     });
 
-    var query = "INSERT INTO Evento (nome_evento, id_localidade, id_data_hora, id_categoria, id_utilizador_criador, privacidade, img_url, capacidade) VALUES (" + name + ", " + "(SELECT id_localidade FROM Localidade ORDER BY id_localidade DESC LIMIT 1), (SELECT id_data_hora FROM Data_Hora WHERE data_desc =" + date + " AND hora = " + hour + ")" + ", " + typeEvent + ", " + request.session.id + ", " + privacy + ", " + url + ", " + capacity + ");"
+    var query = "INSERT INTO Evento (nome_evento, id_localidade, id_data_hora, id_categoria, id_utilizador_criador, privacidade, img_url, capacidade, xKey) VALUES (" + name + ", " + "(SELECT id_localidade FROM Localidade ORDER BY id_localidade DESC LIMIT 1), (SELECT id_data_hora FROM Data_Hora WHERE data_desc =" + date + " AND hora = " + hour + ")" + ", " + typeEvent + ", " + request.session.id + ", " + privacy + ", " + url + ", " + capacity + ", " + xKey + ");"
     global.connection.query(query, function (err, rows, fields) {
         if (!err) {
             response.send("success");
