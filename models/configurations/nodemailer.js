@@ -49,10 +49,10 @@ exports.sendEmail = function (request, response) {
                 if (err) {
                     response.send("fail");
                 } else {
-                    console.log(result.affectedRows + " record(s) updated");
+                    response.send("success");
                 }
             });
-            response.send("success");
+
         };
     });
 
