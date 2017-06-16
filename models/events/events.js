@@ -106,13 +106,14 @@ exports.loadSubscribeEvent = function (request, response) {
         }
     });
 };
+"SELECT id_evento as id, Evento.id_utilizador_criador as user_id,nome_evento as name, descricao as description, morada as address, cidade as city, pais as country, data_desc as date, hora as hour, img_url as img FROM Evento, Localidade, Data_Hora, Categoria WHERE Evento.id_localidade = Localidade.id_localidade AND Evento.id_data_hora = Data_Hora.id_data_hora AND Evento.id_categoria = Categoria.id_categoria AND Evento.id_utilizador_criador !=" + id + "AND id_evento NOT IN (SELECT id_evento as id FROM Registo WHERE id_utilizador =" + id + ");"
 
 exports.subscribeEvent = function (request, response) {
     connection.connection();
     var events;
     var id = request.session.id;
     var id_event = global.connection.escape(request.body.id);
-    var query = "INSERT INTO Registo(id_evento, id_utilizador) SELECT DISTINCT" + id_event + ", " + id + "FROM Registo WHERE (SELECT (SELECT COUNT(*) FROM Registo WHERE id_evento =" + id_event + ") < (SELECT capacidade FROM Evento WHERE id_evento =" + id_event + ")) = 1;";
+    var query = "INSERT INTO Registo(id_evento, id_utilizador) SELECT DISTINCT" + parseInt(id_event) + ", " + id + "FROM Registo WHERE (SELECT (SELECT COUNT(*) FROM Registo WHERE id_evento =" + parseInt(id_event) + ") < (SELECT capacidade FROM Evento WHERE id_evento =" + parseInt(id_event) + ")) = 1;";
     global.connection.query(query, function (err, rows, fields) {
         if (!err) {
             console.log(rows.length);
