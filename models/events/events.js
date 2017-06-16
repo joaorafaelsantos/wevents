@@ -116,7 +116,12 @@ exports.subscribeEvent = function (request, response) {
     global.connection.query(query, function (err, result) {
         if (!err) {
             var numRows = result.affectedRows;
-            console.log(numRows);
+            if (numRows == 1) {
+                response.send("success");
+            }
+            else {
+                response.send("fail");
+            }
         } else {
             console.log('Error while performing Query.', err);
         }
