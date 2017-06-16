@@ -121,5 +121,3 @@ exports.subscribeEvent = function (request, response) {
         }
     });
 };
-
-"INSERT INTO Registo(id_evento, id_utilizador) SELECT DISTINCT" + id_event + ", " + id + "FROM Registo WHERE (SELECT (SELECT COUNT(*) FROM Registo WHERE id_evento =" + id_event + ") < (SELECT capacidade FROM Evento WHERE id_evento =" + id_event + ")) = 1;";
