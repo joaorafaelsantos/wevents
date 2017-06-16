@@ -82,9 +82,14 @@ exports.init = function () {
         events.loadUserSubscribedEvents(req, res);
     });
 
-    // Get subscribe events available
+    // Subscribe event
     global.app.post('/events/getSubscribeEvent', function (req, res) {
         events.loadSubscribeEvent(req, res);
+    });
+
+    // Get subscribe events available
+    global.app.post('/events/subscribeEvent', function (req, res) {
+        events.subscribeEvent(req, res);
     });
 
     // // Dashboard get message //*TO DO*//
