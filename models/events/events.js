@@ -54,6 +54,31 @@ exports.createEvent = function (request, response) {
             response.send("fail");
         }
     });
+
+    transporter.transporter();
+
+    email = request.session.email;
+    var text = "Hello " + name + ", here is some information of your new event (" + name + "):<br>";
+    var typeEventArray = ['Conference', 'Project', 'Reunion', 'Workshop'];
+    var privacyArray = ['Public', 'Private'];
+    var content = "Name: " + name + "<br><img src=" + url + " width='145px' height='105px'><br><br>Date: " + date + "<br>Hour: " + hour + "<br>Address: " + address + "<br>City: " + city + "<br>Country: " + country + "<br>Type: " + typeEventArray[typeEvent] + "<br>Privacy: " + privacyArray[privacy] + "<br>Capacity: " + capacity + " persons<br>Secret key: " + key;
+
+    var mailOptions = {
+        from: 'jaf@webitcloud.net',
+        to: email,
+        subject: 'worldevents // ' + name,
+        html: "<center><b>worldevents / The soul of your events</b><br><br><img src='https://webitcloud.net/PW/1617/JAF/App/views/assets/common/img/logo/logo144.png'</img><br><br><br>" + text + "<br><br>" + name + "<br><br><br><br><a href='https://wevents.herokuapp.com'>Visit us</a></center>"
+    };
+
+    global.transporter.sendMail(mailOptions, function (error, info) {
+        if (error) {
+            console.log(error);
+            response.send("fail");
+        } else {
+            response.send("success");
+        };
+    });
+
 };
 
 // Load events
