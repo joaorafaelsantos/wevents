@@ -60,7 +60,7 @@ exports.createEvent = function (request, response) {
         transporter.transporter();
 
         var email = request.session.email;
-        var text = "Hello " + request.session.name + ", here is some information of your new event (" + name + "):<br>";
+        var text = "Hello " + request.session.name + ", here is some information about your new event (" + name + "):<br>";
         var typeEventArray = ['Conference', 'Project', 'Reunion', 'Workshop'];
         var privacyArray = ['Public', 'Private'];
         var content = "Name: " + name + "<br><img src=" + url + " width='145px' height='105px'><br><br>Date: " + date + "<br>Hour: " + hour + "<br>Address: " + address + "<br>City: " + city + "<br>Country: " + country + "<br>Type: " + typeEventArray[typeEvent] + "<br>Privacy: " + privacyArray[privacy] + "<br>Capacity: " + capacity + " persons<br>Secret key: " + key;
