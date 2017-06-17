@@ -18,7 +18,7 @@ exports.changePassword = function (request, response) {
     var newPassword = global.connection.escape(request.body.newPassword);
     console.log(oldPassword, newPassword);
     if (oldPassword == sessionPassword) {
-        var sql = "UPDATE Utilizador SET password = " + newPassword + " WHERE email = " + email + ";";
+        var sql = "UPDATE Utilizador SET password = " + newPassword + " WHERE email = '" + email + "';";
         global.connection.query(sql, function (err, result) {
             if (err) throw err;
             console.log(result.affectedRows + " record(s) updated");
@@ -39,7 +39,7 @@ exports.changeImage = function (request, response) {
 
     var url = global.connection.escape(request.body.url);
 
-    var sql = "UPDATE Utilizador SET img_url = " + url + " WHERE email = " + email + ";";
+    var sql = "UPDATE Utilizador SET img_url = " + url + " WHERE email = '" + email + "';";
     global.connection.query(sql, function (err, result) {
         if (!err) {
             console.log(result.affectedRows + " record(s) updated");
