@@ -39,12 +39,8 @@ exports.createEvent = function (request, response) {
     var privacy = global.connection.escape(request.body.privacy);
     var capacity = global.connection.escape(request.body.capacity);
 
-    var date = (Date.now()).toString();
-    var xKey = '';
-    for (var i = 0; i < date.length; i++) {
-        var element = date[i];
-        xKey += (parseInt(element) + 9).toString(36).toUpperCase();
-    }
+    var currentDate = (Date.now()).toString();
+    var key = '_' + name[0].toUpperCase() + name[name.length - 1].toUpperCase() + currentDate;
 
     var queryInsert = "INSERT INTO Localidade (morada, cidade, pais) VALUES (" + address + ", " + city + ", " + country + ");";
 
@@ -56,7 +52,7 @@ exports.createEvent = function (request, response) {
         }
     });
 
-    var query = "INSERT INTO Evento (nome_evento, id_localidade, id_data_hora, id_categoria, id_utilizador_criador, privacidade, img_url, capacidade, xKey) VALUES (" + name + ", " + "(SELECT id_localidade FROM Localidade ORDER BY id_localidade DESC LIMIT 1), (SELECT id_data_hora FROM Data_Hora WHERE data_desc =" + date + " AND hora = " + hour + ")" + ", " + typeEvent + ", " + request.session.id + ", " + privacy + ", " + url + ", " + capacity + ", " + xKey + ");"
+    var query = "INSERT INTO Evento (nome_evento, id_localidade, id_data_hora, id_categoria, id_utilizador_criador, privacidade, img_url, capacidade, chave) VALUES (" + name + ", " + "(SELECT id_localidade FROM Localidade ORDER BY id_localidade DESC LIMIT 1), (SELECT id_data_hora FROM Data_Hora WHERE data_desc =" + date + " AND hora = " + hour + ")" + ", " + typeEvent + ", " + request.session.id + ", " + privacy + ", " + url + ", " + capacity + ", " + key + ");"
     global.connection.query(query, function (err, rows, fields) {
         if (!err) {
             response.send("success");
@@ -89,7 +85,6 @@ exports.loadUserSubscribedEvents = function (request, response) {
     connection.connection();
     var events;
     var id = request.session.id;
-    console.log("1", id);
     var query = "(SELECT Evento.id_evento as id, Registo.id_utilizador as user_id, nome_evento as name, descricao as description, morada as address, cidade as city, pais as country, data_desc as date, hora as hour, img_url as img FROM Evento, Localidade, Data_Hora, Categoria, Registo WHERE Evento.id_localidade = Localidade.id_localidade AND Evento.id_data_hora = Data_Hora.id_data_hora AND Evento.id_categoria = Categoria.id_categoria AND Evento.id_evento = Registo.id_evento AND id_utilizador =" + id + ");";
     global.connection.query(query, function (err, rows, fields) {
         if (!err) {
@@ -105,7 +100,6 @@ exports.loadSubscribeEvent = function (request, response) {
     connection.connection();
     var events;
     var id = request.session.id;
-    console.log("2", id);
     var query = "SELECT id_evento as id, Evento.id_utilizador_criador as user_id,nome_evento as name, descricao as description, morada as address, cidade as city, pais as country, data_desc as date, hora as hour, img_url as img FROM Evento, Localidade, Data_Hora, Categoria WHERE Evento.id_localidade = Localidade.id_localidade AND Evento.id_data_hora = Data_Hora.id_data_hora AND Evento.id_categoria = Categoria.id_categoria AND Evento.id_utilizador_criador !=" + id + " AND Evento.privacidade = 0 AND id_evento NOT IN (SELECT id_evento as id FROM Registo WHERE id_utilizador =" + id + ");"
     global.connection.query(query, function (err, rows, fields) {
         if (!err) {
@@ -121,9 +115,16 @@ exports.subscribeEvent = function (request, response) {
     connection.connection();
     var events;
     var id = request.session.id;
-    console.log("3", id);
     var id_event = request.body.id;
-    var query = "INSERT INTO Registo(id_evento, id_utilizador) SELECT DISTINCT " + id_event + ", " + id + " FROM Registo WHERE (SELECT (SELECT COUNT(*) FROM Registo WHERE id_evento = " + id_event + ") < (SELECT capacidade FROM Evento WHERE id_evento =" + id_event + " )) = 1;";
+    var key = request.body.key;
+    var query = '';
+
+    if (key != undefined) {
+        query = "INSERT INTO Registo(id_evento, id_utilizador) SELECT DISTINCT " + "(SELECT id_evento FROM Evento WHERE chave = " + key + ")" + ", " + id + " FROM Registo WHERE (SELECT (SELECT COUNT(*) FROM Registo WHERE id_evento = " + "(SELECT id_evento FROM Evento WHERE chave = " + key + ")" + ") < (SELECT capacidade FROM Evento WHERE id_evento = " + "(SELECT id_evento FROM Evento WHERE chave = " + key + ")" + ")) = 1 AND " + "(SELECT id_evento FROM Evento WHERE chave = " + key + ")" + "NOT IN (SELECT id_evento FROM Evento WHERE id_utilizador_criador = " + id + ");";
+    } else {
+        query = "INSERT INTO Registo(id_evento, id_utilizador) SELECT DISTINCT " + id_event + ", " + id + " FROM Registo WHERE (SELECT (SELECT COUNT(*) FROM Registo WHERE id_evento = " + id_event + ") < (SELECT capacidade FROM Evento WHERE id_evento = " + id_event + ")) = 1 AND " + id_evento + "NOT IN (SELECT id_evento FROM Evento WHERE id_utilizador_criador = " + id + ");";
+    }
+
     global.connection.query(query, function (err, result) {
         if (!err) {
             var numRows = result.affectedRows;
@@ -133,6 +134,7 @@ exports.subscribeEvent = function (request, response) {
                 response.send("fail");
             }
         } else {
+            response.send("fail");
             console.log('Error while performing Query.', err);
         }
     });
