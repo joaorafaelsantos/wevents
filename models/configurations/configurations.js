@@ -1,6 +1,7 @@
 var connection = require("./connection.js");
 var bodyParser = require("./bodyParser.js");
 var cookieSession = require("./cookieSession.js");
+var transporter = require("./transporter.js");
 
 bodyParser.bodyParser();
 cookieSession.cookieSession();
@@ -48,4 +49,44 @@ exports.changeImage = function (request, response) {
         }
     });
 
+};
+
+exports.recoverEmail = function (request, response) {
+    connection.connection();
+    transporter.transporter();
+
+    var recEmail = request.body.recEmail;
+
+    var newPassword = "";
+    var possibilities = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_/%-*";
+
+    for (var i = 0; i < 15; i++) {
+        newPassword += possibilities.charAt(Math.floor(Math.random() * possibilities.length));
+    }
+
+    var text = 'Your new password: ' + newPassword;
+
+    var mailOptions = {
+        from: 'jaf@webitcloud.net',
+        to: recEmail,
+        subject: 'worldevents - New Password',
+        html: "<center><b>worldevents</b><br><img src='https://webitcloud.net/PW/1617/JAF/App/views/assets/common/img/logo/logo144.png'</img><br>" + text + "<br>Your worldevents team!</center>"
+    };
+
+    global.transporter.sendMail(mailOptions, function (error, info) {
+        if (error) {
+            console.log(error);
+            response.send("fail");
+        } else {
+            var sql = "UPDATE Utilizador SET password = '" + newPassword + "' WHERE email = '" + recEmail + "';";
+            global.connection.query(sql, function (err, result) {
+                if (err) {
+                    response.send("fail");
+                } else {
+                    response.send("success");
+                }
+            });
+
+        };
+    });
 };

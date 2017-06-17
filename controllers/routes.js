@@ -104,7 +104,8 @@ exports.init = function () {
 
     // Send messages on password recovery
     global.app.post('/login/recoverPassword', function (req, res) {
-        nodemailer.sendEmail(req, res);
+        // nodemailer.sendEmail(req, res);
+        configurations.recoverEmail(req, res);
     });
 
     // Change password
