@@ -42,21 +42,21 @@ exports.createEvent = function (request, response) {
 
 
     var currentDate = (Date.now()).toString();
-    var key = '_' + name[0].toUpperCase() + name[name.length - 2].toUpperCase() + currentDate;
+    var key = "_" + name[1].toUpperCase() + name[name.length - 2].toUpperCase() + currentDate;
 
     var queryInsert = "INSERT INTO Localidade (morada, cidade, pais) VALUES (" + address + ", " + city + ", " + country + ");";
 
     global.connection.query(queryInsert, function (err, rows, fields) {});
 
     var query = "INSERT INTO Evento (nome_evento, id_localidade, id_data_hora, id_categoria, id_utilizador_criador, privacidade, img_url, capacidade, chave) VALUES (" + name + ", " + "(SELECT id_localidade FROM Localidade ORDER BY id_localidade DESC LIMIT 1), (SELECT id_data_hora FROM Data_Hora WHERE data_desc =" + date + " AND hora = " + hour + ")" + ", " + typeEvent + ", " + request.session.id + ", " + privacy + ", " + url + ", " + capacity + ", '" + key + "');"
-    global.connection.query(query, function (err, rows, fields) {
-        if (!err) {
-            response.send("success");
-        } else {
-            response.send("fail");
-            console.log(query)
-        }
-    });
+    console.log(query)
+    // global.connection.query(query, function (err, rows, fields) {
+    //     if (!err) {
+    //         response.send("success");
+    //     } else {
+    //         response.send("fail");
+    //     }
+    // });
 };
 
 // Load events
