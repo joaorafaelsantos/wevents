@@ -120,11 +120,12 @@ exports.subscribeEvent = function (request, response) {
     var query = '';
 
     if (key != undefined) {
-        query = "INSERT INTO Registo(id_evento, id_utilizador) SELECT DISTINCT " + "(SELECT id_evento FROM Evento WHERE chave = " + key + ")" + ", " + id + " FROM Registo WHERE (SELECT (SELECT COUNT(*) FROM Registo WHERE id_evento = " + "(SELECT id_evento FROM Evento WHERE chave = " + key + ")" + ") < (SELECT capacidade FROM Evento WHERE id_evento = " + "(SELECT id_evento FROM Evento WHERE chave = " + key + ")" + ")) = 1 AND " + "(SELECT id_evento FROM Evento WHERE chave = " + key + ")" + "NOT IN (SELECT id_evento FROM Evento WHERE id_utilizador_criador = " + id + ");";
+        id_event = "(SELECT id_evento FROM Evento WHERE chave = '_FA1497691240753')";
+        query = "INSERT INTO Registo(id_evento, id_utilizador) SELECT DISTINCT " + id_event + ", " + id + " FROM Registo WHERE (SELECT (SELECT COUNT(*) FROM Registo WHERE id_evento = " + id_event + ")) < (SELECT capacidade FROM Evento WHERE id_evento = " + id_event + ")) = 1) AND " + id_event + "NOT IN (SELECT id_evento FROM Evento WHERE id_utilizador_criador = " + id + ");";
     } else {
-        query = "INSERT INTO Registo(id_evento, id_utilizador) SELECT DISTINCT " + id_event + ", " + id + " FROM Registo WHERE (SELECT (SELECT COUNT(*) FROM Registo WHERE id_evento = " + id_event + ") < (SELECT capacidade FROM Evento WHERE id_evento = " + id_event + ")) = 1 AND " + id_evento + "NOT IN (SELECT id_evento FROM Evento WHERE id_utilizador_criador = " + id + ");";
+        query = "INSERT INTO Registo(id_evento, id_utilizador) SELECT DISTINCT " + id_event + ", " + id + " FROM Registo WHERE (SELECT (SELECT COUNT(*) FROM Registo WHERE id_evento = " + id_event + ")) < (SELECT capacidade FROM Evento WHERE id_evento = " + id_event + ")) = 1) AND " + id_event + "NOT IN (SELECT id_evento FROM Evento WHERE id_utilizador_criador = " + id + ");";
     }
-
+    
     global.connection.query(query, function (err, result) {
         if (!err) {
             var numRows = result.affectedRows;
