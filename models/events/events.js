@@ -1,7 +1,7 @@
 var connection = require("../configurations/connection.js");
 var bodyParser = require("../configurations/bodyParser.js");
 var cookieSession = require("../configurations/cookieSession.js");
-var transporter = require("./configurations/transporter.js");
+var transporter = require("../configurations/transporter.js");
 
 var exports = module.exports = {};
 
