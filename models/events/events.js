@@ -35,18 +35,24 @@ exports.createEvent = function (request, response) {
     var city = global.connection.escape(request.body.city);
     var country = global.connection.escape(request.body.country);
     var typeEvent = global.connection.escape(request.body.type);
+    typeEvent = parseInt(typeEvent);
     var url = global.connection.escape(request.body.url);
     var privacy = global.connection.escape(request.body.privacy);
+    privacy = parseInt(privacy);
     var capacity = global.connection.escape(request.body.capacity);
+    capacity = parseInt(capacity);
+
 
     var currentDate = (Date.now()).toString();
+    console.log(name);
+    console.log(name[0]);
     var key = '_' + name[0].toUpperCase() + name[name.length - 1].toUpperCase() + currentDate;
 
     var queryInsert = "INSERT INTO Localidade (morada, cidade, pais) VALUES (" + address + ", " + city + ", " + country + ");";
 
     global.connection.query(queryInsert, function (err, rows, fields) {});
 
-    var query = "INSERT INTO Evento (nome_evento, id_localidade, id_data_hora, id_categoria, id_utilizador_criador, privacidade, img_url, capacidade, chave) VALUES (" + name + ", " + "(SELECT id_localidade FROM Localidade ORDER BY id_localidade DESC LIMIT 1), (SELECT id_data_hora FROM Data_Hora WHERE data_desc =" + date + " AND hora = " + hour + ")" + ", " + typeEvent + ", " + request.session.id + ", " + privacy + ", " + url + ", " + capacity + ", " + key + ");"
+    var query = "INSERT INTO Evento (nome_evento, id_localidade, id_data_hora, id_categoria, id_utilizador_criador, privacidade, img_url, capacidade, chave) VALUES (" + name + ", " + "(SELECT id_localidade FROM Localidade ORDER BY id_localidade DESC LIMIT 1), (SELECT id_data_hora FROM Data_Hora WHERE data_desc =" + date + " AND hora = " + hour + ")" + ", " + typeEvent + ", " + request.session.id + ", " + privacy + ", " + url + ", " + capacity + ", '" + key + "');"
     global.connection.query(query, function (err, rows, fields) {
         if (!err) {
             response.send("success");
