@@ -42,7 +42,7 @@ exports.checkLogin = function (request, response) {
         if (!err) {
             if (rows[0].value != 0) {
                 request.session.name = rows[0].nome;
-                request.session.email = email;
+                request.session.email = request.body.email;
                 request.session.password = password;
                 request.session.key = "*\~/*" + email + "*\./*" + password + "*\|/*" + password.length + "*\%/*" + email.length + "*\}/*" + "tsiw_2017" + "*\ª/*";
                 request.session.type = "normal";
@@ -126,6 +126,7 @@ exports.getUser = function (request, response) {
                     data.img = rows[0].img_url;
                     request.session.img = rows[0].img_url;
                     response.send(data);
+                    console.log(data.email)
                 } else {
                     console.log('Error while performing Query.', err);
                     response.send("fail");
@@ -133,7 +134,6 @@ exports.getUser = function (request, response) {
             });
         } else {
             response.send(data);
-            console.log(data.email)
         }
     } else {
         response.send("!auth");
