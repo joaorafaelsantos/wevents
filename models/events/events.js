@@ -120,24 +120,22 @@ exports.subscribeEvent = function (request, response) {
     var query = '';
 
     if (key != undefined) {
-        id_event = "(SELECT id_evento FROM Evento WHERE chave = " + key + " )";
-        console.log(key)
+        id_event = "(SELECT id_evento FROM Evento WHERE chave = '" + key + "' )";
         query = "INSERT INTO Registo(id_evento, id_utilizador) SELECT DISTINCT " + id_event + ", " + id + " FROM Registo WHERE (SELECT (SELECT COUNT(*) FROM Registo WHERE id_evento = " + id_event + ") < (SELECT capacidade FROM Evento WHERE id_evento = " + id_event + ") = 1) AND " + id_event + " NOT IN (SELECT id_evento FROM Evento WHERE id_utilizador_criador = " + id + ");";
     } else {
         query = "INSERT INTO Registo(id_evento, id_utilizador) SELECT DISTINCT " + id_event + ", " + id + " FROM Registo WHERE (SELECT (SELECT COUNT(*) FROM Registo WHERE id_evento = " + id_event + ") < (SELECT capacidade FROM Evento WHERE id_evento = " + id_event + ") = 1) AND " + id_event + " NOT IN (SELECT id_evento FROM Evento WHERE id_utilizador_criador = " + id + ");";
     }
 
-    // global.connection.query(query, function (err, result) {
-    //     if (!err) {
-    //         var numRows = result.affectedRows;
-    //         if (numRows == 1) {
-    //             response.send("success");
-    //         } else {
-    //             response.send("fail");
-    //         }
-    //     } else {
-    //         response.send("fail");
-    //         console.log('Error while performing Query.', err);
-    //     }
-    // });
+    global.connection.query(query, function (err, result) {
+        if (!err) {
+            var numRows = result.affectedRows;
+            if (numRows == 1) {
+                response.send("success");
+            } else {
+                response.send("fail");
+            }
+        } else {
+            response.send("fail");
+        }
+    });
 };
