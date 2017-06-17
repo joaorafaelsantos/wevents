@@ -69,7 +69,7 @@ exports.createEvent = function (request, response) {
             from: 'jaf@webitcloud.net',
             to: email,
             subject: 'worldevents // ' + name,
-            html: "<center><b>worldevents / The soul of your events</b><br><br><img src='https://webitcloud.net/PW/1617/JAF/App/views/assets/common/img/logo/logo144.png'</img><br><br><br>" + text + "<br><br>" + name + "<br><br><br><br><a href='https://wevents.herokuapp.com'>Visit us</a></center>"
+            html: "<center><b>worldevents / The soul of your events</b><br><br><img src='https://webitcloud.net/PW/1617/JAF/App/views/assets/common/img/logo/logo144.png'</img><br><br><br>" + text + "<br><br>" + content + "<br><br><br><br><a href='https://wevents.herokuapp.com'>Visit us</a></center>"
         };
 
         global.transporter.sendMail(mailOptions, function (error, info) {
