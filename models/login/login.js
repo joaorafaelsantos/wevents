@@ -68,7 +68,7 @@ exports.checkLoginFacebook = function (request, response) {
         request.session.name = name;
         request.session.email = email;
         request.session.password = id;
-        request.session.key = "*\~/*" + name + "*\./*" + id + "*\|/*" + id.length + "*\%/*" + name.length + "*\}/*" + "tsiw_2017" + "*\ª/*";
+        request.session.key = "*\~/*" + email + "*\./*" + id + "*\|/*" + id.length + "*\%/*" + email.length + "*\}/*" + "tsiw_2017" + "*\ª/*";
         request.session.type = "facebook";
         request.session.id = id;
         request.session.img = "https://graph.facebook.com/" + id + "/picture?type=large";
@@ -88,7 +88,7 @@ exports.checkLoginGoogle = function (request, response) {
         var email = request.body.email;
         request.session.name = name;
         request.session.password = id;
-        request.session.key = "*\~/*" + name + "*\./*" + id + "*\|/*" + id.length + "*\%/*" + name.length + "*\}/*" + "tsiw_2017" + "*\ª/*";
+        request.session.key = "*\~/*" + email + "*\./*" + id + "*\|/*" + id.length + "*\%/*" + email.length + "*\}/*" + "tsiw_2017" + "*\ª/*";
         request.session.type = "google";
         request.session.id = id;
         request.session.img = img;
