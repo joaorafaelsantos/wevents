@@ -34,7 +34,7 @@ exports.changeImage = function (request, response) {
 
     connection.connection();
 
-    var email = request.session.user;
+    var email = request.session.email;
 
     var url = global.connection.escape(request.body.url);
 
