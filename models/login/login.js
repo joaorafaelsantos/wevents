@@ -126,7 +126,6 @@ exports.getUser = function (request, response) {
                     data.img = rows[0].img_url;
                     request.session.img = rows[0].img_url;
                     response.send(data);
-                    console.log(data.email)
                 } else {
                     console.log('Error while performing Query.', err);
                     response.send("fail");
