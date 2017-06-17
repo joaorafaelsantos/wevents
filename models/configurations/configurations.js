@@ -12,7 +12,7 @@ exports.changePassword = function (request, response) {
 
     connection.connection();
 
-    var email = request.session.user;
+    var email = request.session.email;
     var sessionPassword = request.session.password;
     var oldPassword = global.connection.escape(request.body.oldPassword);
     var newPassword = global.connection.escape(request.body.newPassword);
@@ -34,7 +34,7 @@ exports.changeImage = function (request, response) {
 
     connection.connection();
 
-    var email = request.session.user;
+    var email = request.session.email;
 
     var url = global.connection.escape(request.body.url);
 
