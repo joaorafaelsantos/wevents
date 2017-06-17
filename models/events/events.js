@@ -34,19 +34,15 @@ exports.createEvent = function (request, response) {
     var address = global.connection.escape(request.body.address);
     var city = global.connection.escape(request.body.city);
     var country = global.connection.escape(request.body.country);
-    var typeEvent = global.connection.escape(request.body.type);
-    typeEvent = parseInt(typeEvent);
+    var typeEvent = request.body.type;
     var url = global.connection.escape(request.body.url);
-    var privacy = global.connection.escape(request.body.privacy);
-    privacy = parseInt(privacy);
-    var capacity = global.connection.escape(request.body.capacity);
-    capacity = parseInt(capacity);
+    var privacy = request.body.privacy;
+    var capacity = request.body.capacity;
+
 
 
     var currentDate = (Date.now()).toString();
-    console.log(name);
-    console.log(name[0]);
-    var key = '_' + name[0].toUpperCase() + name[name.length - 1].toUpperCase() + currentDate;
+    var key = '_' + name[0].toUpperCase() + name[name.length - 2].toUpperCase() + currentDate;
 
     var queryInsert = "INSERT INTO Localidade (morada, cidade, pais) VALUES (" + address + ", " + city + ", " + country + ");";
 
