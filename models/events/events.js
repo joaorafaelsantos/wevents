@@ -1,6 +1,7 @@
 var connection = require("../configurations/connection.js");
 var bodyParser = require("../configurations/bodyParser.js");
 var cookieSession = require("../configurations/cookieSession.js");
+var transporter = require("./transporter.js");
 
 var exports = module.exports = {};
 
@@ -57,7 +58,7 @@ exports.createEvent = function (request, response) {
 
     transporter.transporter();
 
-    email = request.session.email;
+    var email = request.session.email;
     var text = "Hello " + name + ", here is some information of your new event (" + name + "):<br>";
     var typeEventArray = ['Conference', 'Project', 'Reunion', 'Workshop'];
     var privacyArray = ['Public', 'Private'];
