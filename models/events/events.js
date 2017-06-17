@@ -50,11 +50,9 @@ exports.createEvent = function (request, response) {
     global.connection.query(query, function (err, rows, fields) {
         if (!err) {
             response.send("success");
-            console.log("sucesso")
         } else {
             response.send("fail");
-            console.log("erro")
-
+            console.log(query)
         }
     });
 };
