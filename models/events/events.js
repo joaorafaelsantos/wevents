@@ -39,8 +39,6 @@ exports.createEvent = function (request, response) {
     var privacy = request.body.privacy;
     var capacity = request.body.capacity;
 
-
-
     var currentDate = (Date.now()).toString();
     var key = "_" + name[1].toUpperCase() + name[name.length - 2].toUpperCase() + currentDate;
 
@@ -49,14 +47,13 @@ exports.createEvent = function (request, response) {
     global.connection.query(queryInsert, function (err, rows, fields) {});
 
     var query = "INSERT INTO Evento (nome_evento, id_localidade, id_data_hora, id_categoria, id_utilizador_criador, privacidade, img_url, capacidade, chave) VALUES (" + name + ", " + "(SELECT id_localidade FROM Localidade ORDER BY id_localidade DESC LIMIT 1), (SELECT id_data_hora FROM Data_Hora WHERE data_desc =" + date + " AND hora = " + hour + ")" + ", " + typeEvent + ", " + request.session.id + ", " + privacy + ", " + url + ", " + capacity + ", '" + key + "');"
-    console.log(query)
-    // global.connection.query(query, function (err, rows, fields) {
-    //     if (!err) {
-    //         response.send("success");
-    //     } else {
-    //         response.send("fail");
-    //     }
-    // });
+    global.connection.query(query, function (err, rows, fields) {
+        if (!err) {
+            response.send("success");
+        } else {
+            response.send("fail");
+        }
+    });
 };
 
 // Load events
