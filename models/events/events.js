@@ -121,9 +121,9 @@ exports.subscribeEvent = function (request, response) {
 
     if (key != undefined) {
         id_event = "(SELECT id_evento FROM Evento WHERE chave = '_FA1497691240753')";
-        query = "INSERT INTO Registo(id_evento, id_utilizador) SELECT DISTINCT " + id_event + ", " + id + " FROM Registo WHERE (SELECT (SELECT COUNT(*) FROM Registo WHERE id_evento = " + id_event + ")) < (SELECT capacidade FROM Evento WHERE id_evento = " + id_event + ")) = 1) AND " + id_event + "NOT IN (SELECT id_evento FROM Evento WHERE id_utilizador_criador = " + id + ");";
+        query = "INSERT INTO Registo(id_evento, id_utilizador) SELECT DISTINCT " + id_event + ", " + id + " FROM Registo WHERE (SELECT (SELECT COUNT(*) FROM Registo WHERE id_evento = " + id_event + ")) < (SELECT capacidade FROM Evento WHERE id_evento = " + id_event + ")) = 1) AND " + id_event + " NOT IN (SELECT id_evento FROM Evento WHERE id_utilizador_criador = " + id + ");";
     } else {
-        query = "INSERT INTO Registo(id_evento, id_utilizador) SELECT DISTINCT " + id_event + ", " + id + " FROM Registo WHERE (SELECT (SELECT COUNT(*) FROM Registo WHERE id_evento = " + id_event + ")) < (SELECT capacidade FROM Evento WHERE id_evento = " + id_event + ")) = 1) AND " + id_event + "NOT IN (SELECT id_evento FROM Evento WHERE id_utilizador_criador = " + id + ");";
+        query = "INSERT INTO Registo(id_evento, id_utilizador) SELECT DISTINCT " + id_event + ", " + id + " FROM Registo WHERE (SELECT (SELECT COUNT(*) FROM Registo WHERE id_evento = " + id_event + ")) < (SELECT capacidade FROM Evento WHERE id_evento = " + id_event + ")) = 1) AND " + id_event + " NOT IN (SELECT id_evento FROM Evento WHERE id_utilizador_criador = " + id + ");";
     }
     
     global.connection.query(query, function (err, result) {
