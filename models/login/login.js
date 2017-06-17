@@ -36,12 +36,13 @@ exports.checkLogin = function (request, response) {
     var email = global.connection.escape(request.body.email);
     var password = global.connection.escape(request.body.password);
 
-    var query = "SELECT EXISTS(SELECT email, password FROM Utilizador WHERE email = " + email + " AND password = " + password + ") as value, id_utilizador FROM Utilizador WHERE email =" + email + ";";
+    var query = "SELECT EXISTS(SELECT email, password FROM Utilizador WHERE email = " + email + " AND password = " + password + ") as value, id_utilizador, nome FROM Utilizador WHERE email =" + email + ";";
 
     global.connection.query(query, function (err, rows, fields) {
         if (!err) {
             if (rows[0].value != 0) {
-                request.session.user = email;
+                request.session.name = rows[0].nome;
+                request.session.email = email;
                 request.session.password = password;
                 request.session.key = "*\~/*" + email + "*\./*" + password + "*\|/*" + password.length + "*\%/*" + email.length + "*\}/*" + "tsiw_2017" + "*\ª/*";
                 request.session.type = "normal";
@@ -62,9 +63,10 @@ exports.checkLogin = function (request, response) {
 exports.checkLoginFacebook = function (request, response) {
     if (request.body.name != undefined && request.body.id != undefined) {
         var name = request.body.name;
-        console.log(request.body)
+        var email = request.body.email;
         var id = request.body.id;
-        request.session.user = name;
+        request.session.name = name;
+        request.session.email = email;
         request.session.password = id;
         request.session.key = "*\~/*" + name + "*\./*" + id + "*\|/*" + id.length + "*\%/*" + name.length + "*\}/*" + "tsiw_2017" + "*\ª/*";
         request.session.type = "facebook";
@@ -83,12 +85,14 @@ exports.checkLoginGoogle = function (request, response) {
         var name = request.body.name;
         var id = request.body.id;
         var img = request.body.img;
-        request.session.user = name;
+        var email = request.body.email;
+        request.session.name = name;
         request.session.password = id;
         request.session.key = "*\~/*" + name + "*\./*" + id + "*\|/*" + id.length + "*\%/*" + name.length + "*\}/*" + "tsiw_2017" + "*\ª/*";
         request.session.type = "google";
         request.session.id = id;
         request.session.img = img;
+        request.session.email = email;
         response.send("success");
     } else {
         response.send("!auth");
@@ -98,25 +102,27 @@ exports.checkLoginGoogle = function (request, response) {
 // Get user
 
 exports.getUser = function (request, response) {
-    var user = request.session.user;
+    var name = request.session.name;
     var id = request.session.id;
     var type = request.session.type;
     var img = request.session.img;
+    var email = request.session.email;
     var data = {
-        user: user,
+        name: name,
         id: id,
         type: type,
-        img: img
+        img: img,
+        email: email
     }
 
-    if (user != undefined) {
+    if (name != undefined) {
 
         if (type == "normal") {
             connection.connection();
             var query = "SELECT nome, img_url from Utilizador WHERE id_utilizador =" + id + ";"
             global.connection.query(query, function (err, rows, fields) {
                 if (!err) {
-                    data.user = rows[0].nome;
+                    data.name = rows[0].nome;
                     data.img = rows[0].img_url;
                     request.session.img = rows[0].img_url;
                     response.send(data);
