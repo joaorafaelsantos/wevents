@@ -68,7 +68,6 @@ exports.checkLoginFacebook = function (request, response) {
             request.session.email = email;
         }
         var id = request.body.id;
-        console.log(name, id, email);
         request.session.name = name;
         request.session.password = id;
         request.session.key = "*\~/*" + name + "*\./*" + id + "*\|/*" + id.length + "*\%/*" + name.length + "*\}/*" + "tsiw_2017" + "*\ª/*";
