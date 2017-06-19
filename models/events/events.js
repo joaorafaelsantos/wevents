@@ -50,7 +50,12 @@ exports.createEvent = function (request, response) {
     var query = "INSERT INTO Evento (nome_evento, id_localidade, id_data_hora, id_categoria, id_utilizador_criador, privacidade, img_url, capacidade, chave) VALUES (" + name + ", " + "(SELECT id_localidade FROM Localidade ORDER BY id_localidade DESC LIMIT 1), (SELECT id_data_hora FROM Data_Hora WHERE data_desc =" + date + " AND hora = " + hour + ")" + ", " + typeEvent + ", " + request.session.id + ", " + privacy + ", " + url + ", " + capacity + ", '" + key + "');"
     global.connection.query(query, function (err, rows, fields) {
         if (!err) {
-            sendEmail();
+            if (request.session.email != undefined) {
+                sendEmail();
+            } else {
+                response.send("success");
+            }
+
         } else {
             response.send("fail");
         }
@@ -63,7 +68,7 @@ exports.createEvent = function (request, response) {
         var text = "Hello " + request.session.name + ", here is some information about your new event (" + name + "):<br>";
         var typeEventArray = ['Conference', 'Project', 'Reunion', 'Workshop'];
         var privacyArray = ['Public', 'Private'];
-        var content = "Name: " + name + "<br><br><img src=" + url + " width='145px' height='105px'><br><br>Date: " + date + "<br>Hour: " + hour + "<br>Address: " + address + "<br>City: " + city + "<br>Country: " + country + "<br>Type: " + typeEventArray[typeEvent-1] + "<br>Privacy: " + privacyArray[privacy] + "<br>Capacity: " + capacity + "<br>Secret key: " + key;
+        var content = "Name: " + name + "<br><br><img src=" + url + " width='145px' height='105px'><br><br>Date: " + date + "<br>Hour: " + hour + "<br>Address: " + address + "<br>City: " + city + "<br>Country: " + country + "<br>Type: " + typeEventArray[typeEvent - 1] + "<br>Privacy: " + privacyArray[privacy] + "<br>Capacity: " + capacity + "<br>Secret key: " + key;
 
         var mailOptions = {
             from: 'jaf@webitcloud.net',

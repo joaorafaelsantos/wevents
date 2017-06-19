@@ -44,7 +44,7 @@ exports.checkLogin = function (request, response) {
                 request.session.name = rows[0].nome;
                 request.session.email = request.body.email;
                 request.session.password = password;
-                request.session.key = "*\~/*" + request.body.email + "*\./*" + password + "*\|/*" + password.length + "*\%/*" + request.body.email.length + "*\}/*" + "tsiw_2017" + "*\ª/*";
+                request.session.key = "*\~/*" + request.body.name + "*\./*" + password + "*\|/*" + password.length + "*\%/*" + request.body.name.length + "*\}/*" + "tsiw_2017" + "*\ª/*";
                 request.session.type = "normal";
                 request.session.id = rows[0].id_utilizador;
                 response.send("success");
@@ -63,13 +63,15 @@ exports.checkLogin = function (request, response) {
 exports.checkLoginFacebook = function (request, response) {
     if (request.body.name != undefined && request.body.id != undefined) {
         var name = request.body.name;
-        var email = request.body.email;
+        if (request.body.email != undefined) {
+            var email = request.body.email;
+            request.session.email = email;
+        }
         var id = request.body.id;
         console.log(name, id, email);
         request.session.name = name;
-        request.session.email = email;
         request.session.password = id;
-        request.session.key = "*\~/*" + email + "*\./*" + id + "*\|/*" + id.length + "*\%/*" + email.length + "*\}/*" + "tsiw_2017" + "*\ª/*";
+        request.session.key = "*\~/*" + name + "*\./*" + id + "*\|/*" + id.length + "*\%/*" + name.length + "*\}/*" + "tsiw_2017" + "*\ª/*";
         request.session.type = "facebook";
         request.session.id = id;
         request.session.img = "https://graph.facebook.com/" + id + "/picture?type=large";
