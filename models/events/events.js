@@ -166,12 +166,44 @@ exports.subscribeEvent = function (request, response) {
     });
 };
 
+exports.getSubscribers = function (request, response) {
+    connection.connection();
+    var id_event = request.body.id;
+    var query = "SELECT Utilizador.img_url, Utilizador.nome FROM Registo, Utilizador, Evento WHERE Registo.id_utilizador = Utilizador.id_utilizador AND Evento.id_evento = " + id_event + ";"
+
+    global.connection.query(query, function (err, rows, fields) {
+        if (!err) {
+            var subscribers = rows;
+            response.send(subscribers);
+        } else {
+            response.send("fail");
+        }
+    });
+};
+
+exports.removeEvent = function (request, response) {
+    connection.connection();
+    var id_event = request.body.id;
+    var query = "DELETE FROM Evento WHERE id_evento = " + id_event + ";";
+
+    global.connection.query(query, function (err, result) {
+        if (!err) {
+            var numRows = result.affectedRows;
+            if (numRows == 1) {
+                response.send("success");
+            } else {
+                response.send("fail");
+            }
+        } else {
+            response.send("fail");
+        }
+    });
+};
+
 exports.removeSubscription = function (request, response) {
     connection.connection();
-    var events;
     var id = request.session.id;
     var id_event = request.body.id;
-    var key = request.body.key;
     var query = "DELETE FROM Registo WHERE id_utilizador = " + id + " AND id_evento = " + id_event + ";";
 
     global.connection.query(query, function (err, result) {

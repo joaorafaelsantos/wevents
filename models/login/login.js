@@ -74,6 +74,13 @@ exports.checkLoginFacebook = function (request, response) {
         request.session.type = "facebook";
         request.session.id = id;
         request.session.img = "https://graph.facebook.com/" + id + "/picture?type=large";
+
+        connection.connection();
+        var query = "INSERT INTO Utilizador (id_utilizador, nome, img_url) VALUES (" + id + ", '" + name + "', '" + img + "');";
+
+        global.connection.query(query, function (err, result) {
+            if (!err) {}
+        });
         response.send("success");
     } else {
         response.send("!auth");
@@ -95,6 +102,13 @@ exports.checkLoginGoogle = function (request, response) {
         request.session.id = id;
         request.session.img = img;
         request.session.email = email;
+
+        connection.connection();
+        var query = "INSERT INTO Utilizador (id_utilizador, nome, img_url) VALUES (" + id + ", '" + name + "', '" + img + "');";
+
+        global.connection.query(query, function (err, result) {
+            if (!err) {}
+        });
         response.send("success");
     } else {
         response.send("!auth");

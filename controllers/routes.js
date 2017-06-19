@@ -82,6 +82,11 @@ exports.init = function () {
         events.loadUserSubscribedEvents(req, res);
     });
 
+    // Get subscribers
+    global.app.post('/events/getSubscribers', function (req, res) {
+        events.getSubscribers(req, res);
+    });
+
     // Subscribe event
     global.app.post('/events/getSubscribeEvent', function (req, res) {
         events.loadSubscribeEvent(req, res);
@@ -92,6 +97,12 @@ exports.init = function () {
         events.subscribeEvent(req, res);
     });
 
+    // Remove event
+    global.app.post('/events/removeEvent', function (req, res) {
+        events.removeEvent(req, res);
+    });
+
+    // Remove subscription
     global.app.post('/events/removeSubscription', function (req, res) {
         events.removeSubscription(req, res);
     });
