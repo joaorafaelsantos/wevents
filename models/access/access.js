@@ -16,6 +16,6 @@ exports.redirectPortal = function (request, response) {
         }
 
     } else {
-        global.request("https://webitcloud.net/PW/1617/JAF/App/views/pages/errors/404.html").pipe(response);
+        global.request("https://webitcloud.net/PW/1617/JAF/App/views/pages/errors/403.html").pipe(response);
     }
 }
