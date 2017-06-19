@@ -44,7 +44,7 @@ exports.checkLogin = function (request, response) {
                 request.session.name = rows[0].nome;
                 request.session.email = request.body.email;
                 request.session.password = password;
-                request.session.key = "*\~/*" + request.body.name + "*\./*" + password + "*\|/*" + password.length + "*\%/*" + request.body.name.length + "*\}/*" + "tsiw_2017" + "*\ª/*";
+                request.session.key = "*\~/*" + request.session.name + "*\./*" + password + "*\|/*" + password.length + "*\%/*" + request.session.name.length + "*\}/*" + "tsiw_2017" + "*\ª/*";
                 request.session.type = "normal";
                 request.session.id = rows[0].id_utilizador;
                 response.send("success");
