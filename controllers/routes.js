@@ -92,6 +92,10 @@ exports.init = function () {
         events.subscribeEvent(req, res);
     });
 
+    global.app.post('/events/removeSubscription', function (req, res) {
+        events.removeSubscription(req, res);
+    });
+
     // // Dashboard get message //*TO DO*//
     // global.app.post('/dashboard/getMessage', function (req, res) {
     //     mongo.readMessages(res);
