@@ -76,7 +76,7 @@ exports.checkLoginFacebook = function (request, response) {
         request.session.img = "https://graph.facebook.com/" + id + "/picture?type=large";
 
         connection.connection();
-        var query = "INSERT INTO Utilizador (id_utilizador, nome, img_url) VALUES (" + id + ", '" + name + "', '" + img + "');";
+        var query = "INSERT INTO Utilizador (id_utilizador, nome, img_url) VALUES (" + id + ", '" + name + "', '" + request.session.img + "');";
 
         global.connection.query(query, function (err, result) {
             if (!err) {}
