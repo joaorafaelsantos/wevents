@@ -173,17 +173,18 @@ exports.removeSubscription = function (request, response) {
     var id_event = request.body.id;
     var key = request.body.key;
     var query = "DELETE FROM Registo WHERE id_utilizador = " + id + "AND id_evento = " + id_event + ";";
+    console.log(query);
 
-    global.connection.query(query, function (err, result) {
-        if (!err) {
-            var numRows = result.affectedRows;
-            if (numRows == 1) {
-                response.send("success");
-            } else {
-                response.send("fail");
-            }
-        } else {
-            response.send("fail");
-        }
-    });
+    // global.connection.query(query, function (err, result) {
+    //     if (!err) {
+    //         var numRows = result.affectedRows;
+    //         if (numRows == 1) {
+    //             response.send("success");
+    //         } else {
+    //             response.send("fail");
+    //         }
+    //     } else {
+    //         response.send("fail");
+    //     }
+    // });
 };
