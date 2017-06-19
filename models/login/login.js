@@ -62,10 +62,10 @@ exports.checkLogin = function (request, response) {
 
 exports.checkLoginFacebook = function (request, response) {
     if (request.body.name != undefined && request.body.id != undefined) {
-        console.log(name, id, email);
         var name = request.body.name;
         var email = request.body.email;
         var id = request.body.id;
+        console.log(name, id, email);
         request.session.name = name;
         request.session.email = email;
         request.session.password = id;
