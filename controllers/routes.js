@@ -185,4 +185,9 @@ exports.init = function () {
     global.app.post('/dashboard/getMessages', function (req, res) {
         mongo.readMessages(res);
     });
+
+    // Dashboard Statistics 
+    global.app.post('/dashboard/statistics ', function (req, res) {
+        dashboard.getStatistics(res);
+    });
 };

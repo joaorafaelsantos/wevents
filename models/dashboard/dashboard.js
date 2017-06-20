@@ -106,3 +106,62 @@ exports.removeEvent = function (request, response) {
         console.log("1 event removed");
     });
 };
+
+exports.getStatistics = function (request, response) {
+    var data = {};
+    connection.connection();
+    var query = "SELECT SUM(TABLE_ROWS) FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'webitclo_G501';";
+    global.connection.query(query, function (err, rows, fields) {
+        if (!err) {
+            data.inserts = rows;
+            response.send(data);
+        } else {
+            response.send("fail");
+        }
+    });
+    var query = "SELECT COUNT(*) FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'webitclo_G501';";
+    global.connection.query(query, function (err, rows, fields) {
+        if (!err) {
+            data.tables = rows;
+            response.send(data);
+        } else {
+            response.send("fail");
+        }
+    });
+    var query = "SELECT COUNT(*) FROM Evento;";
+    global.connection.query(query, function (err, rows, fields) {
+        if (!err) {
+            data.events = rows;
+            response.send(data);
+        } else {
+            response.send("fail");
+        }
+    });
+    var query = "SELECT COUNT(*) FROM Utilizador;";
+    global.connection.query(query, function (err, rows, fields) {
+        if (!err) {
+            data.users = rows;
+            response.send(data);
+        } else {
+            response.send("fail");
+        }
+    });
+    var query = "SELECT COUNT(*) FROM Utilizador;";
+    global.connection.query(query, function (err, rows, fields) {
+        if (!err) {
+            data.users = rows;
+            response.send(data);
+        } else {
+            response.send("fail");
+        }
+    });
+    var query = "SELECT COUNT(*) FROM Registo;";
+    global.connection.query(query, function (err, rows, fields) {
+        if (!err) {
+            data.subscriptions = rows;
+            response.send(data);
+        } else {
+            response.send("fail");
+        }
+    });
+};
