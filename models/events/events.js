@@ -218,3 +218,37 @@ exports.removeSubscription = function (request, response) {
         }
     });
 };
+
+// Add resource
+
+exports.addResource = function (request, response) {
+    connection.connection();
+    var id_event = request.body.id;
+    var name = request.body.name;
+    var obs = request.body.obs;
+
+    var query = "INSERT INTO Recurso (nome, obs, id_evento) VALUES ('" + name + "', '" + obs + "'," + id_event + ");";
+    global.connection.query(query, function (err, rows, fields) {
+        if (!err) {
+            response.send("success");
+        } else {
+            response.send("fail");
+        }
+    });
+};
+
+// Get resources
+
+exports.getResources = function (request, response) {
+    connection.connection();
+    var id_event = request.body.id;
+    var query = "SELECT nome, obs FROM Recurso WHERE id_evento = " + id_event + ";";
+    global.connection.query(query, function (err, rows, fields) {
+        if (!err) {
+            var resources = rows;
+            response.send(resources);
+        } else {
+            response.send("fail");
+        }
+    });
+};
