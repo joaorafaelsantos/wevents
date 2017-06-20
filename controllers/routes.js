@@ -4,6 +4,7 @@ var access = require("../models/access/access.js");
 var mongo = require("../models/configurations/mongo.js");
 var nodemailer = require("../models/configurations/nodemailer.js");
 var configurations = require("../models/configurations/configurations.js")
+var dashboard = require("../models/dashboard/dashboard.js");
 
 var exports = module.exports = {};
 
@@ -146,5 +147,17 @@ exports.init = function () {
     // 404 error handler
     global.app.get('*', function (req, res) {
         global.request("https://webitcloud.net/PW/1617/JAF/App/views/pages/errors/404.html").pipe(res);
+    });
+
+    //Dashboard
+
+    // Get events
+    global.app.post('/dashboard/getEvents', function (req, res) {
+        dashboard.loadEvents(res);
+    });
+
+    // Get users
+    global.app.post('/dashboard/getUsers', function (req, res) {
+        dashboard.loadUsers(res);
     });
 };
