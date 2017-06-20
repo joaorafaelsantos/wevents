@@ -118,11 +118,6 @@ exports.init = function () {
         events.removeSubscription(req, res);
     });
 
-    // // Dashboard get message //*TO DO*//
-    // global.app.post('/dashboard/getMessage', function (req, res) {
-    //     mongo.readMessages(res);
-    // });
-
     // User send message (index)
     global.app.post('/user/sendMessage', function (req, res) {
         mongo.saveMessages(req, res);
@@ -130,7 +125,7 @@ exports.init = function () {
 
     // Send messages on password recovery
     global.app.post('/login/recoverPassword', function (req, res) {
-        // nodemailer.sendEmail(req, res);
+        nodemailer.sendEmail(req, res);
         configurations.recoverEmail(req, res);
     });
 
@@ -184,5 +179,10 @@ exports.init = function () {
     // Remove event
     global.app.post('/dashboard/removeEvent', function (req, res) {
         dashboard.removeEvent(req, res);
+    });
+
+    // User messages
+    global.app.post('/dashboard/getMessages', function (req, res) {
+        mongo.readMessages(res);
     });
 };
