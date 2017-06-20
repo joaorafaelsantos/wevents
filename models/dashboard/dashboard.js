@@ -129,8 +129,7 @@ exports.getStatistics = function (request, response) {
     var query = "SELECT COUNT(*) FROM Evento;";
     global.connection.query(query, function (err, rows, fields) {
         if (!err) {
-            events = rows;
-            response.send(events);
+            response.send(rows);
         } else {
             response.send("fail");
         }
