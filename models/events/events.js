@@ -155,11 +155,7 @@ exports.subscribeEvent = function (request, response) {
         if (!err) {
             var numRows = result.affectedRows;
             if (numRows == 1) {
-                if (request.session.email != undefined) {
-                    sendEmail();
-                } else {
                     response.send("success");
-                }
             } else {
                 response.send("fail");
             }
@@ -168,30 +164,6 @@ exports.subscribeEvent = function (request, response) {
         }
     });
 
-    function sendEmail() {
-        transporter.transporter();
-
-        var email = request.session.email;
-        var text = "Hello " + request.session.name + ", here is some information about the event you subscribed (" + name + "):<br>";
-        var typeEventArray = ['Conference', 'Project', 'Reunion', 'Workshop'];
-        var privacyArray = ['Public', 'Private'];
-        var content = "Name: " + name + "<br><br><img src=" + url + " width='145px' height='105px'><br><br>Date: " + date + "<br>Hour: " + hour + "<br>Address: " + address + "<br>City: " + city + "<br>Country: " + country + "<br>Type: " + typeEventArray[typeEvent - 1] + "<br>Privacy: " + privacyArray[privacy] + "<br>Capacity: " + capacity + "<br>Secret key: " + key;
-
-        var mailOptions = {
-            from: 'jaf@webitcloud.net',
-            to: email,
-            subject: 'worldevents // ' + name,
-            html: "<center><b>worldevents / The soul of your events</b><br><br><img src='https://webitcloud.net/PW/1617/JAF/App/views/assets/common/img/logo/logo144.png'</img><br><br><br>" + text + "<br><br>" + content + "<br><br><br><br><a href='https://wevents.herokuapp.com'>Visit us</a></center>"
-        };
-
-        global.transporter.sendMail(mailOptions, function (error, info) {
-            if (error) {
-                response.send("fail");
-            } else {
-                response.send("success");
-            };
-        });
-    }
 };
 
 exports.getSubscribers = function (request, response) {
