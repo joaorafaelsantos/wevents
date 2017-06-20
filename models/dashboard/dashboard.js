@@ -1,6 +1,9 @@
 var connection = require("../configurations/connection.js");
+var bodyParser = require("../configurations/bodyParser.js");
 
 var exports = module.exports = {};
+
+bodyParser.bodyParser();
 
 // Load events
 
@@ -31,5 +34,75 @@ exports.loadUsers = function (response) {
         } else {
             response.send("fail");
         }
+    });
+};
+
+// Change users
+
+exports.changeUser = function (request, response) {
+    connection.connection();
+    var email = request.body.email;
+    var pass = request.body.pass;
+    var img = request.body.img;
+    var update = "UPDATE Utilizador SET password = '" + pass + "',  img_url = '" + img + "' WHERE email = '" + email + "';";
+    global.connection.query(update, function (err, result) {
+        if (err) throw err;
+        console.log("1 user updated");
+    });
+};
+
+// Remove users
+
+exports.removeUser = function (request, response) {
+    connection.connection();
+    var email = request.body.email;
+    var remove = "DELETE FROM Utilizador WHERE email = '" + email + "';";
+    global.connection.query(remove, function (err, result) {
+        if (err) throw err;
+        console.log("1 user removed");
+    });
+};
+
+// Create users
+
+exports.createUser = function (request, response) {
+    connection.connection();
+    var email = requestuest.body.email;
+    var name = request.body.name;
+    var pass = request.body.pass;
+    var tipo = request.body.tipo;
+    var img = request.body.img;
+    var insert = "INSERT INTO Utilizador (password, email, id_tipo_utilizador, nome, img_url) VALUES ('" + pass + "', '" + email + "', '" + tipo + "' , '" + name + "' , '" + img + "');";
+    global.connection.query(insert, function (err, result) {
+        if (err) throw err;
+        console.log("1 user inserted");
+    });
+};
+
+// Change event
+
+exports.changeEvent = function (request, response) {
+    connection.connection();
+    var event = request.body.event;
+    var img = request.body.img;
+    var privacidade = request.body.privacidade;
+    var rua = request.body.rua;
+    var localidade = "SELECT id_localidade FROM Localidade WHERE morada = '" + rua + "';";
+    var update = "UPDATE Evento SET privacidade = '" + privacidade + "',  img_url = '" + img + "',  id_localidade = '" + localidade + "' WHERE evento = '" + event + "';";
+    global.connection.query(update, function (err, result) {
+        if (err) throw err;
+        console.log("1 event updated");
+    });
+};
+
+// Remove event
+
+exports.removeEvent = function (request, response) {
+    connection.connection();
+    var event = request.body.event;
+    var remove = "DELETE FROM Evento WHERE nome_evento = '" + event + "';";
+    global.connection.query(remove, function (err, result) {
+        if (err) throw err;
+        console.log("1 event removed");
     });
 };

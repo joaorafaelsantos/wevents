@@ -153,11 +153,36 @@ exports.init = function () {
 
     // Get events
     global.app.post('/dashboard/getEvents', function (req, res) {
-        dashboard.loadEvents(res);
+        dashboard.loadEvents(req, res);
     });
 
     // Get users
     global.app.post('/dashboard/getUsers', function (req, res) {
-        dashboard.loadUsers(res);
+        dashboard.loadUsers(req, res);
+    });
+
+    // Change user
+    global.app.post('/dashboard/changeUser', function (req, res) {
+        dashboard.changeUser(req, res);
+    });
+
+    // Remove user
+    global.app.post('/dashboard/removeUser', function (req, res) {
+        dashboard.removeUser(req, res);
+    });
+
+    // Create user
+    global.app.post('/dashboard/createUser', function (req, res) {
+        dashboard.createUser(req, res);
+    });
+
+    // Change event
+    global.app.post('/dashboard/changeEvent', function (req, res) {
+        dashboard.changeEvent(req, res);
+    });
+
+    // Remove event
+    global.app.post('/dashboard/removeEvent', function (req, res) {
+        dashboard.removeEvent(req, res);
     });
 };
