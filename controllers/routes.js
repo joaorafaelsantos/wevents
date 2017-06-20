@@ -87,6 +87,16 @@ exports.init = function () {
         events.getSubscribers(req, res);
     });
 
+    // Add resource
+    global.app.post('/events/addResource', function (req, res) {
+        events.addResource(req, res);
+    });
+
+    // Get resources
+    global.app.post('/events/getResources', function (req, res) {
+        events.getResources(req, res);
+    });
+
     // Subscribe event
     global.app.post('/events/getSubscribeEvent', function (req, res) {
         events.loadSubscribeEvent(req, res);
