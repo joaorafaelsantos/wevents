@@ -155,7 +155,7 @@ exports.subscribeEvent = function (request, response) {
         if (!err) {
             var numRows = result.affectedRows;
             if (numRows == 1) {
-                    response.send("success");
+                response.send("success");
             } else {
                 response.send("fail");
             }
@@ -169,8 +169,7 @@ exports.subscribeEvent = function (request, response) {
 exports.getSubscribers = function (request, response) {
     connection.connection();
     var id_event = request.body.id;
-    var query = "SELECT Utilizador.img_url, Utilizador.nome FROM Registo, Utilizador, Evento WHERE Registo.id_utilizador = Utilizador.id_utilizador AND Evento.id_evento = " + id_event + ";"
-    console.log(query)
+    var query = "SELECT Utilizador.img_url, Utilizador.nome FROM Registo, Utilizador, Evento WHERE Registo.id_utilizador = Utilizador.id_utilizador AND Registo.id_evento = " + id_event + " GROUP BY Utilizador.nome;"
     global.connection.query(query, function (err, rows, fields) {
         if (!err) {
             var subscribers = rows;
