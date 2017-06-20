@@ -108,6 +108,9 @@ exports.checkLoginGoogle = function (request, response) {
 
         global.connection.query(query, function (err, result) {
             if (!err) {}
+            else {
+                console.log(err)
+            }
         });
         response.send("success");
     } else {
