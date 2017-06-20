@@ -109,14 +109,14 @@ exports.removeEvent = function (request, response) {
 
 exports.getStatistics = function (request, response) {
     connection.connection();
-    // var query = "SELECT SUM(TABLE_ROWS) FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'webitclo_G501';";
-    // global.connection.query(query, function (err, rows, fields) {
-    //     if (!err) {
-    //         response.send(rows)
-    //     } else {
-    //         response.send("fail");
-    //     }
-    // });
+    var query = "SELECT SUM(TABLE_ROWS) FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'webitclo_G501';";
+    global.connection.query(query, function (err, rows, fields) {
+        if (!err) {
+            response.send(rows)
+        } else {
+            response.send("fail");
+        }
+    });
     // var query = "SELECT COUNT(*) FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'webitclo_G501';";
     // global.connection.query(query, function (err, rows, fields) {
     //     if (!err) {
