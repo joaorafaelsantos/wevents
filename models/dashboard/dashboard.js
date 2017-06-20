@@ -113,8 +113,7 @@ exports.getStatistics = function (request, response) {
     var query = "SELECT SUM(TABLE_ROWS) FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'webitclo_G501';";
     global.connection.query(query, function (err, rows, fields) {
         if (!err) {
-            var inserts = rows;
-            response.send(inserts);
+            console.log(rows)
         } else {
             response.send("fail");
         }
