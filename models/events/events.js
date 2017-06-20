@@ -228,6 +228,7 @@ exports.addResource = function (request, response) {
     var obs = request.body.obs;
 
     var query = "INSERT INTO Recurso (nome, obs, id_evento) VALUES ('" + name + "', '" + obs + "'," + id_event + ");";
+    console.log(query)
     global.connection.query(query, function (err, rows, fields) {
         if (!err) {
             response.send("success");
