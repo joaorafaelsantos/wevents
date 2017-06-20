@@ -108,16 +108,15 @@ exports.removeEvent = function (request, response) {
 };
 
 exports.getStatistics = function (request, response) {
-    var subscriptions = '';
     connection.connection();
-    var query = "SELECT SUM(TABLE_ROWS) FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'webitclo_G501';";
-    global.connection.query(query, function (err, rows, fields) {
-        if (!err) {
-            response.send(rows)
-        } else {
-            response.send("fail");
-        }
-    });
+    // var query = "SELECT SUM(TABLE_ROWS) FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'webitclo_G501';";
+    // global.connection.query(query, function (err, rows, fields) {
+    //     if (!err) {
+    //         response.send(rows)
+    //     } else {
+    //         response.send("fail");
+    //     }
+    // });
     // var query = "SELECT COUNT(*) FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'webitclo_G501';";
     // global.connection.query(query, function (err, rows, fields) {
     //     if (!err) {
@@ -127,15 +126,15 @@ exports.getStatistics = function (request, response) {
     //         response.send("fail");
     //     }
     // });
-    // var query = "SELECT COUNT(*) FROM Evento;";
-    // global.connection.query(query, function (err, rows, fields) {
-    //     if (!err) {
-    //         events = rows;
-    //         response.send(events);
-    //     } else {
-    //         response.send("fail");
-    //     }
-    // });
+    var query = "SELECT COUNT(*) FROM Evento;";
+    global.connection.query(query, function (err, rows, fields) {
+        if (!err) {
+            events = rows;
+            response.send(events);
+        } else {
+            response.send("fail");
+        }
+    });
     // var query = "SELECT COUNT(*) FROM Utilizador;";
     // global.connection.query(query, function (err, rows, fields) {
     //     if (!err) {
