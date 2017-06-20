@@ -187,7 +187,7 @@ exports.init = function () {
     });
 
     // Dashboard Statistics 
-    global.app.post('/dashboard/statistics ', function (req, res) {
+    global.app.post('/dashboard/getStatistics', function (req, res) {
         dashboard.getStatistics(res);
     });
 };
