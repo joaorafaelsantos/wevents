@@ -188,6 +188,6 @@ exports.init = function () {
 
     // Dashboard Statistics 
     global.app.post('/dashboard/getStatistics', function (req, res) {
-        dashboard.getStatistics(res);
+        dashboard.getStatistics(req, res);
     });
 };
