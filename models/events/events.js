@@ -170,7 +170,7 @@ exports.getSubscribers = function (request, response) {
     connection.connection();
     var id_event = request.body.id;
     var query = "SELECT Utilizador.img_url, Utilizador.nome FROM Registo, Utilizador, Evento WHERE Registo.id_utilizador = Utilizador.id_utilizador AND Evento.id_evento = " + id_event + ";"
-
+    console.log(query)
     global.connection.query(query, function (err, rows, fields) {
         if (!err) {
             var subscribers = rows;
