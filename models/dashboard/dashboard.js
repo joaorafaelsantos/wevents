@@ -109,6 +109,11 @@ exports.removeEvent = function (request, response) {
 
 exports.getStatistics = function (request, response) {
     var data = {};
+    data.inserts = '';
+    data.tables = '';
+    data.events = '';
+    data.users = '';
+    data.subscriptions = '';
     connection.connection();
     var query = "SELECT SUM(TABLE_ROWS) FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'webitclo_G501';";
     global.connection.query(query, function (err, rows, fields) {
