@@ -108,18 +108,17 @@ exports.removeEvent = function (request, response) {
 };
 
 exports.getStatistics = function (request, response) {
-    var data = {};
-    data.inserts = '';
-    data.tables = '';
-    data.events = '';
-    data.users = '';
-    data.subscriptions = '';
+    var inserts = '';
+    var tables = '';
+    var events = '';
+    var users = '';
+    var subscriptions = '';
     connection.connection();
     var query = "SELECT SUM(TABLE_ROWS) FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'webitclo_G501';";
     global.connection.query(query, function (err, rows, fields) {
         if (!err) {
-            data.inserts = rows;
-            response.send(data);
+            inserts = rows;
+            response.send(inserts);
         } else {
             response.send("fail");
         }
@@ -127,8 +126,8 @@ exports.getStatistics = function (request, response) {
     var query = "SELECT COUNT(*) FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'webitclo_G501';";
     global.connection.query(query, function (err, rows, fields) {
         if (!err) {
-            data.tables = rows;
-            response.send(data);
+            tables = rows;
+            response.send(tables);
         } else {
             response.send("fail");
         }
@@ -136,8 +135,8 @@ exports.getStatistics = function (request, response) {
     var query = "SELECT COUNT(*) FROM Evento;";
     global.connection.query(query, function (err, rows, fields) {
         if (!err) {
-            data.events = rows;
-            response.send(data);
+            events = rows;
+            response.send(events);
         } else {
             response.send("fail");
         }
@@ -145,17 +144,8 @@ exports.getStatistics = function (request, response) {
     var query = "SELECT COUNT(*) FROM Utilizador;";
     global.connection.query(query, function (err, rows, fields) {
         if (!err) {
-            data.users = rows;
-            response.send(data);
-        } else {
-            response.send("fail");
-        }
-    });
-    var query = "SELECT COUNT(*) FROM Utilizador;";
-    global.connection.query(query, function (err, rows, fields) {
-        if (!err) {
-            data.users = rows;
-            response.send(data);
+            users = rows;
+            response.send(users);
         } else {
             response.send("fail");
         }
@@ -163,8 +153,8 @@ exports.getStatistics = function (request, response) {
     var query = "SELECT COUNT(*) FROM Registo;";
     global.connection.query(query, function (err, rows, fields) {
         if (!err) {
-            data.subscriptions = rows;
-            response.send(data);
+            subscriptions = rows;
+            response.send(subscriptions);
         } else {
             response.send("fail");
         }
