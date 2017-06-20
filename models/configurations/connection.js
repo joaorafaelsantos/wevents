@@ -7,8 +7,6 @@ exports.connection = function () {
         user: 'webitclo_jaf3',
         password: 'sNRJy8t@yLzK',
         database: 'webitclo_G501'
-
-        // sNRJy8t@yLzK
     });
     global.connection.connect();
 };
