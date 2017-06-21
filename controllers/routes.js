@@ -196,13 +196,8 @@ exports.init = function () {
         dashboard.checkLogin(req, res);
     });
 
-    // Get user
-    global.app.post('/dashboard/getUser', function (req, res) {
-        dashboard.getUser(req, res);
-    });
-
-    // Check login
-    global.app.post('/dashboard/logout', function (req, res) {
-        dashboard.logout(req, res);
+    // Load dashboard
+    global.app.get('/dashboard', function (req, res) {
+        global.request("https://webitcloud.net/PW/1617/JAF/App/views/dashboard/index.html").pipe(res);
     });
 };
