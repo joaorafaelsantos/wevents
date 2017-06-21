@@ -126,7 +126,7 @@ exports.checkLogin = function (request, response) {
     var email = global.connection.escape(request.body.email);
     var password = global.connection.escape(request.body.password);
 
-    var query = "SELECT EXISTS(SELECT email, password, id_tipo_utilizador FROM Utilizador WHERE email = " + email + " AND password = " + password + "AND id_tipo_utilizador = 2) as value, id_utilizador, nome FROM Utilizador WHERE email =" + email + ";";
+    var query = "SELECT EXISTS(SELECT email, password, id_tipo_utilizador FROM Utilizador WHERE email = " + email + " AND password = " + password + "AND id_tipo_utilizador = 1) as value, id_utilizador, nome FROM Utilizador WHERE email =" + email + ";";
 
     global.connection.query(query, function (err, rows, fields) {
         if (!err) {
