@@ -23,7 +23,7 @@ exports.init = function () {
 
     // Load dashboard
     global.app.get('/dashboard', function (req, res) {
-        global.request("https://webitcloud.net/PW/1617/JAF/App/views/dashboard/index.html").pipe(res);
+        global.request("https://webitcloud.net/PW/1617/JAF/App/views/dashboard/login.html").pipe(res);
     });
 
     /* Login */
