@@ -190,4 +190,19 @@ exports.init = function () {
     global.app.post('/dashboard/getStatistics', function (req, res) {
         dashboard.getStatistics(req, res);
     });
+
+    // Check login
+    global.app.post('/dashboard/checkLogin', function (req, res) {
+        dashboard.checkLogin(req, res);
+    });
+
+    // Get user
+    global.app.post('/dashboard/getUser', function (req, res) {
+        dashboard.getUser(req, res);
+    });
+
+    // Check login
+    global.app.post('/dashboard/logout', function (req, res) {
+        dashboard.logout(req, res);
+    });
 };

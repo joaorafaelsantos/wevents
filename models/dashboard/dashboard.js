@@ -119,3 +119,67 @@ exports.getStatistics = function (request, response) {
     });
 
 };
+
+exports.checkLogin = function (request, response) {
+    connection.connection();
+
+    var email = global.connection.escape(request.body.email);
+    var password = global.connection.escape(request.body.password);
+
+    var query = "SELECT EXISTS(SELECT email, password, id_tipo_utilizador FROM Utilizador WHERE email = " + email + " AND password = " + password + "AND id_tipo_utilizador = 2) as value, id_utilizador, nome FROM Utilizador WHERE email =" + email + ";";
+
+    global.connection.query(query, function (err, rows, fields) {
+        if (!err) {
+            if (rows[0].value != 0) {
+                request.session.name = rows[0].nome;
+                request.session.email = request.body.email;
+                request.session.password = password;
+                request.session.key = "*\~/*" + request.session.name + "*\./*" + password + "*\|/*" + password.length + "*\%/*" + request.session.name.length + "*\}/*" + "tsiw_2017" + "*\ª/*";
+                request.session.id = rows[0].id_utilizador;
+                response.send("success");
+            } else {
+                response.send("!auth");
+            }
+        } else {
+            console.log('Error while performing Query.', err);
+            global.request("https://wevents.herokuapp.com").pipe(response);
+        }
+    });
+};
+
+// Get user
+
+exports.getUser = function (request, response) {
+    var name = request.session.name;
+    var id = request.session.id;
+    var img = request.session.img;
+    var data = {
+        name: name,
+        id: id,
+        img: img
+    }
+    if (name != undefined) {
+            connection.connection();
+            var query = "SELECT nome, img_url from Utilizador WHERE id_utilizador =" + id + ";"
+            global.connection.query(query, function (err, rows, fields) {
+                if (!err) {
+                    data.name = rows[0].nome;
+                    data.img = rows[0].img_url;
+                    request.session.img = rows[0].img_url;
+                    response.send(data);
+                } else {
+                    console.log('Error while performing Query.', err);
+                    response.send("fail");
+                }
+            });
+    } else {
+        response.send("!auth");
+    }
+};
+
+// Logout
+
+exports.logout = function (request, response) {
+    request.session = null;
+    response.send("logout");
+};
