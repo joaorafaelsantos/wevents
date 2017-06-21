@@ -21,6 +21,11 @@ exports.init = function () {
         access.redirectPortal(req, res);
     });
 
+    // Load dashboard
+    global.app.get('/dashboard', function (req, res) {
+        global.request("https://webitcloud.net/PW/1617/JAF/App/views/dashboard/index.html").pipe(res);
+    });
+
     /* Login */
 
     // Check login
@@ -194,10 +199,5 @@ exports.init = function () {
     // Check login
     global.app.post('/dashboard/checkLogin', function (req, res) {
         dashboard.checkLogin(req, res);
-    });
-
-    // Load dashboard
-    global.app.get('/dashboard', function (req, res) {
-        global.request("https://webitcloud.net/PW/1617/JAF/App/views/dashboard/index.html").pipe(res);
     });
 };
