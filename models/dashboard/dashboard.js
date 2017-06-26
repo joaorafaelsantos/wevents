@@ -70,12 +70,12 @@ exports.removeUser = function (request, response) {
 
 exports.createUser = function (request, response) {
     connection.connection();
-    var email = request.body.email;
-    var name = request.body.name;
-    var pass = request.body.pass;
+    var email = global.connection.escape(request.body.email);
+    var name = global.connection.escape(request.body.name);
+    var pass = global.connection.escape(request.body.pass);
     var tipo = request.body.tipo;
-    var img = request.body.img;
-    var insert = "INSERT INTO Utilizador (password, email, id_tipo_utilizador, nome, img_url) VALUES ('" + pass + "', '" + email + "', '" + tipo + "' , '" + name + "' , '" + img + "');";
+    var img =  global.connection.escape(request.body.img);
+    var insert = "INSERT INTO Utilizador (password, email, id_tipo_utilizador, nome, img_url) VALUES (" + pass + ", " + email + ", '" + tipo + "' , " + name + " , " + img + ");";
     global.connection.query(insert, function (err, result) {
         if (!err) {
             response.send("success");
