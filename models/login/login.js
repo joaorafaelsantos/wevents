@@ -16,8 +16,9 @@ exports.createUser = function (request, response) {
     var password = global.connection.escape(request.body.password);
     var name = global.connection.escape(request.body.name);
     var url = global.connection.escape(request.body.url);
+    var tempId = "(SELECT MAX(id_utilizador) + 1 From (SELECT * FROM Utilizador) as T WHERE id_utilizador < 1000) + 1";
 
-    var query = "INSERT INTO Utilizador (password, email, id_tipo_utilizador, nome, img_url) VALUES (" + password + "," + email + ", 2," + name + ", " + url + ");"
+    var query = "INSERT INTO Utilizador (id_utilizador, password, email, id_tipo_utilizador, nome, img_url) VALUES (" + tempId + "," + password + "," + email + ", 2," + name + ", " + url + ");"
 
     global.connection.query(query, function (err, rows, fields) {
         if (!err) {

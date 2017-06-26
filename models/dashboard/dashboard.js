@@ -60,11 +60,10 @@ exports.removeUser = function (request, response) {
     connection.connection();
     var email = request.body.email;
     var remove = "DELETE FROM Utilizador WHERE email = '" + email + "';";
-    console.log(remove);
-    // global.connection.query(remove, function (err, result) {
-    //     if (err) throw err;
-    //     response.send("success");
-    // });
+    global.connection.query(remove, function (err, result) {
+        if (err) throw err;
+        response.send("success");
+    });
 };
 
 // Create users
@@ -78,14 +77,13 @@ exports.createUser = function (request, response) {
     var img = global.connection.escape(request.body.img);
     var tempId = "(SELECT MAX(id_utilizador) + 1 From (SELECT * FROM Utilizador) as T WHERE id_utilizador < 1000) + 1";
     var insert = "INSERT INTO Utilizador (id_utilizador, password, email, id_tipo_utilizador, nome, img_url) VALUES (" + tempId + ", " + pass + ", " + email + ", '" + tipo + "' , " + name + " , " + img + ");";
-    console.log(insert);
-    // global.connection.query(insert, function (err, result) {
-    //     if (!err) {
-    //         response.send("success");
-    //     } else {
-    //         response.send("fail");
-    //     }
-    // });
+    global.connection.query(insert, function (err, result) {
+        if (!err) {
+            response.send("success");
+        } else {
+            response.send("fail");
+        }
+    });
 };
 
 // Change event
