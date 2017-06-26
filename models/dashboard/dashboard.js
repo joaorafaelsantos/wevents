@@ -50,7 +50,7 @@ exports.changeUser = function (request, response) {
     var update = "UPDATE Utilizador SET password = '" + pass + "',  img_url = '" + img + "' WHERE email = '" + email + "';";
     global.connection.query(update, function (err, result) {
         if (err) throw err;
-        console.log("1 user updated");
+        response.send("success");
     });
 };
 
@@ -62,7 +62,7 @@ exports.removeUser = function (request, response) {
     var remove = "DELETE FROM Utilizador WHERE email = '" + email + "';";
     global.connection.query(remove, function (err, result) {
         if (err) throw err;
-        console.log("1 user removed");
+        response.send("success");
     });
 };
 
@@ -70,15 +70,18 @@ exports.removeUser = function (request, response) {
 
 exports.createUser = function (request, response) {
     connection.connection();
-    var email = requestuest.body.email;
+    var email = request.body.email;
     var name = request.body.name;
     var pass = request.body.pass;
     var tipo = request.body.tipo;
     var img = request.body.img;
     var insert = "INSERT INTO Utilizador (password, email, id_tipo_utilizador, nome, img_url) VALUES ('" + pass + "', '" + email + "', '" + tipo + "' , '" + name + "' , '" + img + "');";
     global.connection.query(insert, function (err, result) {
-        if (err) throw err;
-        console.log("1 user inserted");
+        if (!err) {
+            response.send("success");
+        } else {
+            response.send("fail");
+        }
     });
 };
 
@@ -90,11 +93,15 @@ exports.changeEvent = function (request, response) {
     var img = request.body.img;
     var privacidade = request.body.privacidade;
     var rua = request.body.rua;
-    var localidade = "SELECT id_localidade FROM Localidade WHERE morada = '" + rua + "';";
+    var localidade = "SELECT id_localidade FROM Localidade WHERE morada = '" + rua;
     var update = "UPDATE Evento SET privacidade = '" + privacidade + "',  img_url = '" + img + "',  id_localidade = '" + localidade + "' WHERE evento = '" + event + "';";
+    console.log(update);
     global.connection.query(update, function (err, result) {
-        if (err) throw err;
-        console.log("1 event updated");
+        if (!err) {
+            response.send("success");
+        } else {
+            response.send("fail");
+        }
     });
 };
 
@@ -105,8 +112,11 @@ exports.removeEvent = function (request, response) {
     var event = request.body.event;
     var remove = "DELETE FROM Evento WHERE nome_evento = '" + event + "';";
     global.connection.query(remove, function (err, result) {
-        if (err) throw err;
-        console.log("1 event removed");
+        if (!err) {
+            response.send("success");
+        } else {
+            response.send("fail");
+        }
     });
 };
 
