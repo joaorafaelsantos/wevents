@@ -95,7 +95,6 @@ exports.changeEvent = function (request, response) {
     var rua = request.body.rua;
     var localidade = "SELECT id_localidade FROM Localidade WHERE morada = '" + rua;
     var update = "UPDATE Evento SET privacidade = '" + privacidade + "',  img_url = '" + img + "',  id_localidade = (" + localidade + "') WHERE nome_evento = '" + event + "';";
-    console.log(update);
     global.connection.query(update, function (err, result) {
         if (!err) {
             response.send("success");
